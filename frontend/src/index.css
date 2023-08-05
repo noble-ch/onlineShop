@@ -1,6 +1,12 @@
 main {
   min-height: 80vh;
 }
+#card_body {
+  transition: transform 0.5s ease;
+}
+#card_body:hover {
+  transform: scale(1.02);
+}
 #product_name {
   text-decoration: none;
   font-weight: bolder;
