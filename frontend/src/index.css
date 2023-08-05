@@ -1,3 +1,18 @@
 main {
   min-height: 80vh;
 }
+#product_name {
+  text-decoration: none;
+  font-weight: bolder;
+  color: #6d6d6d;
+}
+#product_name:hover {
+  font-weight: 400;
+  color: black;
+}
+.rating span {
+  margin: 0.1rem;
+}
+#review_text {
+  color: #8d8d8d;
+}
