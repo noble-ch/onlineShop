@@ -1,6 +1,9 @@
 main {
   min-height: 80vh;
 }
+#container {
+  background: linear-gradient( rgb(92, 132, 148) , white);
+}
 #card {
   transition: transform 0.3s ease;
 }

@@ -13,6 +13,7 @@ function App() {
         <Container>
           <Routes>
             <Route path="/" element={<HomeScreen />} />
+            <Route path="/ProductsViewScreen" element={<ProductsViewScreen />} />
             <Route path="/product/:id" element={<ProductScreen />} />
           </Routes>
         </Container>

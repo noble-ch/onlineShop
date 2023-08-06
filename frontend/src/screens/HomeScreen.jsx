@@ -5,7 +5,7 @@ import products from "../products";
 
 export default function HomeScreen() {
   return (
-    <div>
+    <div id="container" className="rounded rounded-5 p-4">
       <h1>Latest Prodcuts</h1>
       <Row>
         {products.map((product) => (
