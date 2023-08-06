@@ -1,8 +1,18 @@
 main {
   min-height: 80vh;
 }
-#container {
-  background: linear-gradient( rgb(92, 132, 148) , white);
+#home_moto {
+  /* border: 1px solid red;  */
+  border-radius: 0.25rem 0.25rem 0 0; /* Rounded border only on top */
+  padding: 1rem;
+  margin-bottom: 2rem;
+  height: 40rem;
+}
+#moto {
+  text-shadow: -15 0px 11px rgba(255, 0, 0, 0.15);
+}
+.gradient_border {
+  background: linear-gradient(rgb(92, 132, 148), white);
 }
 #card {
   transition: transform 0.3s ease;
