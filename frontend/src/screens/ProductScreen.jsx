@@ -23,7 +23,7 @@ export default function ProductScreen() {
       <Link to="/" className="btn btn-light my-3">
         GO Back
       </Link>
-      <Row>
+      <Row >
         <Col>
           <Image src={product.image} alt={product.name} fluid />
         </Col>

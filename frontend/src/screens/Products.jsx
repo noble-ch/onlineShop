@@ -5,7 +5,7 @@ import products from "../products";
 
 export default function Prodcuts() {
   return (
-    <div id="container" className="rounded rounded-5 p-">
+    <div id="container" className="rounded rounded-5  p-3 gradient_border ">
       <h1>Latest Prodcuts</h1>
       <Row>
         {products.map((product) => (
