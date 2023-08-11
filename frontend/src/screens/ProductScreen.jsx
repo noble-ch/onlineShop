@@ -1,23 +1,18 @@
 import { Link, useParams } from "react-router-dom"; // Import the useParams hook
 import { useState, useEffect } from "react";
-
+import { listProductsDetail } from "../actions/productActions";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
 import { Row, Col, Image, Button, Card, ListGroup } from "react-bootstrap";
 import Rating from "../components/Rating";
-import axios from "axios";
 
 export default function ProductScreen() {
   const { id } = useParams(); // Use the useParams hook to get the 'id' parameter
-  const [product, setProduct] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    async function fetchproduct() {
-      const { data } = await axios.get(
-        `http://127.0.0.1:8000/api/products/${id}`
-      );
-      setProduct(data);
-    }
-    fetchproduct();
-  }, []);
+    dispatch(listProductsDetail(id));
+  });
 
   if (!product) {
     return (
