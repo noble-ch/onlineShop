@@ -1,29 +1,20 @@
 import { Link, useParams } from "react-router-dom"; // Import the useParams hook
 import { useState, useEffect } from "react";
-import { listProductsDetail } from "../actions/productActions";
+import { listProductDetails } from "../actions/productActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { Row, Col, Image, Button, Card, ListGroup } from "react-bootstrap";
 import Rating from "../components/Rating";
+import { useDispatch, useSelector } from "react-redux";
 
-export default function ProductScreen() {
-  const { id } = useParams(); // Use the useParams hook to get the 'id' parameter
-  const dispatch = useDispatch();
+export default function ProductScreen({ match }) {
+  const dispatch = useDispatch(); // Use 'dispatch' instead of 'useDispatch'
+  const productDetails = useSelector((state) => state.productDetails);
+  const { error, loading, product } = productDetails;
 
   useEffect(() => {
-    dispatch(listProductsDetail(id));
+    dispatch(listProductDetails(match.params.id));
   });
-
-  if (!product) {
-    return (
-      <div>
-        <Link to="/" className="btn btn-light my-3">
-          GO Back
-        </Link>
-        Product not found
-      </div>
-    );
-  }
 
   return (
     <div>
