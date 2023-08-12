@@ -14,7 +14,7 @@ export default function HomeScreen() {
 
   useEffect(() => {
     dispatch(listProducts());
-  });
+  }, []);
 
   return (
     <div>
