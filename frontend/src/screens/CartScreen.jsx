@@ -18,6 +18,7 @@ function CartScreen() {
   const location = useLocation();
   const { productId } = useParams();
   const qty = location.search ? Number(location.search.split("=")[1]) : 1;
+  console.log("qty:", qty);
   const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
