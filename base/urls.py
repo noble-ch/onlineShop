@@ -1,10 +1,12 @@
 from django.urls import path
 from . import views
-from base.views import user_views as views
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+)
 
 urlpatterns = [
-    path('api/users/login/', views.MyTokenObtainPairView.as_view(),
-         name='token_obtain_pair'),
+    path('login/', views.MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
+
     path('', views.getRoutes, name="routes"),
     path('products/', views.getProducts, name="products"),
     path('products/<str:pk>', views.getProduct, name="product"),
