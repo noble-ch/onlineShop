@@ -11,7 +11,6 @@ from base.serializers import ProductSerializer
 from rest_framework import status
 
 @api_view(['GET'])
-@permission_classes([IsAdminUser])
 def getProducts(request):
     products = Product.objects.all()
     serializer = ProductSerializer(products, many=True)
@@ -23,3 +22,4 @@ def getProduct(request, pk):
     product = Product.objects.get(_id=pk)  # Corrected typo here
     serializer = ProductSerializer(product, many=False)
     return Response(serializer.data)
+
