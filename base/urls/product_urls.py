@@ -6,4 +6,3 @@ urlpatterns = [
     path('', views.getProducts, name="products"),
     path('<str:pk>', views.getProduct, name="product"),
 ]
- 
