@@ -4,19 +4,13 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 
 from django.contrib.auth.models import User
-from .models import Product
-from .products import products
-from .serializers import ProductSerializer, UserSerializer, UserSerializerWithToken
-
+from base.serializers import ProductSerializer, UserSerializer, UserSerializerWithToken
+# Create your views here.
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 
 from django.contrib.auth.hashers import make_password
 from rest_framework import status
-
-
-# Create your views here.
-
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
@@ -64,17 +58,3 @@ def getUsers(request):
     serializer = UserSerializer(users, many=True)
     return Response(serializer.data)
 
-
-@api_view(['GET'])
-@permission_classes([IsAdminUser])
-def getProducts(request):
-    products = Product.objects.all()
-    serializer = ProductSerializer(products, many=True)
-    return Response(serializer.data)
-
-
-@api_view(['GET'])
-def getProduct(request, pk):
-    product = Product.objects.get(_id=pk)  # Corrected typo here
-    serializer = ProductSerializer(product, many=False)
-    return Response(serializer.data)
