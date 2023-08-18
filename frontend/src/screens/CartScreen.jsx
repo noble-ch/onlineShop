@@ -77,6 +77,7 @@ function CartScreen() {
                       ))}
                     </Form.Control>
                   </Col>
+
                   <Col md={1}>
                     <Button
                       type="button"
@@ -121,4 +122,5 @@ function CartScreen() {
     </Row>
   );
 }
+
 export default CartScreen;
