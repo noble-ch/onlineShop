@@ -29,6 +29,7 @@ function LoginScreen() {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(login(email, password));
+    console.log("submited");
   };
 
   return (
@@ -74,3 +75,30 @@ function LoginScreen() {
 
 export default LoginScreen;
 
+// import { useState } from "react";
+// import { useNavigate } from "react-router-dom";
+
+// function LoginScreen() {
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+//   const navigate = useNavigate(); // Initialize the navigate function
+
+//   const handleLogin = () => {
+//     // Perform login logic here
+
+//     // Assuming login is successful, navigate to a different route
+//     navigate("/dashboard"); // Navigate to the "/dashboard" route
+//   };
+
+//   return (
+//     <div>
+//       <h2>LoginScreen</h2>
+//       <form onSubmit={handleLogin}>
+//         {/* Your input fields for email and password */}
+//         <button type="submit">Login</button>
+//       </form>
+//     </div>
+//   );
+// }
+
+// export default LoginScreen;
