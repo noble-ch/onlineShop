@@ -17,13 +17,13 @@ function PaymentScreen() {
   const [paymentMethod, setPaymentMethod] = useState("TeleBirr");
 
   if (!shippingAddress.address) {
-    navigate("/shipping");
+    navigate("/login?redirect=/shipping");
   }
 
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(savePaymentMethod(paymentMethod));
-    navigate("/placeorder");
+    navigate("/login?redirect=/placeorder");
   };
 
   return (
