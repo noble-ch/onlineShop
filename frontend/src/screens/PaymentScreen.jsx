@@ -14,7 +14,7 @@ function PaymentScreen() {
 
   const dispatch = useDispatch();
 
-  const [paymentMethod, setPaymentMethod] = useState("PayPal");
+  const [paymentMethod, setPaymentMethod] = useState("TeleBirr");
 
   if (!shippingAddress.address) {
     navigate("/shipping");
@@ -34,13 +34,21 @@ function PaymentScreen() {
         <Form.Group className="mb-3">
           <Form.Label as="legend">Select Method</Form.Label>
           <Col>
-            <Form.Check
-              type="radio"
-              label="TeleBirr"
-              id="telebirr"
-              name="paymentMethod"
-              checked
-              onChange={(e) => setPaymentMethod(e.target.value)}></Form.Check>
+            <div className="d-flex align-items-center">
+              <Form.Check
+                type="radio"
+                label=""
+                id="telebirr"
+                name="paymentMethod"
+                checked
+                onChange={(e) => setPaymentMethod(e.target.value)}></Form.Check>
+              <img
+                src="/TeleBirr.svg"
+                alt="TeleBirr Icon"
+                className="ml-2"
+                style={{ width: "100px", height: "48px" }}
+              />
+            </div>
           </Col>
         </Form.Group>
 

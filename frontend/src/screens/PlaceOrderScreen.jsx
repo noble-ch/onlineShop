@@ -10,8 +10,8 @@ import CheckoutSteps from '../components/CheckoutSteps'
 function PlaceOrderScreen() {
     const navigate = useNavigate()
 
-    const orderCreate = useSelector(state => state.orderCreate)
-    const { order, error, success } = orderCreate
+    // const orderCreate = useSelector(state => state.orderCreate)
+    // const { order, error, success } = orderCreate
 
     const dispatch = useDispatch()
 
@@ -23,17 +23,16 @@ function PlaceOrderScreen() {
 
     cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)).toFixed(2)
 
-
     if (!cart.paymentMethod) {
         navigate('/payment')
     }
 
     useEffect(() => {
-        if (success) {
-            navigate(`/order/${order._id}`)
-            // dispatch({ type: ORDER_CREATE_RESET })
-        }
-    }, [success, navigate, dispatch])
+        // if (success) {
+        //     navigate(`/order/${order._id}`)
+        //     dispatch({ type: ORDER_CREATE_RESET })
+        // }
+    }, [navigate, dispatch])
 
     // const placeOrder = () => {
     //     dispatch(createOrder({
@@ -140,10 +139,9 @@ function PlaceOrderScreen() {
                                 </Row>
                             </ListGroup.Item>
 
-
-                            <ListGroup.Item>
+                            {/* <ListGroup.Item>
                                 {error && <Message variant='danger'>{error}</Message>}
-                            </ListGroup.Item>
+                            </ListGroup.Item> */}
 
                             <ListGroup.Item>
                                 <Button
@@ -165,3 +163,5 @@ function PlaceOrderScreen() {
 }
 
 export default PlaceOrderScreen
+
+
