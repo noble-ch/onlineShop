@@ -8,7 +8,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 
 export default function HomeScreen() {
-  const dispatch = useDispatch(); // Use 'dispatch' instead of 'useDispatch'
+  const dispatch = useDispatch(); 
   const productList = useSelector((state) => state.productList);
   const { error, loading, products } = productList;
 
