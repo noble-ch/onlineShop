@@ -1,7 +1,12 @@
 // eslint-disable-next-line react/prop-types
 function Rating({ value, text, color }) {
+
   return (
     <div className="rating">
+      <span>
+
+        
+      </span>
       <span>
         <i
           style={{ color }}

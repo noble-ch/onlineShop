@@ -44,7 +44,7 @@ function PaymentScreen() {
                 onChange={(e) => setPaymentMethod(e.target.value)}></Form.Check>
               <img
                 src="/TeleBirr.svg"
-                alt="TeleBirr Icon"
+                alt="TeleBirr"
                 className="ml-2"
                 style={{ width: "100px", height: "48px" }}
               />
