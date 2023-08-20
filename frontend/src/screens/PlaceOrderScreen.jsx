@@ -21,7 +21,7 @@ function PlaceOrderScreen() {
   cart.itemsPrice = cart.cartItems
     .reduce((acc, item) => acc + item.price * item.qty, 0)
     .toFixed(2);
-  cart.shippingPrice = (10).toFixed(2);
+  cart.shippingPrice = (0).toFixed(2);
   cart.taxPrice = Number(0 * cart.itemsPrice).toFixed(2);
 
   cart.totalPrice = (
@@ -92,11 +92,12 @@ function PlaceOrderScreen() {
                       <Row>
                         <Col md={1}>
                           <Image
-                            src={item.image}
+                            src={"/Iphone14.png"}
                             alt={item.name}
                             fluid
                             rounded
                           />
+                          {/* the image would be fixed later */}
                         </Col>
 
                         <Col>

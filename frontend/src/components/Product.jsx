@@ -7,7 +7,8 @@ export default function Product({ product }) {
   return (
     <Card id="card" className="my-3 p-3 rounded">
       <Link to={`/product/${product._id}`}>
-        <Card.Img src={product.image} />
+        <Card.Img src={"/Iphone14.png"} />
+        {/* undetected bug while fetching for the picture  */}
       </Link>
       <Card.Body>
         <Link id="product_name" to={`/product/${product._id}`}>

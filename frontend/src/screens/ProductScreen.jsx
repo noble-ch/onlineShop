@@ -44,7 +44,11 @@ function ProductScreen() {
       ) : (
         <Row>
           <Col>
-            <Image src={product.image} alt={product.name} fluid />
+            <Image
+              src={"/Iphone14.png"}
+              /* the image would be fixed later */ alt={product.name}
+              fluid
+            />
           </Col>
           <Col md={3}>
             <ListGroup variant="flush">
