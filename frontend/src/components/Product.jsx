@@ -1,13 +1,16 @@
 /* eslint-disable react/prop-types */
+
 import { Card } from "react-bootstrap";
 import Rating from "./Rating";
 import { Link } from "react-router-dom";
 
 export default function Product({ product }) {
+
+  
   return (
     <Card id="card" className="my-3 p-3 rounded">
       <Link to={`/product/${product._id}`}>
-        <Card.Img src={"/Iphone14.png"} />
+        <Card.Img src={product.image} />
         {/* undetected bug while fetching for the picture  */}
       </Link>
       <Card.Body>

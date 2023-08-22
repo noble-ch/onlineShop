@@ -138,13 +138,14 @@ function ProductEditScreen() {
                 placeholder="Enter image"
                 value={image}
                 onChange={(e) => setImage(e.target.value)}></Form.Control>
-
-              <Form.File
+              <input id="image-file" type="file" onChange={uploadFileHandler} />
+               {/* <Form.File
                 id="image-file"
                 label="Choose File"
                 custom
-                onChange={uploadFileHandler}></Form.File>
-              {uploading && <Loader />}
+                onChange={uploadFileHandler}></Form.File> */}
+              {uploading && <Loader />} 
+           
             </Form.Group>
 
             <Form.Group controlId="brand">
