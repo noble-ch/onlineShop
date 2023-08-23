@@ -14,14 +14,18 @@ from rest_framework import status
 @api_view(['GET'])
 def getProducts(request):
     query = request.query_params.get('keyword')
-    if query == None:
+    if query is None:
         query = ''
 
     products = Product.objects.filter(
         name__icontains=query).order_by('-createdAt')
 
-    page = request.query_params.get('page')
-    paginator = Paginator(products, 5)
+    page = request.query_params.get('page')  # Get the 'page' parameter
+
+    if page is None:
+        page = 1  # Set the default page number
+
+    paginator = Paginator(products, 8)
 
     try:
         products = paginator.page(page)
@@ -30,11 +34,9 @@ def getProducts(request):
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
 
-    if page == None:
-        page = 1
-
-    page = int(page)
+    page = int(page)  # Convert to integer
     print('Page:', page)
+
     serializer = ProductSerializer(products, many=True)
     return Response({'products': serializer.data, 'page': page, 'pages': paginator.num_pages})
 

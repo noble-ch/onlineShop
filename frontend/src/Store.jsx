@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
@@ -7,9 +6,9 @@ import {
   productDetailsReducer,
   productDeleteReducer,
   productCreateReducer,
-  productUpdateReducer
-  // productReviewCreateReducer,
-  // productTopRatedReducer,
+  productUpdateReducer,
+  productReviewCreateReducer,
+  productTopRatedReducer
 } from "./reducers/productReducers";
 
 import { cartReducer } from "./reducers/cartReducers";
@@ -26,9 +25,11 @@ import {
 
 import {
   orderCreateReducer,
-  orderListMyReducer,
   orderDetailsReducer,
-  orderPayReducer
+  orderPayReducer,
+  orderListMyReducer
+  // orderListReducer,
+  // orderDeliverReducer
 } from "./reducers/orderReducers";
 
 const reducer = combineReducers({
@@ -37,11 +38,10 @@ const reducer = combineReducers({
   productDelete: productDeleteReducer,
   productCreate: productCreateReducer,
   productUpdate: productUpdateReducer,
-  // productReviewCreate: productReviewCreateReducer,
-  // productTopRated: productTopRatedReducer,
+  productReviewCreate: productReviewCreateReducer,
+  productTopRated: productTopRatedReducer,
 
   cart: cartReducer,
-
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
@@ -54,11 +54,14 @@ const reducer = combineReducers({
   orderDetails: orderDetailsReducer,
   orderPay: orderPayReducer,
   orderListMy: orderListMyReducer
+  // orderList: orderListReducer,
+  // orderDeliver: orderDeliverReducer
 });
 
 const cartItemsFromStorage = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))
   : [];
+
 const userInfoFromStorage = localStorage.getItem("userInfo")
   ? JSON.parse(localStorage.getItem("userInfo"))
   : null;
@@ -74,6 +77,7 @@ const initialState = {
   },
   userLogin: { userInfo: userInfoFromStorage }
 };
+
 const middleware = [thunk];
 
 const store = createStore(
@@ -81,4 +85,5 @@ const store = createStore(
   initialState,
   composeWithDevTools(applyMiddleware(...middleware))
 );
+
 export default store;

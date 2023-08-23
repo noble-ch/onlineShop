@@ -1,18 +1,17 @@
-/* eslint-disable react/prop-types */
 import { useEffect } from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import { Table, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
-// import Paginate from "../components/Paginate";
+import Paginate from "../components/Paginate";
 import {
   listProducts,
   deleteProduct,
   createProduct
 } from "../actions/productActions";
 import { PRODUCT_CREATE_RESET } from "../constants/productConstants";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function ProductListScreen() {
   const navigate = useNavigate();
@@ -21,7 +20,7 @@ function ProductListScreen() {
   const dispatch = useDispatch();
 
   const productList = useSelector((state) => state.productList);
-  const { loading, error, products } = productList;
+  const { loading, error, products, pages, page } = productList;
 
   const productDelete = useSelector((state) => state.productDelete);
   const {
@@ -56,13 +55,12 @@ function ProductListScreen() {
     }
   }, [
     dispatch,
-
+    navigate,
     userInfo,
     successDelete,
     successCreate,
     createdProduct,
-    keyword,
-    navigate
+    keyword
   ]);
 
   const deleteHandler = (id) => {
@@ -140,7 +138,7 @@ function ProductListScreen() {
               ))}
             </tbody>
           </Table>
-          {/* <Paginate pages={pages} page={page} isAdmin={true} /> */}
+          <Paginate pages={pages} page={page} isAdmin={true} />
         </div>
       )}
     </div>
