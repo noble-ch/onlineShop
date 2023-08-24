@@ -77,11 +77,11 @@ function ProductScreen() {
       ) : (
         <div>
           <Row>
-            <Col md={6}>
+            <Col md={4}>
               <Image src={product.image} alt={product.name} fluid />
             </Col>
 
-            <Col md={3}>
+            <Col md={4}>
               <ListGroup variant="flush">
                 <ListGroup.Item>
                   <h3>{product.name}</h3>
@@ -103,7 +103,7 @@ function ProductScreen() {
               </ListGroup>
             </Col>
 
-            <Col md={3}>
+            <Col md={4}>
               <Card>
                 <ListGroup variant="flush">
                   <ListGroup.Item>
@@ -160,7 +160,7 @@ function ProductScreen() {
           </Row>
           {/*product review section  */}
           <Row>
-            <Col md={6}>
+            <Col md={4}>
               <h4>Reviews</h4>
               {product.reviews.length === 0 && (
                 <Message variant="info">No Reviews</Message>
