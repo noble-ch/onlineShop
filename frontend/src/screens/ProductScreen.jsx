@@ -158,7 +158,7 @@ function ProductScreen() {
               </Card>
             </Col>
           </Row>
-
+          {/*product review section  */}
           <Row>
             <Col md={6}>
               <h4>Reviews</h4>

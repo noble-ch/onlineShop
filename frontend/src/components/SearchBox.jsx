@@ -18,7 +18,7 @@ function SearchBox() {
   };
 
   return (
-    <Form onSubmit={submitHandler}>
+    <Form onSubmit={submitHandler} className="d-flex align-items-center">
       <Form.Control
         type="text"
         name="q"
