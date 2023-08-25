@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomeScreen from "./screens/HomeScreen";
 import ProductDetailsScreen from "./screens/ProductDetailsScreen";
+import ProductScreen from "./screens/ProductScreen";
 import CartScreen from "./screens/CartScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
@@ -22,10 +23,12 @@ function App() {
   return (
     <Router>
       <Header />
-      <main className="py-3">
-        <Container>
+
+      <main>
+        <Container fluid  >
           <Routes>
             <Route path="/" element={<HomeScreen />} />
+            <Route path="/products" element={<ProductScreen />} />
             <Route path="/login" element={<LoginScreen />} />
             <Route path="/register" element={<RegisterScreen />} />
             <Route path="/profile" element={<ProfileScreen />} />
@@ -36,10 +39,16 @@ function App() {
             <Route path="/product/:id" element={<ProductDetailsScreen />} />
             <Route path="/cart/:id?" element={<CartScreen />} />
 
-            <Route path="/admin/userlist" element={<AdminUserListScreen/>} />
-            <Route path="/admin/user/:id/edit" element={<AdminUserEditScreen />} />
+            <Route path="/admin/userlist" element={<AdminUserListScreen />} />
+            <Route
+              path="/admin/user/:id/edit"
+              element={<AdminUserEditScreen />}
+            />
 
-             <Route path="/admin/productlist" element={<AdminProductListScreen />} />
+            <Route
+              path="/admin/productlist"
+              element={<AdminProductListScreen />}
+            />
             <Route
               path="/admin/product/:id/edit"
               element={<AdminProductEditScreen />}

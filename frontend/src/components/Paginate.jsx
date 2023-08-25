@@ -14,7 +14,7 @@ function Paginate({ pages, page, keyword = "", isAdmin = false }) {
           <LinkContainer
             key={x + 1}
             to={{
-              pathname: isAdmin ? "/admin/productlist" : "/",
+              pathname: isAdmin ? "/admin/productlist" : "/products",
               search: `?keyword=${keyword}&page=${x + 1}`
             }}>
             <Pagination.Item active={x + 1 === page}>{x + 1}</Pagination.Item>

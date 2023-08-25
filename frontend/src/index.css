@@ -1,5 +1,17 @@
+.clasic {
+  z-index: -1;
+  position: absolute;
+  background: linear-gradient(rgb(107, 107, 107), rgba(255, 255, 0, 0));
+  height: 650px;
+  top: 1300px;
+
+  /* Ensure the image covers the full viewport height */
+}
+
 main {
   min-height: 80vh;
+
+  background: linear-gradient(rgb(231, 225, 217), rgba(255, 255, 0, 0));
 }
 
 h1 {
@@ -32,7 +44,8 @@ h3 {
 }
 
 .carousel-caption h4 {
-  color: #fff;
+  color: #3a3a3a;
+  font-size: medium;
 }
 
 .carousel img {
@@ -54,7 +67,7 @@ h3 {
 }
 /* ---------------------header-------------- */
 
-#brand {
+.brand {
   font-family: Arial, sans-serif;
   font-weight: bolder;
   font-size: 150%;
@@ -106,17 +119,10 @@ h3 {
 }
 
 .gradient_border {
-  background: linear-gradient(rgb(172, 141, 141), white);
+  background: linear-gradient(rgb(170, 144, 119), white);
 }
-
-#home_moto {
-  /* border: 1px solid red;  */
-  border-radius: 0.25rem 0.25rem 0 0; /* Rounded border only on top */
-  padding: 1rem;
-  margin-bottom: 2rem;
-}
-#moto {
-  text-shadow: -15 0px 11px rgba(255, 0, 0, 0.15);
+#removeline {
+  text-decoration: none;
 }
 
 #card {
@@ -128,4 +134,33 @@ h3 {
 #product_name {
   text-decoration: none;
   font-weight: bolder;
+}
+.circle {
+  margin: 10px;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: linear-gradient(rgb(170, 144, 119), #d6d6d6);
+}
+h4 {
+  text-decoration: none;
+  font-weight: bolder;
+}
+
+.borders {
+  border: 2px solid red;
+}
+
+.arrows {
+  transform: rotate(-20deg);
+  transform-origin: center center; /* Rotate around the center */
+  top: 100px; /* Adjust the position from the top */
+  left: 78vw; /* Adjust the position from the left */
+}
+
+.arrows1 {
+  transform: rotate(-40deg);
+  transform-origin: center center; /* Rotate around the center */
+  top: 450px; /* Adjust the position from the top */
+  left: 46vw; /* Adjust the position from the left */
 }

@@ -29,10 +29,10 @@ function Header() {
           fixed="top"
           key={expand}
           expand={expand}
-          className="bg-body-tertiary mb-3 ">
+          className="bg-body-tertiary mb-6  brand  header">
           <Container fluid>
             <LinkContainer to="/">
-              <Navbar.Brand id="brand">OTICSHOP</Navbar.Brand>
+              <Navbar.Brand>OTICSHOP</Navbar.Brand>
             </LinkContainer>
 
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />

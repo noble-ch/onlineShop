@@ -9,7 +9,8 @@ import {
   Image,
   Form,
   Button,
-  Card
+  Card,
+  Container
 } from "react-bootstrap";
 import Message from "../components/Message";
 import { addToCart, removeFromCart } from "../actions/cartActions";
@@ -40,6 +41,7 @@ function CartScreen() {
   };
 
   return (
+    <Container>
     <Row>
       <Col md={8}>
         <h1>Shopping Cart</h1>
@@ -125,6 +127,7 @@ function CartScreen() {
         </Card>
       </Col>
     </Row>
+    </Container>
   );
 }
 

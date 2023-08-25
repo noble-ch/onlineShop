@@ -11,7 +11,7 @@ function SearchBox() {
   const submitHandler = (e) => {
     e.preventDefault();
     if (keyword) {
-      navigate(`/?keyword=${keyword}&page=1`);
+      navigate(`/products/?keyword=${keyword}&page=1`);
     } else {
       navigate(navigate(location.pathname));
     }
@@ -22,10 +22,10 @@ function SearchBox() {
       <Form.Control
         id="search-field"
         type="search"
-        name=""
+        name=" "
         placeholder="Search"
         onChange={(e) => setKeyword(e.target.value)}
-        // className="mr-ms-2 w-20 w-sm-auto"
+        className="mr-ms-2 w-20 w-sm-auto"
       />
 
       <Button id="search-button" type="submit">
