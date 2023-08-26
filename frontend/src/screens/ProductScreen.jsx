@@ -20,6 +20,7 @@ function HomeScreen() {
   let keyword = location.search;
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(listProducts(keyword));
   }, [dispatch, keyword]);
 

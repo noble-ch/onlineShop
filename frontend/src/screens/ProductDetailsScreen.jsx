@@ -7,7 +7,6 @@ import {
   Image,
   ListGroup,
   Button,
-  Card,
   Form,
   Container
 } from "react-bootstrap";
@@ -43,6 +42,7 @@ function ProductScreen() {
   } = productReviewCreate;
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (successProductReview) {
       setRating(0);
       setComment("");
@@ -69,7 +69,7 @@ function ProductScreen() {
   return (
     <div>
       <Container>
-        <Link to="/" className="btn btn-light my-3">
+        <Link to="/" className="btn  my-3 ">
           Go Back
         </Link>
         {loading ? (
@@ -77,19 +77,19 @@ function ProductScreen() {
         ) : error ? (
           <Message variant="danger">{error}</Message>
         ) : (
-          <div>
-            <Row>
-              <Col md={4}>
+          <>
+            <Row className="border rounded p-2">
+              <Col md={5} lg sm={12} xs={12} xl>
                 <Image src={product.image} alt={product.name} fluid />
               </Col>
 
-              <Col md={4}>
+              <Col md={7} lg sm xs xl className="border rounded ">
                 <ListGroup variant="flush">
-                  <ListGroup.Item>
+                  <ListGroup.Item style={{ background: "none" }}>
                     <h3>{product.name}</h3>
                   </ListGroup.Item>
 
-                  <ListGroup.Item>
+                  <ListGroup.Item style={{ background: "none" }}>
                     <Rating
                       value={product.rating}
                       text={`${product.numReviews} reviews`}
@@ -97,18 +97,20 @@ function ProductScreen() {
                     />
                   </ListGroup.Item>
 
-                  <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
+                  <ListGroup.Item style={{ background: "none" }}>
+                    Price: ${product.price}
+                  </ListGroup.Item>
 
-                  <ListGroup.Item>
+                  <ListGroup.Item style={{ background: "none" }}>
                     Description: {product.description}
                   </ListGroup.Item>
                 </ListGroup>
               </Col>
 
-              <Col md={4}>
-                <Card>
+              <Col md={5} lg sm xs={12} xl={12} className="border rounded">
+                <div>
                   <ListGroup variant="flush">
-                    <ListGroup.Item>
+                    <ListGroup.Item style={{ background: "none" }}>
                       <Row>
                         <Col>Price:</Col>
                         <Col>
@@ -116,7 +118,7 @@ function ProductScreen() {
                         </Col>
                       </Row>
                     </ListGroup.Item>
-                    <ListGroup.Item>
+                    <ListGroup.Item style={{ background: "none" }}>
                       <Row>
                         <Col>Status:</Col>
                         <Col>
@@ -128,10 +130,10 @@ function ProductScreen() {
                     </ListGroup.Item>
 
                     {product.countInStock > 0 && (
-                      <ListGroup.Item>
+                      <ListGroup.Item style={{ background: "none" }}>
                         <Row>
                           <Col>Qty</Col>
-                          <Col xs="auto" className="my-1">
+                          <Col xs="auto" className="my-0">
                             <Form.Control
                               as="select"
                               value={qty}
@@ -149,22 +151,20 @@ function ProductScreen() {
                       </ListGroup.Item>
                     )}
 
-                    <ListGroup.Item>
+                    <ListGroup.Item style={{ background: "none" }}>
                       <Button
                         onClick={addToCartHandler}
-                        className="btn-block"
+                        className="btn-block rounded"
                         disabled={product.countInStock == 0}
                         type="button">
                         Add to Cart
                       </Button>
                     </ListGroup.Item>
                   </ListGroup>
-                </Card>
+                </div>
               </Col>
-            </Row>
-            {/*product review section  */}
-            <Row>
-              <Col md={4}>
+              {/*product review section  */}
+              <Col md={7} lg={12} sm={12} xs={12} xl={12}>
                 <h4>Reviews</h4>
                 {product.reviews.length === 0 && (
                   <Message variant="info">No Reviews</Message>
@@ -220,6 +220,7 @@ function ProductScreen() {
                         </Form.Group>
 
                         <Button
+                          className="rounded"
                           disabled={loadingProductReview}
                           type="submit"
                           variant="primary">
@@ -235,7 +236,7 @@ function ProductScreen() {
                 </ListGroup>
               </Col>
             </Row>
-          </div>
+          </>
         )}
       </Container>
     </div>

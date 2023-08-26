@@ -7,7 +7,7 @@ import Message from "../components/Message";
 import FormContainer from "../components/FormContainer";
 import { login } from "../actions/userActions";
 import ProductCarousel from "../components/ProductCarousel";
-import AboutUs from "../components/AboutUs";
+
 
 function LoginScreen() {
   const navigate = useNavigate();
@@ -23,6 +23,7 @@ function LoginScreen() {
   const { error, loading, userInfo } = userLogin;
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (userInfo) {
       navigate(redirect);
     }
@@ -37,7 +38,7 @@ function LoginScreen() {
   return (
     <Container>
       <Row>
-        <Col>
+        <Col xs={12} sm={12} md={12} ls xl>
           <FormContainer>
             <h1>Sign In</h1>
             {error && <Message variant="danger">{error}</Message>}
@@ -45,23 +46,23 @@ function LoginScreen() {
             <Form onSubmit={submitHandler}>
               <Form.Group controlId="email">
                 <Form.Label>Email Address</Form.Label>
-                <Form.Control
+                <Form.Control className="rounded-4"
                   type="email"
                   placeholder="Enter Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}></Form.Control>
               </Form.Group>
 
-              <Form.Group controlId="password">
+              <Form.Group controlId="password" >
                 <Form.Label>Password</Form.Label>
-                <Form.Control
+                <Form.Control className="rounded-4"
                   type="password"
                   placeholder="Enter Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}></Form.Control>
               </Form.Group>
 
-              <Button type="submit" variant="primary">
+              <Button type="submit" variant="primary" className="rounded-5 my-2">
                 Sign In
               </Button>
             </Form>
@@ -79,11 +80,10 @@ function LoginScreen() {
             </Row>
           </FormContainer>
         </Col>
-        <Col>
+        <Col xs sm md lg xl>
           <ProductCarousel />
         </Col>
       </Row>
-      <AboutUs />
     </Container>
   );
 }

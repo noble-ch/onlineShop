@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Form, Button, Row, Col, Table } from "react-bootstrap";
+import { Form, Button, Row, Col, Table, Container } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
@@ -66,7 +66,7 @@ function ProfileScreen() {
     }
   };
   return (
-    <Row>
+    <Container>    <Row>
       <Col md={3}>
         <h2>User Profile</h2>
 
@@ -163,6 +163,8 @@ function ProfileScreen() {
         )}
       </Col>
     </Row>
+    </Container>
+
   );
 }
 

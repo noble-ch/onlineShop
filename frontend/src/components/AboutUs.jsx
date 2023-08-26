@@ -15,13 +15,12 @@ function HomeScreen() {
   }, [dispatch, keyword]);
 
   return (
-    <div >
-      <div style={{ height: "4rem" }}></div> {/*separater */}
-      <Row>
+    <div>
+      <Row bg='dark' className="blkgrdt ">
         <Row className="justify-content-center align-items-center ">
           <Col xs={12} md={12}>
             <div className="text-center">
-              <h1>About us</h1>
+              <h1 style={{color:'white'}}>About us</h1>
               <p>Order now and appreciate the quality of our service</p>
             </div>
           </Col>
@@ -29,7 +28,7 @@ function HomeScreen() {
         <Row className="justify-content-center align-items-center text-center">
           <Col className="d-flex flex-column align-items-center text-center">
             <div className="circle"></div>
-            <h4>Large Assortment</h4>
+            <h4 style={{color:'white', border:'red'}}>Large Assortment</h4>
             <p>
               We offer many different types of products with fewer variations in
               each category.
@@ -37,7 +36,7 @@ function HomeScreen() {
           </Col>
           <Col className="d-flex flex-column align-items-center text-center">
             <div className="circle"></div>
-            <h4>Large Assortment</h4>
+            <h4 style={{color:'white', }}>Large Assortment</h4>
             <p>
               we offer many deffernet types of products with fewer variations in
               each category.
@@ -45,7 +44,7 @@ function HomeScreen() {
           </Col>
           <Col className="d-flex flex-column align-items-center text-center ">
             <div className="circle"></div>
-            <h4>Large Assortment</h4>
+            <h4 style={{color:'white', border:'red'}}>24/7 Support</h4>
             <p>
               we offer many deffernet types of products with fewer variations in
               each category.

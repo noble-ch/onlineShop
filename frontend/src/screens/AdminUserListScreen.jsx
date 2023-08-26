@@ -12,6 +12,8 @@ function UserListScreen() {
   const dispatch = useDispatch();
 
   const userList = useSelector((state) => state.userList);
+ 
+
   const { loading, error, users } = userList;
 
   const userLogin = useSelector((state) => state.userLogin);
@@ -21,6 +23,7 @@ function UserListScreen() {
   const { success: successDelete } = userDelete;
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (userInfo && userInfo.isAdmin) {
       dispatch(listUsers());
     } else {

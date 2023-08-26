@@ -18,14 +18,14 @@ function SearchBox() {
   };
 
   return (
-    <Form onSubmit={submitHandler} className="d-flex  ">
-      <Form.Control
+    <Form onSubmit={submitHandler} className="d-flex  " >
+      <Form.Control 
         id="search-field"
         type="search"
         name=" "
-        placeholder="Search"
+        placeholder="Search Products . . . "
         onChange={(e) => setKeyword(e.target.value)}
-        className="mr-ms-2 w-20 w-sm-auto"
+        className="mr-2 w-100 w-sm-auto"
       />
 
       <Button id="search-button" type="submit">

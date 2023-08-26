@@ -2,8 +2,8 @@ import { Container, Row, Col } from "react-bootstrap";
 
 function Footer() {
   return (
-    <footer style={{background:'#ffefe1'}}>
-      <Container>
+    <footer  style={{ background: "darkGray" ,fontFamily:'CustomFont' }}>
+      <Container fluid>
         <Row>
           <Row>
             <Col lg={4}>

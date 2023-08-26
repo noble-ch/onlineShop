@@ -18,6 +18,7 @@ import AdminUserEditScreen from "./screens/AdminUserEditScreen";
 import AdminProductListScreen from "./screens/AdminProductListScreen";
 import AdminProductEditScreen from "./screens/AdminProductEditScreen";
 // import OrderListScreen from "./screens/OrderListScreen";
+import GoogleTranslateComponent from "./components/GoogleTranslateComponent";
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
       <Header />
 
       <main>
-        <Container fluid  >
+        <Container fluid className="p-0">
           <Routes>
             <Route path="/" element={<HomeScreen />} />
             <Route path="/products" element={<ProductScreen />} />
@@ -58,6 +59,7 @@ function App() {
           </Routes>
         </Container>
       </main>
+      <GoogleTranslateComponent />
       <Footer />
     </Router>
   );

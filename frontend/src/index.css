@@ -1,17 +1,28 @@
+@font-face {
+  font-family: "CustomFont";
+  src: url("/RockoUltraFLF.ttf") format("truetype");
+}
+
 .clasic {
   z-index: -1;
+  width: min-content;
   position: absolute;
-  background: linear-gradient(rgb(107, 107, 107), rgba(255, 255, 0, 0));
-  height: 650px;
-  top: 1300px;
+  background: linear-gradient(#ffffff00, #f3dfdf, #e2d7d700);
+  height: 700px;
 
   /* Ensure the image covers the full viewport height */
 }
+.header {
+  font-family: "CustomFont", sans-serif;
+}
 
 main {
+  font-family: "CustomFont", sans-serif;
+  position: relative;
   min-height: 80vh;
-
-  background: linear-gradient(rgb(231, 225, 217), rgba(255, 255, 0, 0));
+  /* margin: 0 auto; */
+  overflow: hidden;
+  background: linear-gradient(#ceceda, rgba(255, 255, 0, 0));
 }
 
 h1 {
@@ -68,13 +79,11 @@ h3 {
 /* ---------------------header-------------- */
 
 .brand {
-  font-family: Arial, sans-serif;
   font-weight: bolder;
-  font-size: 150%;
 }
 
 #search-button {
-  border-bottom: 3px solid#776d6d;
+  /* border-bottom: 2px solid#776d6d; */
   border-right: none;
   border-top: none;
   border-left: none;
@@ -82,36 +91,35 @@ h3 {
   width: 3.5rem;
   border-radius: 0% 2rem 2rem 0%;
   padding: 4px;
-  background: linear-gradient(to left, rgb(172, 141, 141), rgb(245, 245, 245));
+  background: linear-gradient(to left, rgb(0, 0, 0), rgb(245, 245, 245));
   box-shadow: none;
 }
 #search-button:hover {
-  border-bottom: 3px solid #776d6d;
+  border-bottom: 2px solid #776d6d;
   border-right: none;
   border-top: none;
   border-left: none;
-  background: linear-gradient(to left, rgb(216, 185, 185), rgb(245, 245, 245));
+  background: linear-gradient(to left, rgb(77, 88, 92), rgb(255, 255, 255));
 }
 #search-field {
-  border-bottom: 3px solid#776d6d;
+  /* border-bottom: 2px solid#776d6d; */
   border-right: none;
   border-top: none;
   border-left: none;
   height: 2.3rem;
-  width: 18rem;
   border-radius: 2rem 0 0 2rem;
   transition-duration: 1s;
 }
 
 #search-field:focus {
-  border-top: 3px solid#776d6d;
+  border-top: 2px solid#776d6d;
   border-right: none;
   border-bottom: none;
   border-left: none;
   box-shadow: none;
 }
 #search-field:focus + #search-button {
-  border-top: 3px solid #776d6d;
+  border-top: 2px solid #776d6d;
   border-right: none;
   border-bottom: none;
   border-left: none;
@@ -119,12 +127,15 @@ h3 {
 }
 
 .gradient_border {
-  background: linear-gradient(rgb(170, 144, 119), white);
+  background: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255));
 }
 #removeline {
   text-decoration: none;
 }
 
+.nobg {
+  background: none;
+}
 #card {
   transition: transform 0.3s ease;
 }
@@ -142,6 +153,14 @@ h3 {
   border-radius: 50%;
   background: linear-gradient(rgb(170, 144, 119), #d6d6d6);
 }
+.blkgrdt {
+  background: black;
+  color: white;
+}
+.blkgrdt2 {
+  background: linear-gradient(black 10%, #00000000);
+  color: white;
+}
 h4 {
   text-decoration: none;
   font-weight: bolder;
@@ -151,16 +170,21 @@ h4 {
   border: 2px solid red;
 }
 
-.arrows {
-  transform: rotate(-20deg);
-  transform-origin: center center; /* Rotate around the center */
-  top: 100px; /* Adjust the position from the top */
-  left: 78vw; /* Adjust the position from the left */
+.custom-container {
+  max-width: 80vw; /* Set your desired width */
+  margin: 0 auto; /* Center the container horizontally */
+  /* Add any additional styling you need */
 }
 
-.arrows1 {
-  transform: rotate(-40deg);
-  transform-origin: center center; /* Rotate around the center */
-  top: 450px; /* Adjust the position from the top */
-  left: 46vw; /* Adjust the position from the left */
+#productsbtn {
+  border-radius: 2rem;
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+
+.arrows {
+  left: 50vw;
+  top: -5%;
+  width: 40rem;
+  transform: rotate(-120deg);
 }

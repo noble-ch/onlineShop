@@ -90,9 +90,9 @@ function PlaceOrderScreen() {
                   {cart.cartItems.map((item, index) => (
                     <ListGroup.Item key={index}>
                       <Row>
-                        <Col md={1}>
+                        <Col md={3} xs={3} sm={3} >
                           <Image
-                            src={"/Iphone14.png"}
+                            src={item.image}
                             alt={item.name}
                             fluid
                             rounded
