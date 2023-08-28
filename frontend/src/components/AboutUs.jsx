@@ -27,7 +27,7 @@ function HomeScreen() {
         </Row>
         <Row className="justify-content-center align-items-center text-center">
           <Col className="d-flex flex-column align-items-center text-center">
-            <div className="circle"></div>
+            <div className="circle"> <i className="fas fa-chart-simple m-2" style={{fontSize:40}}></i></div>
             <h4 style={{color:'white', border:'red'}}>Large Assortment</h4>
             <p>
               We offer many different types of products with fewer variations in
@@ -35,15 +35,14 @@ function HomeScreen() {
             </p>
           </Col>
           <Col className="d-flex flex-column align-items-center text-center">
-            <div className="circle"></div>
-            <h4 style={{color:'white', }}>Large Assortment</h4>
+            <div className="circle"> <i className="fas fa-truck  mt-3 mx-3"  style={{fontSize:30}}></i></div>
+            <h4 style={{color:'white', }}>Fast & Secure Shipping</h4>
             <p>
-              we offer many deffernet types of products with fewer variations in
-              each category.
+            4-day or less delivery time, free shipping and an expedited delivery option.
             </p>
           </Col>
           <Col className="d-flex flex-column align-items-center text-center ">
-            <div className="circle"></div>
+            <div className="circle"><i className="fas fa-phone  m-3" style={{fontSize:35}}></i></div>
             <h4 style={{color:'white', border:'red'}}>24/7 Support</h4>
             <p>
               we offer many deffernet types of products with fewer variations in

@@ -79,11 +79,11 @@ function ProductScreen() {
         ) : (
           <>
             <Row className="border rounded p-2">
-              <Col md={5} lg sm={12} xs={12} xl>
-                <Image src={product.image} alt={product.name} fluid />
+              <Col md={5} lg={5} sm={12} xs={12} xl={4}>
+                <Image  src={product.image} alt={product.name} fluid />
               </Col>
 
-              <Col md={7} lg sm xs xl className="border rounded ">
+              <Col md={7} lg={7} sm xs xl={8} className="border rounded ">
                 <ListGroup variant="flush">
                   <ListGroup.Item style={{ background: "none" }}>
                     <h3>{product.name}</h3>
@@ -130,9 +130,9 @@ function ProductScreen() {
                     </ListGroup.Item>
 
                     {product.countInStock > 0 && (
-                      <ListGroup.Item style={{ background: "none" }}>
+                      <ListGroup.Item >
                         <Row>
-                          <Col>Qty</Col>
+                          <Col className="my-2">Quantity</Col>
                           <Col xs="auto" className="my-0">
                             <Form.Control
                               as="select"
@@ -151,13 +151,13 @@ function ProductScreen() {
                       </ListGroup.Item>
                     )}
 
-                    <ListGroup.Item style={{ background: "none" }}>
+                    <ListGroup.Item className="px-0" style={{ background: "none" }}>
                       <Button
                         onClick={addToCartHandler}
                         className="btn-block rounded"
                         disabled={product.countInStock == 0}
                         type="button">
-                        Add to Cart
+                        Add to Cart <i className="fas fa-Cart"></i>
                       </Button>
                     </ListGroup.Item>
                   </ListGroup>

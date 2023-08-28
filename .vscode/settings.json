@@ -1,9 +1,10 @@
 {
-  "[python]": {
-    "editor.defaultFormatter": "ms-python.autopep8"
-  },
-  "python.formatting.provider": "none",
-  "workbench.editor.titleScrollbarSizing": "default",
-  "code-runner.showRunIconInEditorTitleMenu": true,
-  "window.commandCenter": true
+	"[python]": {
+		"editor.defaultFormatter": "ms-python.autopep8"
+	},
+	"python.formatting.provider": "none",
+	"workbench.editor.titleScrollbarSizing": "default",
+	"code-runner.showRunIconInEditorTitleMenu": true,
+	"window.commandCenter": true,
+	"editor.find.cursorMoveOnType": false
 }

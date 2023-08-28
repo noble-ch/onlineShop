@@ -1,6 +1,66 @@
 @font-face {
   font-family: "CustomFont";
-  src: url("/RockoUltraFLF.ttf") format("truetype");
+  src: url("/RockoFLF.ttf") format("truetype");
+}
+@font-face {
+  font-family: "boldfont";
+  src: url("/RockoUltraFLF-Bold.ttf") format("truetype");
+}
+#home_moto {
+  font-family: boldfont;
+  color: #1e1e1e;
+  font-weight: 800;
+  font-size: 29px;
+}
+@media (min-width: 268px) and (max-width: 600px) {
+  strong {
+    font-size: 15px;
+  }
+  .rating {
+    font-size: 12px;/* border: 2px solid red; */
+    width: 6rem;
+  }
+ 
+  #home_moto {
+    font-size: 29px; /* Font size for md screens */
+  }
+}
+@media (min-width: 601px) and (max-width: 1000px) {
+  #home_moto {
+    font-size: 34px; /* Font size for md screens */
+  }
+}
+
+@media (min-width: 1300px) {
+  #home_moto {
+    font-size: 50px; /* Font size for lg and xl screens */
+  }
+}
+
+.google-translate {
+  position: relative;
+}
+
+.VIpgJd-ZVi9od-ORHb-OEVmcd {
+  display: none !important;
+
+  z-index: -10000001;
+}
+#goog-gt-tt {
+  display: none !important;
+}
+
+body {
+  position: relative;
+  top: 0px !important;
+  height: 80vh !important;
+  width: 100vw !important;
+}
+
+.translated-ltr {
+  z-index: -10000001;
+  display: flex;
+  position: absolute;
 }
 
 .clasic {
@@ -9,6 +69,7 @@
   position: absolute;
   background: linear-gradient(#ffffff00, #f3dfdf, #e2d7d700);
   height: 700px;
+  margin-top: 2.5rem;
 
   /* Ensure the image covers the full viewport height */
 }
@@ -20,7 +81,7 @@ main {
   font-family: "CustomFont", sans-serif;
   position: relative;
   min-height: 80vh;
-  /* margin: 0 auto; */
+  margin: 0 auto;
   overflow: hidden;
   background: linear-gradient(#ceceda, rgba(255, 255, 0, 0));
 }
@@ -140,18 +201,19 @@ h3 {
   transition: transform 0.3s ease;
 }
 #card:hover {
-  transform: scale(1.03);
+  transform: scale(1.05);
 }
 #product_name {
   text-decoration: none;
   font-weight: bolder;
+  text-align: center;
 }
 .circle {
   margin: 10px;
-  width: 3rem;
-  height: 3rem;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
-  background: linear-gradient(rgb(170, 144, 119), #d6d6d6);
+  background-color: #535355;
 }
 .blkgrdt {
   background: black;

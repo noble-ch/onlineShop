@@ -28,9 +28,10 @@ function HomeScreen() {
 
   return (
     <div>
-      <Container className="gradient-border p-2   ">
+      <Container className="   ">
+        
         <Container className="rounded rounded-5">
-          <Container className="rounded rounded-5 p-4  ">
+          <Container fluid={true} className="rounded rounded-5   ">
             <Container className="p-0 ">
               <img
                 src="/Ellipse 7.svg"
@@ -45,37 +46,31 @@ function HomeScreen() {
                 style={{ position: "absolute", zIndex: "-1" }}
               />
             </Container>
-            <div id="home_moto">
+            <Col id="home_moto" sm lg xs md xl>
               <Row>
-                <Col
-                  sm
-                  lg
-                  xs
-                  md
-                  className="display-2 font-weight-bold"
-                  style={{
-                    color: "#1E1E1E",
-
-                    fontWeight: 600
-                  }}>
+                <Col sm lg xs md xl >
                   Buy Any Thing From Any Where
-                  <div style={{ height: "1rem" }}></div>
+                  <div style={{ height: "6px" }}></div>
                   <Row>
                     <Col
                       md={4}
                       sm={3}
                       xs={4}
                       lg={3}
-                      className="mb-4 d-none d-sm-block"
+                      className="mb-4  d-none d-sm-block"
                       style={{
+                        fontFamily: "CustomFont",
                         color: "#3e3e3e",
-                        fontWeight: "extrabold",
                         borderRight: "3px solid black"
                       }}>
                       <h1>50+</h1>
                       <h4>items</h4>
                     </Col>
                     <Col
+                      style={{
+                        fontFamily: "CustomFont",
+                        color: "#3e3e3e"
+                      }}
                       md={2}
                       sm={2}
                       xs={3}
@@ -92,14 +87,14 @@ function HomeScreen() {
                   {<ProductCarousel />}
                 </Col>
               </Row>
-            </div>
+            </Col>
           </Container>
         </Container>
         <div style={{ height: "3.5rem" }}></div> {/*separater */}
       </Container>
       <Container
         fluid
-        className="blkgradient"
+        className="blkgradient "
         style={{ background: "#000", color: "white", paddingTop: "2rem" }}>
         <Container>
           <Row className=" px-4">
@@ -152,10 +147,12 @@ function HomeScreen() {
         }}></Container>
       {/*separater */}
       <Container fluid className="clasic"></Container>
-      <div style={{ height: "10rem" }}></div> 
+      <div style={{ height: "10rem" }}></div>
       <Container>
-        <div className="text-center " style={{color:'white', zIndex:'2',position:'relative'}}>
-          <h1 style={{color:'white',}}>Featured Products</h1>
+        <div
+          className="text-center "
+          style={{ color: "white", zIndex: "2", position: "relative" }}>
+          <h1 style={{ color: "white" }}>Featured Products</h1>
           <p>Find what you are looking for</p>
         </div>
 
@@ -164,16 +161,16 @@ function HomeScreen() {
         ) : error ? (
           <Message variant="danger">{error}</Message>
         ) : (
-          <div>
-            <Row className="mx-5 px-6 ">
-              {products.slice(4, 7).map((product) => (
-                <Col key={product._id} sm md lg xl>
+          <div >
+            <Row  >
+              {products.slice(4, 8).map((product) => (
+                <Col key={product._id} xs={6} sm md={6} lg xl>
                   <Product product={product} />
                 </Col>
               ))}
             </Row>
 
-            <Button variant="dark" className="rounded-5" onClick={handleClick}>
+            <Button  variant="dark" className="rounded-5" onClick={handleClick}>
               More products
               <i className=" px-1 fas fa-arrow-right"></i>
             </Button>

@@ -17,14 +17,14 @@ import AdminUserListScreen from "./screens/AdminUserListScreen";
 import AdminUserEditScreen from "./screens/AdminUserEditScreen";
 import AdminProductListScreen from "./screens/AdminProductListScreen";
 import AdminProductEditScreen from "./screens/AdminProductEditScreen";
-// import OrderListScreen from "./screens/OrderListScreen";
+import AdminOrderListScreen from "./screens/AdminOrderListScreen";
 import GoogleTranslateComponent from "./components/GoogleTranslateComponent";
 
 function App() {
   return (
     <Router>
       <Header />
-
+     
       <main>
         <Container fluid className="p-0">
           <Routes>
@@ -55,7 +55,7 @@ function App() {
               element={<AdminProductEditScreen />}
             />
 
-            {/* <Route path="/admin/orderlist" element={<OrderListScreen />} />  */}
+            <Route path="/admin/orderlist" element={<AdminOrderListScreen />} />
           </Routes>
         </Container>
       </main>

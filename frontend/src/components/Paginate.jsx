@@ -3,7 +3,6 @@ import { Pagination } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
 function Paginate({ pages, page, keyword = "", isAdmin = false }) {
-  
   if (keyword) {
     keyword = keyword.split("?keyword=")[1].split("&")[0];
   }

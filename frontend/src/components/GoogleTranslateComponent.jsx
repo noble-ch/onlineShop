@@ -1,19 +1,24 @@
-import  { useEffect } from "react";
+import { useEffect } from "react";
 
 function GoogleTranslateComponent() {
   useEffect(() => {
     const script = document.createElement("script");
-    script.src = "http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate";
+    script.src =
+      "http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate";
     script.async = true;
     document.body.appendChild(script);
 
     window.loadGoogleTranslate = () => {
-      new window.google.translate.TranslateElement({
-        pageLanguage: "en", // Default language is set to English
-        includedLanguages: "en,am,om", // Include Amharic (am) and Oromo (om)
-        layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
-        gaTrack: false,
-      }, "google_element");
+      new window.google.translate.TranslateElement(
+        {
+          pageLanguage: "en", // Default language is set to English
+          includedLanguages: "en,am,om", // Include Amharic (am) and Oromo (om)
+          layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+          gaTrack: true,
+          displayOnLoad: true // Set to true to display the top bar on load
+        },
+        "google_element"
+      );
     };
 
     return () => {
@@ -24,8 +29,7 @@ function GoogleTranslateComponent() {
 
   return (
     <div>
-    
-      <div id="google_element"></div>
+      <div id="google_element"  className="google-translate"></div>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
-import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
+import { Button, Row, Col, ListGroup, Image, Container} from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
@@ -56,12 +56,12 @@ function PlaceOrderScreen() {
   };
 
   return (
-    <div>
+    <Container>
       <CheckoutSteps step1 step2 step3 step4 />
-      <Row>
-        <Col md={8}>
-          <ListGroup variant="flush">
-            <ListGroup.Item>
+      <Row >
+        <Col  md={8}>
+          <ListGroup className="border rounded-4" variant="flush">
+            <ListGroup.Item  className="border rounded-top-4">
               <h2>Shipping</h2>
 
               <p>
@@ -73,7 +73,7 @@ function PlaceOrderScreen() {
               </p>
             </ListGroup.Item>
 
-            <ListGroup.Item>
+            <ListGroup.Item >
               <h2>Payment Method</h2>
               <p>
                 <strong>Method: </strong>
@@ -81,16 +81,16 @@ function PlaceOrderScreen() {
               </p>
             </ListGroup.Item>
 
-            <ListGroup.Item>
+            <ListGroup.Item className="border rounded-bottom-4">
               <h2>Order Items</h2>
               {cart.cartItems.length === 0 ? (
                 <Message variant="info">Your cart is empty</Message>
               ) : (
-                <ListGroup variant="flush">
+                <ListGroup  variant="flush">
                   {cart.cartItems.map((item, index) => (
                     <ListGroup.Item key={index}>
                       <Row>
-                        <Col md={3} xs={3} sm={3} >
+                        <Col md={3} xs={3} sm={3} xl={2} >
                           <Image
                             src={item.image}
                             alt={item.name}
@@ -119,10 +119,10 @@ function PlaceOrderScreen() {
           </ListGroup>
         </Col>
 
-        <Col md={4}>
-          <Card>
-            <ListGroup variant="flush">
-              <ListGroup.Item>
+        <Col  md={4} >
+          <ListGroup className="border rounded-top-4"  >
+            <ListGroup    variant="flush">
+              <ListGroup.Item  className="border rounded-top-4" >
                 <h2>Order Summary</h2>
               </ListGroup.Item>
 
@@ -158,20 +158,20 @@ function PlaceOrderScreen() {
                 {error && <Message variant="danger">{error}</Message>}
               </ListGroup.Item>
 
-              <ListGroup.Item>
+              <ListGroup.Item  className="borders rounded-bottom-4" >
                 <Button
                   type="button"
-                  className="btn-block"
+                  className="btn-block rounded-4"
                   disabled={cart.cartItems === 0}
                   onClick={placeOrder}>
                   Place Order
                 </Button>
               </ListGroup.Item>
-            </ListGroup>
-          </Card>
+            </ListGroup >
+          </ListGroup>
         </Col>
       </Row>
-    </div>
+    </Container>
   );
 }
 

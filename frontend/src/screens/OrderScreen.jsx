@@ -1,32 +1,36 @@
-/* eslint-disable no-unused-vars */
-import { /*useState,*/ useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-// import { PayPalButton } from 'react-paypal-button-v2'
+// import { PayPalButton } from "react-paypal-button-v2";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { getOrderDetails /* deliverOrder */ } from "../actions/orderActions";
-// import { ORDER_PAY_RESET, ORDER_DELIVER_RESET } from '../constants/orderConstants'
+import {
+  getOrderDetails,
+  payOrder,
+  deliverOrder
+} from "../actions/orderActions";
+import {
+  ORDER_PAY_RESET,
+  ORDER_DELIVER_RESET
+} from "../constants/orderConstants";
 
 function OrderScreen() {
-  const { id: orderId } = useParams();
   const navigate = useNavigate();
-  // const {orderId} =useParams();
-  // const orderId = match.params.id
+  const { id: orderId } = useParams();
 
   const dispatch = useDispatch();
 
-  // const [sdkReady, setSdkReady] = useState(false)
+  const [sdkReady, setSdkReady] = useState(false);
 
   const orderDetails = useSelector((state) => state.orderDetails);
   const { order, error, loading } = orderDetails;
 
-  // const orderPay = useSelector(state => state.orderPay)
-  // const { loading: loadingPay, success: successPay } = orderPay
+  const orderPay = useSelector((state) => state.orderPay);
+  const { loading: loadingPay, success: successPay } = orderPay;
 
-  // const orderDeliver = useSelector(state => state.orderDeliver)
-  // const { loading: loadingDeliver, success: successDeliver } = orderDeliver
+  const orderDeliver = useSelector((state) => state.orderDeliver);
+  const { loading: loadingDeliver, success: successDeliver } = orderDeliver;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -37,48 +41,56 @@ function OrderScreen() {
       .toFixed(2);
   }
 
-  // const addPayPalScript = () => {
-  //     const script = document.createElement('script')
-  //     script.type = 'text/javascript'
-  //     script.src = 'https://www.paypal.com/sdk/js?client-id=AeDXja18CkwFUkL-HQPySbzZsiTrN52cG13mf9Yz7KiV2vNnGfTDP0wDEN9sGlhZHrbb_USawcJzVDgn'
-  //     script.async = true
-  //     script.onload = () => {
-  //         setSdkReady(true)
-  //     }
-  //     document.body.appendChild(script)
-  // }
+  const addPayPalScript = () => {
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src =
+      "https://www.paypal.com/sdk/js?client-id=AeDXja18CkwFUkL-HQPySbzZsiTrN52cG13mf9Yz7KiV2vNnGfTDP0wDEN9sGlhZHrbb_USawcJzVDgn";
+    script.async = true;
+    script.onload = () => {
+      setSdkReady(true);
+    };
+    document.body.appendChild(script);
+  };
 
   useEffect(() => {
-    window.scrollTo(0, 0);
     if (!userInfo) {
       navigate("/login");
     }
 
     if (
-      !order /*|| successPay */ ||
-      order._id !== Number(orderId) /*|| successDeliver*/
+      !order ||
+      successPay ||
+      order._id !== Number(orderId) ||
+      successDeliver
     ) {
-      // dispatch({ type: ORDER_PAY_RESET })
-      // dispatch({ type: ORDER_DELIVER_RESET })
+      dispatch({ type: ORDER_PAY_RESET });
+      dispatch({ type: ORDER_DELIVER_RESET });
 
       dispatch(getOrderDetails(orderId));
+    } else if (!order.isPaid) {
+      if (!window.paypal) {
+        addPayPalScript();
+      } else {
+        setSdkReady(true);
+      }
     }
-    // else if (!order.isPaid) {
-    //     if (!window.paypal) {
-    //         addPayPalScript()
-    //     } else {
-    //         setSdkReady(true)
-    //     }
-    // }
-  }, [dispatch, order, orderId /*, successPay, successDeliver*/, navigate]);
+    
 
-  // const successPaymentHandler = (paymentResult) => {
-  //     dispatch(payOrder(orderId, paymentResult))
-  // }
+  }, [dispatch, order, orderId, successPay, successDeliver]);
 
-  // const deliverHandler = () => {
-  //     dispatch(deliverOrder(order))
-  // }
+  const successPaymentHandler = (paymentResult) => {
+    dispatch(payOrder(orderId, paymentResult));
+  };
+
+  const deliverHandler = () => {
+    dispatch(deliverOrder(order));
+  };
+
+  // Inside the OrderScreen component's return statement
+  console.log("Name:", userInfo.name);
+  console.log("Email:", userInfo.email);
+  console.log("Order ID:", orderId);
 
   return loading ? (
     <Loader />
@@ -201,34 +213,36 @@ function OrderScreen() {
                 </Row>
               </ListGroup.Item>
 
-              {/* 
-                                    {!order.isPaid && (
-                                        <ListGroup.Item>
-                                            {loadingPay && <Loader />}
+              {!order.isPaid && (
+                <ListGroup.Item>
+                  {loadingPay && <Loader />}
 
-                                            {!sdkReady ? (
-                                                <Loader />
-                                            ) : (
-                                                    <PayPalButton
-                                                        amount={order.totalPrice}
-                                                        onSuccess={successPaymentHandler}
-                                                    />
-                                                )}
-                                        </ListGroup.Item>
-                                    )} */}
+                  {!sdkReady ? (
+                    <Loader />
+                  ) : (
+                    <button
+                      // amount={order.totalPrice}
+                      
+                      // onSuccess={successPaymentHandler}
+                    >{order.totalPrice}</button>
+                  )}
+                </ListGroup.Item>
+              )}
             </ListGroup>
-            {/* {loadingDeliver && <Loader />}
-                                {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
-                                    <ListGroup.Item>
-                                        <Button
-                                            type='button'
-                                            className='btn btn-block'
-                                            onClick={deliverHandler}
-                                        >
-                                            Mark As Delivered
-                                        </Button>
-                                    </ListGroup.Item>
-                                )} */}
+            {loadingDeliver && <Loader />}
+            {userInfo &&
+              userInfo.isAdmin &&
+              order.isPaid &&
+              !order.isDelivered && (
+                <ListGroup.Item>
+                  <Button
+                    type="button"
+                    className="btn btn-block"
+                    onClick={deliverHandler}>
+                    Mark As Delivered
+                  </Button>
+                </ListGroup.Item>
+              )}
           </Card>
         </Col>
       </Row>
