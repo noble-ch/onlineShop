@@ -25,7 +25,7 @@ function SearchBox() {
         name=" "
         placeholder="Search Products . . . "
         onChange={(e) => setKeyword(e.target.value)}
-        className="mr-2 w-100 w-sm-auto"
+        className="mr-2 w-100 w-sm-auto "
       />
 
       <Button id="search-button" type="submit">

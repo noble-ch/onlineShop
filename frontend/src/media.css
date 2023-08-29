@@ -1,0 +1,43 @@
+@font-face {
+	font-family: "rocko";
+	src: url("/RockoFLF.ttf") format("truetype");
+}
+@font-face {
+	font-family: "rockobold";
+	src: url("/RockoFLF-Bold.ttf") format("truetype");
+}
+
+
+@media (min-width: 268px) and (max-width: 600px) {
+	strong {
+		font-size: 15px;
+	}
+    .carousel-caption h2 {
+		font-size: 12;
+	}
+
+	.rating {
+		font-size: 12px; /* border: 2px solid red; */
+		width: 6rem;
+	}
+
+	h1 {
+		font-size: 29px;
+		text-align: center; /* Font size for md screens */
+	}
+}
+
+@media (min-width: 601px) and (max-width: 1000px) {
+	h1 {
+		font-size: 34px; /* Font size for md screens */
+	}
+    .carousel-caption h2 {
+		font-size: 2.5vw;
+	}
+}
+
+@media (min-width: 1300px) {
+	h1 {
+		font-size: 40px; /* Font size for lg and xl screens */
+	}
+}

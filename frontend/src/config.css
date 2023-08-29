@@ -1,0 +1,55 @@
+/***************default color *******************/
+
+.bg-black {
+	background-color: #181818;
+	color: whitesmoke;
+}
+.bg-white {
+	background-color: whitesmoke;
+	color: #181818;
+}
+
+.txt-white {
+	color: whitesmoke;
+}
+
+/***************text font styles and size *******************/
+
+h1 {
+	font-family: "rockobold", "Franklin Gothic Medium", "Arial Narrow", Arial,
+		sans-serif;
+}
+
+h2 {
+	font-family: "rocko", "Franklin Gothic Medium", "Arial Narrow", Arial,
+		sans-serif;
+}
+
+h3 {
+	font-family: "rocko", "Franklin Gothic Medium", "Arial Narrow", Arial,
+		sans-serif;
+}
+h4 {
+	font-family: "rocko", "Franklin Gothic Medium", "Arial Narrow", Arial,
+		sans-serif;
+	font-size: 10px;
+}
+
+p {
+	font-size: 14px;
+}
+
+/***************hides google translate top bar *******************/
+
+.google-translate {
+	position: relative;
+}
+
+.VIpgJd-ZVi9od-ORHb-OEVmcd {
+	display: none !important;
+
+	z-index: -10000001;
+}
+#goog-gt-tt {
+	display: none !important;
+}

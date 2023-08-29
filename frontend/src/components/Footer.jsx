@@ -5,25 +5,25 @@ function Footer() {
     <footer  style={{ background: "darkGray" ,fontFamily:'CustomFont' }}>
       <Container fluid>
         <Row>
-          <Row>
+          <Row className="mt-3" sm xs>
             <Col lg={4}>
-              <h1>OTICSHOP</h1>
+              <h4 >OTICSHOP</h4>
               <p>We help you find your desired products.</p>
             </Col>
             <Col>
-              <h1>Information</h1>
+              <h4>Info</h4>
               <p>about</p>
               <p>Product</p>
               <p>blog</p>
             </Col>
             <Col>
-              <h1>Company</h1>
+              <h4>Company</h4>
               <p>Comunity</p>
               <p>Career</p>
               <p>Our story</p>
             </Col>
             <Col>
-              <h1>Contact</h1>
+              <h4>Contact</h4>
               <p>Getting Started</p>
               <p>Pricing</p>
               <p>Resources</p>

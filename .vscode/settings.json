@@ -6,5 +6,8 @@
 	"workbench.editor.titleScrollbarSizing": "default",
 	"code-runner.showRunIconInEditorTitleMenu": true,
 	"window.commandCenter": true,
-	"editor.find.cursorMoveOnType": false
+	"editor.find.cursorMoveOnType": false,
+	"terminal.integrated.tabs.focusMode": "singleClick",
+	"workbench.statusBar.visible": true,
+	"liveServer.settings.showOnStatusbar": true
 }
