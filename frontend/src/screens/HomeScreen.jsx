@@ -129,8 +129,14 @@ function HomeScreen() {
 						</Row>
 					</Container>
 				</Container>
+<<<<<<< HEAD
 			)}
 			<AboutUs />
+=======
+			</Container>
+			<div className=''bg-black><AboutUs /></div>
+			
+>>>>>>> 8721b641969006bcebef173033afd8b570a660c0
 			<Container
 				fluid
 				className="blkgrdt2"
