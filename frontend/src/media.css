@@ -7,12 +7,11 @@
 	src: url("/RockoFLF-Bold.ttf") format("truetype");
 }
 
-
 @media (min-width: 268px) and (max-width: 600px) {
 	strong {
 		font-size: 15px;
 	}
-    .carousel-caption h2 {
+	.carousel-caption h2 {
 		font-size: 12;
 	}
 
@@ -22,6 +21,8 @@
 	}
 
 	h1 {
+	
+		padding-top: 12px;
 		font-size: 29px;
 		text-align: center; /* Font size for md screens */
 	}
@@ -31,13 +32,23 @@
 	h1 {
 		font-size: 34px; /* Font size for md screens */
 	}
-    .carousel-caption h2 {
+	.carousel-caption h2 {
 		font-size: 2.5vw;
+	}
+	.homepage1 {
+		padding-top: 50px;
 	}
 }
 
 @media (min-width: 1300px) {
 	h1 {
 		font-size: 40px; /* Font size for lg and xl screens */
+	}
+	.homepage1 {
+		padding-top: 100px;
+	}
+	.moto {
+		
+		font-size: 50px;
 	}
 }

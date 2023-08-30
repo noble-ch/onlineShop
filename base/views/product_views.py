@@ -14,18 +14,14 @@ from rest_framework import status
 @api_view(['GET'])
 def getProducts(request):
     query = request.query_params.get('keyword')
-    if query is None:
+    if query == None:
         query = ''
 
     products = Product.objects.filter(
         name__icontains=query).order_by('-createdAt')
 
-    page = request.query_params.get('page')  # Get the 'page' parameter
-
-    if page is None:
-        page = 1  # Set the default page number
-
-    paginator = Paginator(products, 8)
+    page = request.query_params.get('page')
+    paginator = Paginator(products, 5)
 
     try:
         products = paginator.page(page)
@@ -34,9 +30,11 @@ def getProducts(request):
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
 
-    page = int(page)  # Convert to integer
-    print('Page:', page)
+    if page == None:
+        page = 1
 
+    page = int(page)
+    print('Page:', page)
     serializer = ProductSerializer(products, many=True)
     return Response({'products': serializer.data, 'page': page, 'pages': paginator.num_pages})
 
@@ -117,7 +115,7 @@ def uploadImage(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def createProductReview(request, pk):
-    user = request.use
+    user = request.user
     product = Product.objects.get(_id=pk)
     data = request.data
 

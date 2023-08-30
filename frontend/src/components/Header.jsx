@@ -11,8 +11,10 @@ import {
 import { LinkContainer } from "react-router-bootstrap";
 import SearchBox from "./SearchBox";
 import { logout } from "../actions/userActions";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+	const navigate = useNavigate();
 	const userLogin = useSelector((state) => state.userLogin);
 	const { userInfo } = userLogin;
 
@@ -20,6 +22,7 @@ function Header() {
 
 	const logoutHandler = () => {
 		dispatch(logout());
+		navigate("/");
 	};
 
 	return (
@@ -30,7 +33,7 @@ function Header() {
 				height: "4rem"
 			}}>
 			<Container fluid className=" p-0 ">
-				{["lg"].map((expand) => (
+				{["md"].map((expand) => (
 					<Navbar
 						fixed="top"
 						bg="primary"
@@ -38,8 +41,8 @@ function Header() {
 						collapseOnSelect
 						key={expand}
 						expand={expand}
-						className="brand py-0">
-						<Container fluid>
+						className="brand py-0 ">
+						<Container >
 							<LinkContainer to="/">
 								<Navbar.Brand className="py-3 ">OTICSHOP</Navbar.Brand>
 							</LinkContainer>
@@ -51,12 +54,12 @@ function Header() {
 
 							<Navbar.Offcanvas
 								style={{
-									width: "14rem",
-									fontsize: "large",
+									width: "50%",
+									fontsize: 40,
 									background: "#ceceda",
 									paddingTop: "4px",
-									color: "black",
-									fontWeight: 900
+									color: "black"
+									// fontWeight: 900
 								}}
 								id={`offcanvasNavbar-expand-${expand}`}
 								aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
@@ -64,8 +67,7 @@ function Header() {
 								<Offcanvas.Header closeButton></Offcanvas.Header>
 
 								<Nav>
-									<SearchBox />
-									<Nav className="ml-auto ">
+									<Nav className="ml-auto fs-6 ">
 										<LinkContainer to="/products">
 											<Nav.Link>
 												<i
@@ -95,9 +97,9 @@ function Header() {
 											</Nav.Link>
 										</LinkContainer>
 									</Nav>
-									<Nav className="m-auto"></Nav>
-
-									<Nav className="ml-auto">
+									<Nav className="m-auto px-lg-2 "></Nav>
+									<SearchBox />
+									<Nav className="ml-auto fs-6">
 										<LinkContainer to="/cart">
 											<Nav.Link>
 												<i

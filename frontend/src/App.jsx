@@ -1,7 +1,7 @@
 import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import HomeScreen from "./screens/HomeScreen";
 import ProductDetailsScreen from "./screens/ProductDetailsScreen";
 import ProductScreen from "./screens/ProductScreen";
@@ -18,51 +18,53 @@ import AdminUserEditScreen from "./screens/AdminUserEditScreen";
 import AdminProductListScreen from "./screens/AdminProductListScreen";
 import AdminProductEditScreen from "./screens/AdminProductEditScreen";
 import AdminOrderListScreen from "./screens/AdminOrderListScreen";
-import GoogleTranslateComponent from "./components/GoogleTranslateComponent";
+// import GoogleTranslateComponent from "./components/GoogleTranslateComponent";
+import ChapaPayment from "./components/ChapaPayment";
 
 function App() {
-  return (
-    <Router>
-      <Header />
-     
-      <main>
-        <Container fluid className="p-0">
-          <Routes>
-            <Route path="/" element={<HomeScreen />} />
-            <Route path="/products" element={<ProductScreen />} />
-            <Route path="/login" element={<LoginScreen />} />
-            <Route path="/register" element={<RegisterScreen />} />
-            <Route path="/profile" element={<ProfileScreen />} />
-            <Route path="/login/shipping" element={<ShippingScreen />} />
-            <Route path="/payment" element={<PaymentScreen />} />
-            <Route path="/placeorder" element={<PlaceOrderScreen />} />
-            <Route path="/order/:id" element={<OrderScreen />} />
-            <Route path="/product/:id" element={<ProductDetailsScreen />} />
-            <Route path="/cart/:id?" element={<CartScreen />} />
+	return (
+		<Router>
+			<Header />
 
-            <Route path="/admin/userlist" element={<AdminUserListScreen />} />
-            <Route
-              path="/admin/user/:id/edit"
-              element={<AdminUserEditScreen />}
-            />
+			<main>
+				<Container fluid className="p-0">
+					<Routes>
+						<Route path="/" element={<HomeScreen />} />
+						<Route path="/about" element={<ChapaPayment />} />
+						<Route path="/products" element={<ProductScreen />} />
+						<Route path="/login" element={<LoginScreen />} />
+						<Route path="/register" element={<RegisterScreen />} />
+						<Route path="/profile" element={<ProfileScreen />} />
+						<Route path="/login/shipping" element={<ShippingScreen />} />
+						<Route path="/payment" element={<PaymentScreen />} />
+						<Route path="/placeorder" element={<PlaceOrderScreen />} />
+						<Route path="/order/:id" element={<OrderScreen />} />
+						<Route path="/product/:id" element={<ProductDetailsScreen />} />
+						<Route path="/cart/:id?" element={<CartScreen />} />
 
-            <Route
-              path="/admin/productlist"
-              element={<AdminProductListScreen />}
-            />
-            <Route
-              path="/admin/product/:id/edit"
-              element={<AdminProductEditScreen />}
-            />
+						<Route path="/admin/userlist" element={<AdminUserListScreen />} />
+						<Route
+							path="/admin/user/:id/edit"
+							element={<AdminUserEditScreen />}
+						/>
 
-            <Route path="/admin/orderlist" element={<AdminOrderListScreen />} />
-          </Routes>
-        </Container>
-      </main>
-      <GoogleTranslateComponent />
-      <Footer />
-    </Router>
-  );
+						<Route
+							path="/admin/productlist"
+							element={<AdminProductListScreen />}
+						/>
+						<Route
+							path="/admin/product/:id/edit"
+							element={<AdminProductEditScreen />}
+						/>
+
+						<Route path="/admin/orderlist" element={<AdminOrderListScreen />} />
+					</Routes>
+				</Container>
+			</main>
+			{/* <GoogleTranslateComponent /> */}
+			{/* <Footer /> */}
+		</Router>
+	);
 }
 
 export default App;

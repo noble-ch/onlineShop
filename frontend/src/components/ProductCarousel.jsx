@@ -7,37 +7,37 @@ import Message from "./Message";
 import { listTopProducts } from "../actions/productActions";
 
 function ProductCarousel() {
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-  const productTopRated = useSelector((state) => state.productTopRated);
-  const { error, loading, products } = productTopRated;
+	const productTopRated = useSelector((state) => state.productTopRated);
+	const { error, loading, products } = productTopRated;
 
-  useEffect(() => {
-    dispatch(listTopProducts());
-  }, [dispatch]);
+	useEffect(() => {
+		dispatch(listTopProducts());
+	}, [dispatch]);
 
-  return loading ? (
-    <Loader />
-  ) : error ? (
-    <Message variant="danger">{error}</Message>
-  ) : (
-    <div>
-      <Carousel id="carousel" interval={1500} pause="hover">
-        {products.map((product) => (
-          <Carousel.Item key={product._id}>
-            <Link to={`/product/${product._id}`}>
-              <Image src={product.image} alt={product.name} fluid />
-              <Carousel.Caption className="carousel.caption">
-                <h4>
-                  {product.name} (${product.price})
-                </h4>
-              </Carousel.Caption>
-            </Link>
-          </Carousel.Item>
-        ))}
-      </Carousel>
-    </div>
-  );
+	return loading ? (
+		<Loader />
+	) : error ? (
+		<Message variant="danger">{error}</Message>
+	) : (
+		<div>
+			<Carousel id="carousel" interval={1500} pause="hover">
+				{products.map((product) => (
+					<Carousel.Item key={product._id}>
+						<Link to={`/product/${product._id}`}>
+							<Image src={product.image} alt={product.name} fluid />
+							<Carousel.Caption className="carousel.caption">
+								<h4>
+									{product.name} (${product.price})
+								</h4>
+							</Carousel.Caption>
+						</Link>
+					</Carousel.Item>
+				))}
+			</Carousel>
+		</div>
+	);
 }
 
 export default ProductCarousel;

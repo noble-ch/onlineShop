@@ -16,7 +16,7 @@ body {
 	z-index: -1;
 	width: min-content;
 	position: absolute;
-	background: linear-gradient(#ffffff00, #f3dfdf, #e2d7d700);
+	background: linear-gradient(#ffffff00, #d1d1da, #e2d7d700);
 	height: 700px;
 	margin-top: 2.5rem;
 }
@@ -150,12 +150,8 @@ main {
 }
 
 .blkgrdt2 {
-	background: linear-gradient(black 10%, #00000000);
+	background: linear-gradient(#020003 10%, #b598ec00);
 	color: white;
-}
-h4 {
-	text-decoration: none;
-	font-weight: bolder;
 }
 
 .borders {
@@ -163,9 +159,8 @@ h4 {
 }
 
 .custom-container {
-	max-width: 80vw; /* Set your desired width */
-	margin: 0 auto; /* Center the container horizontally */
-	/* Add any additional styling you need */
+	max-width: 80vw;
+	margin: 0 auto;
 }
 
 #productsbtn {
@@ -179,4 +174,7 @@ h4 {
 	top: -5%;
 	width: 40rem;
 	transform: rotate(-120deg);
+}
+
+.google-translate {
 }

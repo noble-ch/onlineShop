@@ -15,7 +15,7 @@ function GoogleTranslateComponent() {
           includedLanguages: "en,am,om", // Include Amharic (am) and Oromo (om)
           layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
           gaTrack: true,
-          displayOnLoad: true // Set to true to display the top bar on load
+          displayOnLoad: true 
         },
         "google_element"
       );
