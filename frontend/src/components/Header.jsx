@@ -42,11 +42,10 @@ function Header() {
 						key={expand}
 						expand={expand}
 						className="brand py-0 ">
-						<Container >
-							<LinkContainer to="/">
-								<Navbar.Brand className="py-3 ">OTICSHOP</Navbar.Brand>
-							</LinkContainer>
-
+						<LinkContainer to="/">
+							<Navbar.Brand className="py-3 mx-4">OTICSHOP</Navbar.Brand>
+						</LinkContainer>
+						<Container>
 							<Navbar.Toggle
 								className="rounded-5 "
 								aria-controls={`offcanvasNavbar-expand-${expand}`}

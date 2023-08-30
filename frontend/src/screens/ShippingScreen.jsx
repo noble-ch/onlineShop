@@ -23,6 +23,11 @@ function ShippingScreen() {
 		dispatch(saveShippingAddress({ address, city, postalCode, country }));
 		navigate("/payment");
 	};
+	// useEffect(() => {
+	// 	if (!userInfo) {
+	// 		navigate("/login");
+	// 	}
+	// }, []);
 
 	return (
 		<FormContainer>

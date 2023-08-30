@@ -9,7 +9,6 @@ import ProductCarousel from "../components/ProductCarousel";
 import { listProducts } from "../actions/productActions";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import SearchBox from "../components/SearchBox";
-import { useParallax } from "react-scroll-parallax";
 
 function HomeScreen() {
 	const location = useLocation();
@@ -89,42 +88,48 @@ function HomeScreen() {
 				</Container>
 				<div style={{ height: "3.5rem" }}></div> {/*separater */}
 			</Container>
-			<Container fluid className="bg-black">
-				<Container>
-					<Row className=" px-4 py-4">
-						<Col lg={3} md={12} sm={12} xs={12}>
-							<h3 className="text-light ">Latest Products</h3>
-							<p className="text-white-50">
-								Elevate ur Shopping Experience: Unveiling Best Sellers with
-								Ease.
-							</p>
-							<Button
-								variant="light"
-								className="rounded-4 my-1"
-								onClick={handleClick}>
-								Find more
-								<i className=" px-1 fas fa-arrow-right"></i>
-							</Button>
-						</Col>
-
-						{products.slice(0, 4).map((product) => (
-							<Col key={product._id} lg md sm xs>
-								<Link id="product_name" to={`/product/${product._id}`}>
-									<Image
-										className="my-2 p-2 rounded-3"
-										style={{ background: "lightGray" }}
-										src={product.image}
-										alt={product.name}
-										fluid
-									/>
-									{/* <p style={{ color: "whitesmoke" }}>{product.name}</p> */}
-									<p className="txt-white ">{product.price} (ETB)</p>
-								</Link>
+			{loading ? (
+				<Loader />
+			) : error ? (
+				<Message variant="danger">{error}</Message>
+			) : (
+				<Container fluid className="bg-black">
+					<Container>
+						<Row className=" px-4 py-4">
+							<Col lg={3} md={12} sm={12} xs={12}>
+								<h3 className="text-light ">Latest Products</h3>
+								<p className="text-white-50">
+									Elevate ur Shopping Experience: Unveiling Best Sellers with
+									Ease.
+								</p>
+								<Button
+									variant="light"
+									className="rounded-4 my-1"
+									onClick={handleClick}>
+									Find more
+									<i className=" px-1 fas fa-arrow-right"></i>
+								</Button>
 							</Col>
-						))}
-					</Row>
+
+							{products.slice(0, 4).map((product) => (
+								<Col key={product._id} lg md sm xs>
+									<Link id="product_name" to={`/product/${product._id}`}>
+										<Image
+											className="my-2 p-2 rounded-3"
+											style={{ background: "lightGray" }}
+											src={product.image}
+											alt={product.name}
+											fluid
+										/>
+										{/* <p style={{ color: "whitesmoke" }}>{product.name}</p> */}
+										<p className="txt-white ">{product.price} (ETB)</p>
+									</Link>
+								</Col>
+							))}
+						</Row>
+					</Container>
 				</Container>
-			</Container>
+			)}
 			<AboutUs />
 			<Container
 				fluid
@@ -158,7 +163,6 @@ function HomeScreen() {
 								</Col>
 							))}
 						</Row>
-
 						<Button variant="dark" className="rounded-4" onClick={handleClick}>
 							More products
 							<i className=" px-1 fas fa-arrow-right"></i>
