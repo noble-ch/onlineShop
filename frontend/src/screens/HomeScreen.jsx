@@ -28,7 +28,7 @@ function HomeScreen() {
 	}, [dispatch, keyword]);
 
 	return (
-		<Parallax style={{ background: "blue" }} className="test">
+		<div>
 			<Container>
 				<Container>
 					<Container fluid={true}>
@@ -125,7 +125,8 @@ function HomeScreen() {
 					</Row>
 				</Container>
 			</Container>
-			<AboutUs />
+			<div className=''bg-black><AboutUs /></div>
+			
 			<Container
 				fluid
 				className="blkgrdt2"
@@ -167,7 +168,7 @@ function HomeScreen() {
 				)}
 			</Container>
 			<div style={{ height: "10rem" }}></div> {/*separater */}
-		</Parallax>
+		</div>
 	);
 }
 
