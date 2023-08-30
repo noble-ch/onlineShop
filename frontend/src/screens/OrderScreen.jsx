@@ -45,6 +45,10 @@ function OrderScreen() {
 		order.itemsPrice = order.orderItems
 			.reduce((acc, item) => acc + item.price * item.qty, 0)
 			.toFixed(2);
+		console.log("amount", order.itemsPrice);
+		console.log("first_name", userInfo.name);
+		console.log("email", userInfo.email);
+		console.log("tex_ref", orderId);
 	}
 
 	const addPaymentScript = () => {

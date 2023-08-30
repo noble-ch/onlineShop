@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable no-unused-vars */
+import { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import FormContainer from "../components/FormContainer";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { saveShippingAddress } from "../actions/cartActions";
-import { useNavigate } from "react-router-dom";
 
 function ShippingScreen() {
 	const navigate = useNavigate();
+
 	const cart = useSelector((state) => state.cart);
 	const { shippingAddress } = cart;
 
@@ -23,11 +25,6 @@ function ShippingScreen() {
 		dispatch(saveShippingAddress({ address, city, postalCode, country }));
 		navigate("/payment");
 	};
-	// useEffect(() => {
-	// 	if (!userInfo) {
-	// 		navigate("/login");
-	// 	}
-	// }, []);
 
 	return (
 		<FormContainer>

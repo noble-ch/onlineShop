@@ -18,8 +18,8 @@ import AdminUserEditScreen from "./screens/AdminUserEditScreen";
 import AdminProductListScreen from "./screens/AdminProductListScreen";
 import AdminProductEditScreen from "./screens/AdminProductEditScreen";
 import AdminOrderListScreen from "./screens/AdminOrderListScreen";
-// import GoogleTranslateComponent from "./components/GoogleTranslateComponent";
 import ChapaPayment from "./components/ChapaPayment";
+
 
 function App() {
 	return (
@@ -61,7 +61,6 @@ function App() {
 					</Routes>
 				</Container>
 			</main>
-			{/* <GoogleTranslateComponent /> */}
 			<Footer />
 		</Router>
 	);

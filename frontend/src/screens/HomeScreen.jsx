@@ -9,6 +9,7 @@ import ProductCarousel from "../components/ProductCarousel";
 import { listProducts } from "../actions/productActions";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import SearchBox from "../components/SearchBox";
+import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 
 function HomeScreen() {
 	const location = useLocation();
@@ -28,6 +29,7 @@ function HomeScreen() {
 
 	return (
 		<div>
+			
 			<Container>
 				<Container>
 					<Container fluid={true}>
