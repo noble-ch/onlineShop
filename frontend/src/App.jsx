@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomeScreen from "./screens/HomeScreen";
+import ContactsScreen from "./screens/ContactsScreen";
 import ProductDetailsScreen from "./screens/ProductDetailsScreen";
 import ProductScreen from "./screens/ProductScreen";
 import CartScreen from "./screens/CartScreen";
@@ -20,7 +21,6 @@ import AdminProductEditScreen from "./screens/AdminProductEditScreen";
 import AdminOrderListScreen from "./screens/AdminOrderListScreen";
 import ChapaPayment from "./components/ChapaPayment";
 
-
 function App() {
 	return (
 		<Router>
@@ -30,6 +30,7 @@ function App() {
 				<Container fluid className="p-0">
 					<Routes>
 						<Route path="/" element={<HomeScreen />} />
+						<Route path="/contacts" element={<ContactsScreen />} />
 						<Route path="/about" element={<ChapaPayment />} />
 						<Route path="/products" element={<ProductScreen />} />
 						<Route path="/login" element={<LoginScreen />} />

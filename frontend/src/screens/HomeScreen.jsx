@@ -9,7 +9,6 @@ import ProductCarousel from "../components/ProductCarousel";
 import { listProducts } from "../actions/productActions";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import SearchBox from "../components/SearchBox";
-import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 
 function HomeScreen() {
 	const location = useLocation();
@@ -29,10 +28,9 @@ function HomeScreen() {
 
 	return (
 		<div>
-			
 			<Container>
 				<Container>
-					<Container fluid={true}>
+					<Container className="mt-xl-5 " fluid={true}>
 						<Container>
 							<img
 								src="/Ellipse 7.svg"
@@ -95,17 +93,17 @@ function HomeScreen() {
 			) : error ? (
 				<Message variant="danger">{error}</Message>
 			) : (
-				<Container fluid className="bg-black">
+				<Container className=" bg-gradient  rounded-4 pb-xl-5 ">
 					<Container>
-						<Row className=" px-4 py-4">
+						<Row className="  py-4">
 							<Col lg={3} md={12} sm={12} xs={12}>
-								<h3 className="text-light ">Latest Products</h3>
-								<p className="text-white-50">
+								<h3 className="text-dark ">Latest Products</h3>
+								<p className="text-black-50">
 									Elevate ur Shopping Experience: Unveiling Best Sellers with
 									Ease.
 								</p>
 								<Button
-									variant="light"
+									variant="primary"
 									className="rounded-4 my-1"
 									onClick={handleClick}>
 									Find more
@@ -114,17 +112,16 @@ function HomeScreen() {
 							</Col>
 
 							{products.slice(0, 4).map((product) => (
-								<Col key={product._id} lg md sm xs>
+								<Col id="card" className="  px-3 " key={product._id} lg md sm xs>
 									<Link id="product_name" to={`/product/${product._id}`}>
 										<Image
-											className="my-2 p-2 rounded-3"
-											style={{ background: "lightGray" }}
+											className="my-3 rounded-3 "
 											src={product.image}
 											alt={product.name}
 											fluid
 										/>
 										{/* <p style={{ color: "whitesmoke" }}>{product.name}</p> */}
-										<p className="txt-white ">{product.price} (ETB)</p>
+										<p className="text-dark ">{product.price} (ETB)</p>
 									</Link>
 								</Col>
 							))}
@@ -132,7 +129,10 @@ function HomeScreen() {
 					</Container>
 				</Container>
 			)}
-			<AboutUs />
+			<div style={{ background: "#20232f" }}>
+			<div style={{ height: "3.5rem" }}></div> {/*separater */}
+				<AboutUs />
+			</div>
 			<Container
 				fluid
 				className="blkgrdt2"

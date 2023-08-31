@@ -30,22 +30,23 @@ function Header() {
 			style={{
 				fontFamily: "rocko",
 				background: "#ceceda",
-				height: "4rem"
+				height: "3.8rem"
 			}}>
 			<Container fluid className=" p-0 ">
 				{["md"].map((expand) => (
 					<Navbar
+						fluid
 						fixed="top"
-						bg="primary"
 						variant="dark"
 						collapseOnSelect
 						key={expand}
 						expand={expand}
+						style={{ background: "#20232f" }}
 						className="brand py-0 ">
-						<LinkContainer to="/">
-							<Navbar.Brand className="py-3 mx-4">OTICSHOP</Navbar.Brand>
-						</LinkContainer>
-						<Container>
+						<Container fluid>
+							<LinkContainer to="/">
+								<Navbar.Brand className="py-3 ">OTICSHOP</Navbar.Brand>
+							</LinkContainer>
 							<Navbar.Toggle
 								className="rounded-5 "
 								aria-controls={`offcanvasNavbar-expand-${expand}`}

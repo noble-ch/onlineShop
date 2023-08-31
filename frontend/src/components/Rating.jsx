@@ -2,7 +2,7 @@
 function Rating({ value, text, color }) {
   return (
     <div>
-      <div className=" rounded d-flex flex-row align-items-center justify-content-center rating">
+      <div className=" rounded rating">
         <span>
           <i
             style={{ color }}
@@ -64,7 +64,7 @@ function Rating({ value, text, color }) {
         </span>
       </div>
       <div
-        className=" rounded d-flex flex-row align-items-center justify-content-center rating"
+        className=" rounded  rating"
         id="review_text">
         {text && text}
       </div>
