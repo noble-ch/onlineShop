@@ -30,8 +30,10 @@ main {
 	min-height: 80vh;
 	margin: 0 auto;
 	overflow: hidden;
-	background: linear-gradient(#ceceda, rgba(255, 255, 0, 0));
+	/* background: linear-gradient(#ceceda, rgba(255, 255, 0, 0)); */
+	background: linear-gradient(#0e0e1f, rgba(57, 24, 70, 0.226));
 }
+
 
 .rating span {
 	margin: 0.1rem;
@@ -176,5 +178,3 @@ main {
 	transform: rotate(-120deg);
 }
 
-.google-translate {
-}

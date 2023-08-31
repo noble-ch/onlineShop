@@ -36,11 +36,11 @@
 }
 
 .teal {
-	background: linear-gradient(to right, SlateBlue 0%, rgb(50, 71, 78) 100%);
+	background: linear-gradient(to right, rgba(205, 90, 90, 0.788) 0%, rgb(50, 71, 78) 100%);
 }
 
 .tomato {
-	background: linear-gradient(to right, rgb(114, 48, 38) 0%, rgba(138, 118, 7, 0.74) 100%);
+	background: linear-gradient(to right, rgba(114, 48, 38, 0.76) 0%, rgba(138, 118, 7, 0.74) 100%);
 }
 
 .container {

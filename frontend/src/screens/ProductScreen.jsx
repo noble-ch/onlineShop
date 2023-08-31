@@ -68,7 +68,19 @@ const Page = ({ offset, gradient, onClick }) => {
 								))}
 							</Row>
 						)}
-						<Paginate page={page} pages={pages} keyword={keyword} />
+						<div className="d-flex   justify-content-start ">
+							<Paginate
+								className="d-inline "
+								page={page}
+								pages={pages}
+								keyword={keyword}
+							/>
+							<i
+								style={{
+									fontSize: 40
+								}}
+								className="fas fa-arrow-down bg-gradient     "></i>
+						</div>
 					</Container>
 				)}
 

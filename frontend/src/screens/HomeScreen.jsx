@@ -19,7 +19,7 @@ function HomeScreen() {
 	let keyword = location.search;
 	const handleClick = () => {
 		navigate("/products");
-		// window.scrollTo(0, 0);
+		window.scrollTo(0, 0);
 	};
 
 	useEffect(() => {
@@ -48,7 +48,7 @@ function HomeScreen() {
 						<Col sm lg xs md xl>
 							<Row>
 								<Col className="mt-xl-3 mt-md-3 " sm lg xs md xl>
-									<h1>Buy Any Thing From Any Where</h1>
+									<h1 className="text-light">Buy Any Thing From Any Where</h1>
 									<div style={{ height: "6px" }}></div>
 									<Row>
 										<Col
@@ -56,13 +56,13 @@ function HomeScreen() {
 											sm={3}
 											xs={4}
 											lg={3}
-											className="mb-4  d-none d-sm-block"
-											style={{
+											className="mb-4  d-none d-sm-block text-light"
+											style={{ 
 												color: "#3e3e3e",
 												borderRight: "3px solid black"
 											}}>
-											<h2>50+</h2>
-											<h5>items</h5>
+											<h2 className="text-light">50+</h2>
+											<h5 className="text-light">items</h5>
 										</Col>
 										<Col
 											style={{
@@ -73,8 +73,8 @@ function HomeScreen() {
 											xs={3}
 											lg={2}
 											className="ps-4 d-none d-sm-block">
-											<h2>100+</h2>
-											<h5>Costumers</h5>
+											<h2  className="text-light">100+</h2>
+											<h5  className="text-light">Costumers</h5>
 										</Col>
 									</Row>
 									<SearchBox />
@@ -97,8 +97,8 @@ function HomeScreen() {
 					<Container>
 						<Row className="  py-4">
 							<Col lg={3} md={12} sm={12} xs={12}>
-								<h3 className="text-dark ">Latest Products</h3>
-								<p className="text-black-50">
+								<h3 className="text-light ">Latest Products</h3>
+								<p className="text-light">
 									Elevate ur Shopping Experience: Unveiling Best Sellers with
 									Ease.
 								</p>
@@ -121,7 +121,7 @@ function HomeScreen() {
 											fluid
 										/>
 										{/* <p style={{ color: "whitesmoke" }}>{product.name}</p> */}
-										<p className="text-dark ">{product.price} (ETB)</p>
+										<p className="text-light ">{product.price} (ETB)</p>
 									</Link>
 								</Col>
 							))}
