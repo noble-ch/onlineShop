@@ -41,7 +41,10 @@ INSTALLED_APPS = [
     'base.apps.BaseConfig',
     'rest_framework',
     'corsheaders',
+
 ]
+
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -177,3 +180,10 @@ CORS_ALLOW_ALL_ORIGINS = True
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+CHAPA_SECRET = "CHASECK_TEST-JggM5YwHhuYFkLLh6ga4tGHwzzOvfuT3"
+CHAPA_API_URL = 'https://api.chapa.dev'
+CHAPA_WEBHOOK_URL = 'http://127.0.0.1:8000/chapa-hook'
+CHAPA_API_VERSION = 'v1'
+CHAPA_TRANSACTION_MODEL = 'django_chapa.ChapaTransaction'

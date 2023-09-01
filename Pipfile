@@ -10,6 +10,7 @@ mysqlclient = "*"
 pillow = "*"
 django-cors-headers = "*"
 djangorestframework-simplejwt = "*"
+django-chapa = "*"
 
 [dev-packages]
 

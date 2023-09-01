@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useEffect } from "react";
 import {
 	Button,
 	Row,
@@ -12,11 +12,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import {
-	getOrderDetails,
-	payOrder,
-	deliverOrder
-} from "../actions/orderActions";
+import { getOrderDetails, deliverOrder } from "../actions/orderActions";
 import {
 	ORDER_PAY_RESET,
 	ORDER_DELIVER_RESET
@@ -26,8 +22,6 @@ function OrderScreen() {
 	const { id: orderId } = useParams();
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-
-	const [sdkReady, setSdkReady] = useState(false);
 
 	const orderDetails = useSelector((state) => state.orderDetails);
 	const { order, error, loading } = orderDetails;
@@ -51,13 +45,6 @@ function OrderScreen() {
 		console.log("tex_ref", orderId);
 	}
 
-	const addPaymentScript = () => {
-		script.onload = () => {
-			setSdkReady(true);
-		};
-		document.body.appendChild(script);
-	};
-
 	useEffect(() => {
 		if (!userInfo) {
 			navigate("/login");
@@ -73,21 +60,73 @@ function OrderScreen() {
 			dispatch({ type: ORDER_DELIVER_RESET });
 
 			dispatch(getOrderDetails(orderId));
-		} else if (!order.isPaid) {
-			if (!window) {
-				addPaymentScript();
-			} else {
-				setSdkReady(true);
-			}
 		}
 	}, [dispatch, order, orderId, successPay, successDeliver]);
 
-	const successPaymentHandler = (paymentResult) => {
-		dispatch(payOrder(orderId, paymentResult));
-	};
-
 	const deliverHandler = () => {
 		dispatch(deliverOrder(order));
+	};
+
+	const sendOrder = () => {
+		// Create a form element
+		const form = document.createElement("form");
+		form.method = "POST";
+		form.action = "https://api.chapa.co/v1/hosted/pay"; // Chapa API endpoint
+
+		// Create hidden input fields for the Chapa API parameters
+		const public_key = document.createElement("input");
+		public_key.type = "hidden";
+		public_key.name = "public_key";
+		public_key.value = "CHAPUBK_TEST-NDJfoLuHMpqJj4UM1wJUHPSXcksiZyp9"; // Replace with your Chapa public API key
+
+		const tx_ref = document.createElement("input");
+		tx_ref.type = "hidden";
+		tx_ref.name = "tx_ref";
+		tx_ref.value = orderId; // Use orderId as the transaction reference
+
+		const amount = document.createElement("input");
+		amount.type = "hidden";
+		amount.name = "amount";
+		amount.value = order.itemsPrice; // Use order.itemsPrice as the payment amount
+
+		const currency = document.createElement("input");
+		currency.type = "hidden";
+		currency.name = "currency";
+		currency.value = "ETB"; // Currency
+
+		const email = document.createElement("input");
+		email.type = "hidden";
+		email.name = "email";
+		email.value = userInfo.email; // User's email
+
+		const first_name = document.createElement("input");
+		first_name.type = "hidden";
+		first_name.name = "first_name";
+		first_name.value = userInfo.name; // User's name
+
+		const callback_url = document.createElement("input");
+		callback_url.type = "hidden";
+		callback_url.name = "callback_url";
+		callback_url.value = `http://127.0.0.1:8000/api/orders/${orderId}/pay/`;
+
+		const return_url = document.createElement("input");
+		return_url.type = "hidden";
+		return_url.name = "return_url";
+		return_url.value = `http://localhost:5188/order/${order._id}`;
+
+		// Append the hidden input fields to the form
+		form.appendChild(public_key);
+		form.appendChild(tx_ref);
+		form.appendChild(amount);
+		form.appendChild(currency);
+		form.appendChild(email);
+		form.appendChild(first_name);
+		form.appendChild(callback_url);
+		form.appendChild(return_url);
+
+		// Append the form to the document body and submit it
+		document.body.appendChild(form);
+		form.submit();
 	};
 
 	return loading ? (
@@ -215,17 +254,12 @@ function OrderScreen() {
 								<ListGroup.Item>
 									{loadingPay && <Loader />}
 
-									{!sdkReady ? (
-										<Loader />
-									) : (
-										<Button
-											variant="primary"
-											className="rounded-4"
-											// amount={order.totalPrice}
-											onSuccess={successPaymentHandler}>
-											Pay now
-										</Button>
-									)}
+									<Button
+										variant="primary"
+										className="rounded-4"
+										onClick={sendOrder}>
+										Pay now
+									</Button>
 								</ListGroup.Item>
 							)}
 						</ListGroup>

@@ -1,12 +1,16 @@
 import { Button } from "react-bootstrap";
 import { useState } from "react";
 
+
 function ChapaPayment() {
 	const handlePayNowClick = () => {
-		setTxRef("negad3-tx-" + Math.random().toString(36).substr(2, 9));
+		// setTxRef("negad3-tx-" + Math.random().toString(36).substr(2, 9));
+		setTxRef("negad3-tx-" +12345);
 	};
 	const [txRef, setTxRef] = useState(
-		"negad3-tx-" + Math.random().toString(36).substr(2, 9)
+		// "negad3-tx-" + Math.random().toString(36).substr(2, 9)
+		"negad3-tx" + 12335
+		
 	);
 
 	console.log(txRef);
@@ -38,7 +42,7 @@ function ChapaPayment() {
 				<input
 					type="hidden"
 					name="callback_url"
-					value="https://example.com/callbackurl"
+					value="http://127.0.0.1:8000/chapa-hook"
 				/>
 				<input
 					type="hidden"
@@ -47,7 +51,7 @@ function ChapaPayment() {
 				/>
 				<input type="hidden" name="meta[title]" value="test" />
 				<Button variant="primary" type="submit" onClick={handlePayNowClick}>
-					Pay Now
+					Chapa now
 				</Button>
 			</form>
 		</div>
@@ -55,3 +59,5 @@ function ChapaPayment() {
 }
 
 export default ChapaPayment;
+
+

@@ -6,7 +6,9 @@ urlpatterns = [
 
     path('', views.getOrders, name='orders'),
     path('add/', views.addOrderItems, name='orders-add'),
+    # path('back/', views.addOrderback, name='orders-back'),
     path('myorders/', views.getMyOrders, name='myorders'),
+    # path('api/chapa/', views.addOrderback, name='myorders'),
 
     path('<str:pk>/deliver/', views.updateOrderToDelivered, name='order-delivered'),
 
