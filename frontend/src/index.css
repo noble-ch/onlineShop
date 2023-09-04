@@ -16,7 +16,7 @@ body {
 	z-index: -1;
 	width: min-content;
 	position: absolute;
-	background: linear-gradient(#ffffff00, #d1d1da, #e2d7d700);
+	background: linear-gradient(#ffffff00, #68928f81, #e2d7d700);
 	height: 700px;
 	margin-top: 2.5rem;
 }
@@ -30,10 +30,8 @@ main {
 	min-height: 80vh;
 	margin: 0 auto;
 	overflow: hidden;
-	/* background: linear-gradient(#ceceda, rgba(255, 255, 0, 0)); */
-	background: linear-gradient(#0e0e1f, rgba(57, 24, 70, 0.226));
+	background: linear-gradient(#3f3f798f, #2b11473a, #14364696);
 }
-
 
 .rating span {
 	margin: 0.1rem;
@@ -75,30 +73,39 @@ main {
 }
 
 #search-button {
-	/* border-bottom: 2px solid#776d6d; */
+	border-bottom: 2px solid#ffffff;
 	border-right: none;
 	border-top: none;
 	border-left: none;
-	height: 2.3rem;
+	height: 2rem;
 	width: 3.5rem;
 	border-radius: 0% 2rem 2rem 0%;
 	padding: 4px;
-	background: linear-gradient(to left, rgb(0, 0, 0), rgb(245, 245, 245));
+	background: linear-gradient(to left, rgba(39, 39, 175, 0.24), rgba(245, 245, 245, 0));
+	/* background: transparent; */
 	box-shadow: none;
+	color: #ffffff;
 }
 #search-button:hover {
-	border-bottom: 2px solid #776d6d;
+	border-bottom: 2px solid#3c1b68;
 	border-right: none;
 	border-top: none;
 	border-left: none;
-	background: linear-gradient(to left, rgb(77, 88, 92), rgb(255, 255, 255));
+	background: linear-gradient(
+		to left,
+		rgb(19, 34, 116),
+		rgba(255, 255, 255, 0)
+	);
 }
 #search-field {
-	/* border-bottom: 2px solid#776d6d; */
+	color: #ceceda;
+
+	border-bottom: 2px solid#ffffff;
+background: transparent;
 	border-right: none;
 	border-top: none;
 	border-left: none;
-	height: 2.3rem;
+	height: 2rem;
 	border-radius: 2rem 0 0 2rem;
 	transition-duration: 1s;
 }
@@ -118,9 +125,9 @@ main {
 	box-shadow: none;
 }
 
-.gradient_border {
-	background: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255));
-}
+/* .gradient_border {
+	background: linear-gradient(rgba(39, 40, 134, 0.432), #56229977, rgba(255, 255, 255, 0));
+} */
 #removeline {
 	text-decoration: none;
 }
@@ -151,10 +158,10 @@ main {
 	color: white;
 }
 
-.blkgrdt2 {
-	background: linear-gradient(#20232f, #b598ec00);
+/* .blkgrdt2 {
+	background: linear-gradient(rgba(32, 35, 47, 0.4), #280b5e00);
 	color: white;
-}
+} */
 
 .borders {
 	border: 2px solid red;
@@ -177,4 +184,3 @@ main {
 	width: 40rem;
 	transform: rotate(-120deg);
 }
-

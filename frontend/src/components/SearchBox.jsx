@@ -18,18 +18,19 @@ function SearchBox() {
   };
 
   return (
-    <Form onSubmit={submitHandler} className="d-flex  " >
-      <Form.Control 
+    <Form onSubmit={submitHandler} className="d-flex">
+      <Form.Control
         id="search-field"
         type="search"
         name=" "
-        placeholder="Search Products . . . "
+        placeholder="Search Products..."
         onChange={(e) => setKeyword(e.target.value)}
-        className="mr-2 w-100 w-sm-auto "
+        className="mr-2 w-100 w-sm-auto py-1 px-3" // Adjust padding
+        style={{ fontSize: "14px" }} // Adjust font size
       />
 
       <Button id="search-button" type="submit">
-        <i className="fas fa-search" style={{ textAlign: "center" }}></i>
+        <i className="fas fa-search"></i>
       </Button>
     </Form>
   );

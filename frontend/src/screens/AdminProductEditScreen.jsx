@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
@@ -86,7 +86,7 @@ function ProductEditScreen() {
       };
 
       const { data } = await axios.post(
-        "http://127.0.0.1:8000/api/products/upload/",
+        "http://127.0.0.1:9000/api/products/upload/",
         formData,
         config
       );
@@ -100,6 +100,7 @@ function ProductEditScreen() {
 
   return (
     <div>
+      <Container>
       <Link to="/admin/productlist">Go Back</Link>
 
       <FormContainer>
@@ -192,6 +193,7 @@ function ProductEditScreen() {
           </Form>
         )}
       </FormContainer>
+      </Container>
     </div>
   );
 }

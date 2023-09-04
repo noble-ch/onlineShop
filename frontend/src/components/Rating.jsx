@@ -1,7 +1,7 @@
 // eslint-disable-next-line react/prop-types
 function Rating({ value, text, color }) {
   return (
-    <div>
+    <div className="text-center  ">
       <div className=" rounded rating">
         <span>
           <i
@@ -64,7 +64,7 @@ function Rating({ value, text, color }) {
         </span>
       </div>
       <div
-        className=" rounded  rating"
+        className=" text-light rounded  rating text-center "
         id="review_text">
         {text && text}
       </div>

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect ,useCallback} from "react";
 import {
 	Button,
 	Row,
@@ -45,102 +45,54 @@ function OrderScreen() {
 		console.log("email", userInfo.email);
 		console.log("tex_ref", orderId);
 	}
+    const sendOrder = useCallback(async () => {
+		try {
+			// Create a form element
+			
+			const checkPaymentResponse = await fetch(
+				`http://127.0.0.1:9000/api/orders/${orderId}/pay/`
+			);
+			const checkPaymentData = await checkPaymentResponse.json();
 
-	useEffect(() => {
-		if (!userInfo) {
-			navigate("/login");
+			// You can handle the response data as needed, for example:
+			if (checkPaymentData.isPaid) {
+				// The order is paid, you can perform actions here
+				console.log("Order is paid");
+			} else {
+				// The order is not paid, handle accordingly
+				console.log("Order is not paid");
+			}
+		} catch (error) {
+			// Handle any errors that may occur during the process
+			console.error("Error checking payment status:", error);
 		}
-
-		if (
-			!order ||
-			successPay ||
-			order._id !== Number(orderId) ||
-			successDeliver
-		) {
-			dispatch({ type: ORDER_PAY_RESET });
-			dispatch({ type: ORDER_DELIVER_RESET });
-
-			dispatch(getOrderDetails(orderId));
-		}
-	}, [
-		dispatch,
-		order,
-		orderId,
-		successPay,
-		successDeliver,
-		userInfo,
-		navigate
-	]);
+	});
+    useEffect(() => {
+        if (!userInfo) {
+            navigate("/login");
+        }
+    
+        if (
+            !order ||
+            successPay ||
+            order._id !== Number(orderId) ||
+            successDeliver
+        ) {
+            dispatch({ type: ORDER_PAY_RESET });
+            dispatch({ type: ORDER_DELIVER_RESET });
+    
+            dispatch(getOrderDetails(orderId));
+        }
+    
+        // Call the sendOrder function when the component mounts
+        sendOrder();
+    }, [dispatch, order, orderId, successPay, successDeliver, userInfo, navigate, sendOrder]);
 
 	const deliverHandler = () => {
 		dispatch(deliverOrder(order));
 	};
 
-	const sendOrder = async () => {
-		try {
-			// Create a form element
-			const form = document.createElement("form");
-			form.method = "POST";
-			form.action = "https://api.chapa.co/v1/hosted/pay"; // Chapa API endpoint
-
-			// Create hidden input fields for the Chapa API parameters
-			const publicKey = import.meta.env.VITE_REACT_APP_CHAPA_PUBLIC_KEY;
-			const public_key = document.createElement("input");
-			public_key.type = "hidden";
-			public_key.name = "public_key";
-			public_key.value = publicKey; // Replace with your Chapa public API key
-
-			const tx_ref = document.createElement("input");
-			tx_ref.type = "hidden";
-			tx_ref.name = "tx_ref";
-			tx_ref.value = orderId; // Use orderId as the transaction reference
-
-			const amount = document.createElement("input");
-			amount.type = "hidden";
-			amount.name = "amount";
-			amount.value = order.itemsPrice; // Use order.itemsPrice as the payment amount
-
-			const currency = document.createElement("input");
-			currency.type = "hidden";
-			currency.name = "currency";
-			currency.value = "ETB"; // Currency
-
-			const email = document.createElement("input");
-			email.type = "hidden";
-			email.name = "email";
-			email.value = userInfo.email; // User's email
-
-			const first_name = document.createElement("input");
-			first_name.type = "hidden";
-			first_name.name = "first_name";
-			first_name.value = userInfo.name; // User's name
-
-			const callback_url = document.createElement("input");
-			callback_url.type = "hidden";
-			callback_url.name = "callback_url";
-			callback_url.value = `http://127.0.0.1:9000/api/orders/${orderId}/pay/`;
-
-			const return_url = document.createElement("input");
-			return_url.type = "hidden";
-			return_url.name = "return_url";
-			return_url.value = `http://localhost:5555/order/${order._id}`;
-
-			// Append the hidden input fields to the form
-			form.appendChild(public_key);
-			form.appendChild(tx_ref);
-			form.appendChild(amount);
-			form.appendChild(currency);
-			form.appendChild(email);
-			form.appendChild(first_name);
-			form.appendChild(callback_url);
-			form.appendChild(return_url);
-
-			document.body.appendChild(form);
-			form.submit();
-		} catch (error) {
-			console.error("Error checking payment status:", error);
-		}
-	};
+   
 
 	return loading ? (
 		<Loader />
@@ -266,13 +218,6 @@ function OrderScreen() {
 							{!order.isPaid && (
 								<ListGroup.Item>
 									{loadingPay && <Loader />}
-
-									<Button
-										variant="primary"
-										className="rounded-4"
-										onClick={sendOrder}>
-										Pay now
-									</Button>
 								</ListGroup.Item>
 							)}
 						</ListGroup>

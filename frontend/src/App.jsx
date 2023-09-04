@@ -19,7 +19,8 @@ import AdminUserEditScreen from "./screens/AdminUserEditScreen";
 import AdminProductListScreen from "./screens/AdminProductListScreen";
 import AdminProductEditScreen from "./screens/AdminProductEditScreen";
 import AdminOrderListScreen from "./screens/AdminOrderListScreen";
-import ChapaPayment from "./components/ChapaPayment";
+import AboutScreen from "./screens/AboutScreen";
+import StatusPage from "./screens/StatusPage";
 
 function App() {
 	return (
@@ -31,7 +32,8 @@ function App() {
 					<Routes>
 						<Route path="/" element={<HomeScreen />} />
 						<Route path="/contacts" element={<ContactsScreen />} />
-						<Route path="/about" element={<ChapaPayment />} />
+						<Route path="/status/:id" element={<StatusPage />} />
+						<Route path="/about" element={<AboutScreen />} />
 						<Route path="/products" element={<ProductScreen />} />
 						<Route path="/login" element={<LoginScreen />} />
 						<Route path="/register" element={<RegisterScreen />} />

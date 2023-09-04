@@ -11,6 +11,7 @@ pillow = "*"
 django-cors-headers = "*"
 djangorestframework-simplejwt = "*"
 django-chapa = "*"
+django-sslserver = "*"
 
 [dev-packages]
 

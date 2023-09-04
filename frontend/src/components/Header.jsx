@@ -29,7 +29,7 @@ function Header() {
 		<header
 			style={{
 				fontFamily: "rocko",
-				background: "#ceceda",
+				background: "#3f3f798f",
 				height: "3.8rem"
 			}}>
 			<Container fluid className=" p-0 ">
@@ -41,9 +41,13 @@ function Header() {
 						collapseOnSelect
 						key={expand}
 						expand={expand}
-						style={{ background: "#20232f" }}
-						className="brand py-0 ">
-						<Container fluid>
+						style={{
+							background: "rgba(0, 0, 25, 0.6)",
+							backdropFilter: "blur(18px)",
+							marginBottom: "10px"
+						}}
+						className="brand py-0">
+						<Container >
 							<LinkContainer to="/">
 								<Navbar.Brand className="py-3 ">OTICSHOP</Navbar.Brand>
 							</LinkContainer>
@@ -54,12 +58,14 @@ function Header() {
 
 							<Navbar.Offcanvas
 								style={{
-									width: "50%",
+									width: "70%",
 									fontsize: 40,
-									background: "#ceceda",
+									background: "rgba(32, 35, 47, 0.7)",
+									// backdropFilter: "blur(10px)" ,
 									paddingTop: "4px",
-									color: "black"
-									// fontWeight: 900
+									paddingLeft: "4px",
+									color: "whiteSmoke",
+									fontWeight: 900
 								}}
 								id={`offcanvasNavbar-expand-${expand}`}
 								aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
@@ -67,22 +73,23 @@ function Header() {
 								<Offcanvas.Header closeButton></Offcanvas.Header>
 
 								<Nav>
+									<SearchBox />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<Nav className="ml-auto fs-6 ">
 										<LinkContainer to="/products">
 											<Nav.Link>
 												<i
-													style={{ fontSize: 12 }}
+													style={{ fontSize: 11 }}
 													className="fa-solid fa-message-arrow-up-right">
-													products
+													products&nbsp;&nbsp;&nbsp;
 												</i>
 											</Nav.Link>
 										</LinkContainer>
 										<LinkContainer to="/contacts">
 											<Nav.Link>
 												<i
-													style={{ fontSize: 12 }}
+													style={{ fontSize: 11 }}
 													className="fa-solid fa-message-arrow-up-right">
-													contacts
+													contacts&nbsp;&nbsp;&nbsp;
 												</i>
 											</Nav.Link>
 										</LinkContainer>
@@ -90,20 +97,20 @@ function Header() {
 											<Nav.Link>
 												{" "}
 												<i
-													style={{ fontSize: 12 }}
+													style={{ fontSize: 11 }}
 													className="fa-solid fa-message-arrow-up-right">
-													about
+													about&nbsp;&nbsp;
 												</i>
 											</Nav.Link>
 										</LinkContainer>
 									</Nav>
 									<Nav className="m-auto px-lg-2 "></Nav>
-									<SearchBox />
+
 									<Nav className="ml-auto fs-6">
 										<LinkContainer to="/cart">
 											<Nav.Link>
 												<i
-													style={{ fontSize: 12 }}
+													style={{ fontSize: 11 }}
 													className="fas fa-shopping-cart">
 													Cart
 												</i>
@@ -113,7 +120,7 @@ function Header() {
 											<NavDropdown
 												title={
 													<i
-														style={{ fontSize: 12 }}
+														style={{ fontSize: 11 }}
 														className="fa-solid fa-message-arrow-up-right">
 														{userInfo.name}
 													</i>
@@ -136,7 +143,13 @@ function Header() {
 										)}
 
 										{userInfo && userInfo.isAdmin && (
-											<NavDropdown title="Admin" id="adminmenue">
+											<NavDropdown title={
+												<i
+													style={{ fontSize: 11 }}
+													className="fa-solid fa-message-arrow-up-right">
+													Admin
+												</i>
+											} id="adminmenue"  >
 												<LinkContainer to="/admin/userlist">
 													<NavDropdown.Item>Users</NavDropdown.Item>
 												</LinkContainer>

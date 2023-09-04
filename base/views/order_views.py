@@ -1,5 +1,6 @@
 import requests
 import json
+import http.client
 from django.shortcuts import redirect, render
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
@@ -11,6 +12,8 @@ from base.serializers import OrderSerializer
 
 from rest_framework import status
 from datetime import datetime
+import os
+
 
 
 @api_view(['POST'])
@@ -107,16 +110,16 @@ def updateOrderToPaid(request, pk):
 
     try:
         order = Order.objects.get(_id=pk)
-
-        order.isPaid = True
-        order.paidAt = datetime.now()
-        order.save()
-
-        # Send a GET request to Chapa API for payment verification
         chapa_response = sendChapaVerificationRequest(
-            order._id)  # Replace with your actual order ID
-
+            order._id)
+        amount = str(chapa_response.get('data', {}).get('amount', 0))
+        price = str(order.totalPrice)
         if 'success' in chapa_response.get('status', ''):
+            if amount == price:
+                order.isPaid = True
+                order.paidAt = datetime.now()
+                order.save()
+                print('hello')
             return Response({'message': 'Order was paid and verified'})
         else:
             return Response({'message': 'Order was paid, but verification failed'})
@@ -129,13 +132,13 @@ def updateOrderToPaid(request, pk):
 
 def sendChapaVerificationRequest(order_id):
     try:
-        # Construct the URL with the order_id
+        CHAPA_API_KEY = os.environ.get('CHAPA_API_KEY')
         conn = http.client.HTTPSConnection("api.chapa.co")
         url = f"/v1/transaction/verify/{order_id}"
         payload = ''
         headers = {
-            'Authorization': 'Bearer CHASECK_TEST-JggM5YwHhuYFkLLh6ga4tGHwzzOvfuT3'
-        }
+        'Authorization': f'Bearer {CHAPA_API_KEY}'
+    }
         conn.request("GET", url, payload, headers)
         res = conn.getresponse()
         data = res.read().decode("utf-8")

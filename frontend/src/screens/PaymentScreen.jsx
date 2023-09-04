@@ -7,58 +7,58 @@ import { savePaymentMethod } from "../actions/cartActions";
 import { useNavigate } from "react-router-dom";
 
 function PaymentScreen() {
-  const navigate = useNavigate();
+	const navigate = useNavigate();
 
-  const cart = useSelector((state) => state.cart);
-  const { shippingAddress } = cart;
+	const cart = useSelector((state) => state.cart);
+	const { shippingAddress } = cart;
 
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-  const [paymentMethod, setPaymentMethod] = useState("Chapa");
+	const [paymentMethod, setPaymentMethod] = useState("Chapa");
 
-  if (!shippingAddress.address) {
-    navigate("/login?redirect=/shipping");
-  }
+	if (!shippingAddress.address) {
+		navigate("/login?redirect=/shipping");
+	}
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    dispatch(savePaymentMethod(paymentMethod));
-    navigate("/login?redirect=/placeorder");
-  };
+	const submitHandler = (e) => {
+		e.preventDefault();
+		dispatch(savePaymentMethod(paymentMethod));
+		navigate("/login?redirect=/placeorder");
+	};
 
-  return (
-    <FormContainer>
-      <CheckoutSteps step1 step2 step3 />
+	return (
+		<FormContainer>
+			<CheckoutSteps step1 step2 step3 />
 
-      <Form onSubmit={submitHandler}>
-        <Form.Group className="mb-3">
-          <Form.Label as="legend">Select Method</Form.Label>
-          <Col>
-            <div className="d-flex align-items-center">
-              <Form.Check
-                type="radio"
-                label=""
-                id="Chapa"
-                name="paymentMethod"
-                checked
-                onChange={(e) => setPaymentMethod(e.target.value)}></Form.Check>
-              {/* <img
-                src="/TeleBirr.svg"
-                alt="TeleBirr"
-                className="ml-2"
-                style={{ width: "100px", height: "48px" }}
-              /> */}
-              Chapa
-            </div>
-          </Col>
-        </Form.Group>
+			<Form onSubmit={submitHandler}>
+				<Form.Group className="mb-3">
+					<Form.Label as="legend">Select Method</Form.Label>
+					<Col>
+						<div className="d-flex align-items-center">
+							<Form.Check
+								type="radio"
+								label=""
+								id="Chapa"
+								name="paymentMethod"
+								checked
+								onChange={(e) => setPaymentMethod(e.target.value)}></Form.Check>
+							<img
+								src="/chapaLogo.png"
+								alt="chapa"
+								className="ml-2 bg-gradient rounded"
+								style={{ width: "100px", height: "30px" }}
+							/>
+				
+						</div>
+					</Col>
+				</Form.Group>
 
-        <Button type="submit" variant="primary">
-          Continue
-        </Button>
-      </Form>
-    </FormContainer>
-  );
+				<Button type="submit" variant="primary" className="rounded-3">
+					Continue
+				</Button>
+			</Form>
+		</FormContainer>
+	);
 }
 
 export default PaymentScreen;
