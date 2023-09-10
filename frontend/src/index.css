@@ -81,7 +81,11 @@ main {
 	width: 3.5rem;
 	border-radius: 0% 2rem 2rem 0%;
 	padding: 4px;
-	background: linear-gradient(to left, rgba(39, 39, 175, 0.24), rgba(245, 245, 245, 0));
+	background: linear-gradient(
+		to left,
+		rgba(39, 39, 175, 0.24),
+		rgba(245, 245, 245, 0)
+	);
 	/* background: transparent; */
 	box-shadow: none;
 	color: #ffffff;
@@ -101,7 +105,7 @@ main {
 	color: #ceceda;
 
 	border-bottom: 2px solid#ffffff;
-background: transparent;
+	background: transparent;
 	border-right: none;
 	border-top: none;
 	border-left: none;
@@ -183,4 +187,19 @@ background: transparent;
 	top: -5%;
 	width: 40rem;
 	transform: rotate(-120deg);
+}
+
+
+.cart span:nth-child(2){
+	padding: 0 2px;
+	font-size: 0.7rem;
+	background-color: red;
+	color: white;
+	font-weight: bolx;
+	border-radius: 5px;
+	position: absolute;
+	margin-top: -8px;
+
+
+
 }

@@ -6,17 +6,22 @@ import {
 	Container,
 	Row,
 	NavDropdown,
-	Offcanvas
+	Offcanvas,
+
 } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import SearchBox from "./SearchBox";
 import { logout } from "../actions/userActions";
 import { useNavigate } from "react-router-dom";
+import { addToCart, removeFromCart } from "../actions/cartActions";
 
 function Header() {
 	const navigate = useNavigate();
 	const userLogin = useSelector((state) => state.userLogin);
 	const { userInfo } = userLogin;
+	const cart = useSelector((state) => state.cart);
+	const { cartItems } = cart;
+	console.log();
 
 	const dispatch = useDispatch();
 
@@ -32,36 +37,35 @@ function Header() {
 				background: "#3f3f798f",
 				height: "3.8rem"
 			}}>
-			<Container fluid className=" p-0 ">
+			<Container className=" p-0  ">
 				{["md"].map((expand) => (
 					<Navbar
-						fluid
 						fixed="top"
 						variant="dark"
 						collapseOnSelect
 						key={expand}
 						expand={expand}
 						style={{
-							background: "rgba(0, 0, 25, 0.6)",
+							background: "rgba(0, 0, 25, 0)",
 							backdropFilter: "blur(18px)",
 							marginBottom: "10px"
 						}}
-						className="brand py-0">
-						<Container >
+						className=" py-0  ">
+						<Container>
 							<LinkContainer to="/">
-								<Navbar.Brand className="py-3 ">OTICSHOP</Navbar.Brand>
+								<Navbar.Brand className="py-3 ">e-shop</Navbar.Brand>
 							</LinkContainer>
 							<Navbar.Toggle
-								className="rounded-5 "
+								className="rounded-3 py-3  align-self-end   "
 								aria-controls={`offcanvasNavbar-expand-${expand}`}
 							/>
 
 							<Navbar.Offcanvas
 								style={{
-									width: "70%",
+									width: "60%",
 									fontsize: 40,
-									background: "rgba(32, 35, 47, 0.7)",
-									// backdropFilter: "blur(10px)" ,
+									background: "rgba(0, 0, 25, 0.2)",
+									backdropFilter: "blur(6px)",
 									paddingTop: "4px",
 									paddingLeft: "4px",
 									color: "whiteSmoke",
@@ -70,10 +74,15 @@ function Header() {
 								id={`offcanvasNavbar-expand-${expand}`}
 								aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
 								placement="end">
-								<Offcanvas.Header closeButton></Offcanvas.Header>
+								<Offcanvas.Header
+									closeButton
+									className="bg-gradient rounded my-0 py-3">
+									menu
+								</Offcanvas.Header>
 
 								<Nav>
-									<SearchBox />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<SearchBox />
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<Nav className="ml-auto fs-6 ">
 										<LinkContainer to="/products">
 											<Nav.Link>
@@ -105,15 +114,13 @@ function Header() {
 										</LinkContainer>
 									</Nav>
 									<Nav className="m-auto px-lg-2 "></Nav>
-
 									<Nav className="ml-auto fs-6">
 										<LinkContainer to="/cart">
-											<Nav.Link>
-												<i
+											<Nav.Link className="cart">
+												<span
 													style={{ fontSize: 11 }}
-													className="fas fa-shopping-cart">
-													Cart
-												</i>
+													className="fas fa-shopping-cart"></span>
+												<span>{cartItems.reduce((acc, item) => acc + item.qty * 1, 0)}</span>
 											</Nav.Link>
 										</LinkContainer>
 										{userInfo ? (
@@ -143,13 +150,15 @@ function Header() {
 										)}
 
 										{userInfo && userInfo.isAdmin && (
-											<NavDropdown title={
-												<i
-													style={{ fontSize: 11 }}
-													className="fa-solid fa-message-arrow-up-right">
-													Admin
-												</i>
-											} id="adminmenue"  >
+											<NavDropdown
+												title={
+													<i
+														style={{ fontSize: 11 }}
+														className="fa-solid fa-message-arrow-up-right">
+														Admin
+													</i>
+												}
+												id="adminmenue">
 												<LinkContainer to="/admin/userlist">
 													<NavDropdown.Item>Users</NavDropdown.Item>
 												</LinkContainer>

@@ -28,6 +28,17 @@ import {
     ORDER_DELIVER_FAIL,
     ORDER_DELIVER_RESET,
 
+    ORDER_RECIEVE_REQUEST,
+    ORDER_RECIEVE_SUCCESS,
+    ORDER_RECIEVE_FAIL,
+    ORDER_RECIEVE_RESET,
+
+    ORDER_INITIALIZE_PAYMENT_REQUEST,
+    ORDER_INITIALIZE_PAYMENT_SUCCESS,
+    ORDER_INITIALIZE_PAYMENT_FAIL,
+
+    
+
 
 } from '../constants/orderConstants'
 
@@ -145,6 +156,34 @@ export const orderDeliverReducer = (state = {}, action) => {
 }
 
 
+export const orderRecieveReducer = (state = {}, action) => {
+    switch (action.type) {
+        case ORDER_RECIEVE_REQUEST:
+            return {
+                loading: true
+            }
+
+        case ORDER_RECIEVE_SUCCESS:
+            return {
+                loading: false,
+                success: true
+            }
+
+        case ORDER_RECIEVE_FAIL:
+            return {
+                loading: false,
+                error: action.payload
+            }
+
+        case ORDER_RECIEVE_RESET:
+            return {}
+
+        default:
+            return state
+    }
+}
+
+
 export const orderListMyReducer = (state = { orders: [] }, action) => {
     switch (action.type) {
         case ORDER_LIST_MY_REQUEST:
@@ -199,3 +238,29 @@ export const orderListReducer = (state = { orders: [] }, action) => {
     }
 }
 
+
+
+export const orderInitializePayment = (state = {}, action) => {
+    switch (action.type) {
+        case ORDER_INITIALIZE_PAYMENT_REQUEST:
+            return {
+                loading: true
+            }
+
+        case ORDER_INITIALIZE_PAYMENT_SUCCESS:
+            return {
+                loading: false,
+                success: true,
+                order: action.payload
+            }
+
+        case ORDER_INITIALIZE_PAYMENT_FAIL:
+            return {
+                loading: false,
+                error: action.payload
+            }
+
+        default:
+            return state
+    }
+}

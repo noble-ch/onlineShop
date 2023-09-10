@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form} from "react-bootstrap";
 import { useNavigate, useLocation } from "react-router-dom";
 
 function SearchBox() {
@@ -25,8 +25,8 @@ function SearchBox() {
         name=" "
         placeholder="Search Products..."
         onChange={(e) => setKeyword(e.target.value)}
-        className="mr-2 w-100 w-sm-auto py-1 px-3" // Adjust padding
-        style={{ fontSize: "14px" }} // Adjust font size
+        className="mr-2 w-100 w-sm-auto py-1 px-3 custom-placeholder" 
+        style={{ fontSize: "14px" }} 
       />
 
       <Button id="search-button" type="submit">

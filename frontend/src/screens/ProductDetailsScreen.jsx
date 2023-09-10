@@ -54,6 +54,7 @@ function ProductScreen() {
 
   const addToCartHandler = () => {
     navigate(`/cart/${id}?qty=${qty}`);
+    console.log('added')
   };
 
   const submitHandler = (e) => {
@@ -167,7 +168,7 @@ function ProductScreen() {
               <Col md={7} lg={12} sm={12} xs={12} xl={12}>
                 <h4>Reviews</h4>
                 {product.reviews.length === 0 && (
-                  <Message variant="info">No Reviews</Message>
+                  <Message variant="info">No Reviews Yet</Message>
                 )}
 
                 <ListGroup variant="flush">

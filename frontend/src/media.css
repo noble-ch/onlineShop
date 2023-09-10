@@ -21,14 +21,13 @@
 	}
 
 	h1 {
-	
 		padding-top: 12px;
 		font-size: 29px;
 		text-align: center; /* Font size for md screens */
 	}
 }
 
-@media (min-width: 601px) and (max-width: 1000px) {
+@media (min-width: 601px) and (max-width: 9000px) {
 	h1 {
 		font-size: 34px; /* Font size for md screens */
 	}
@@ -40,15 +39,11 @@
 	}
 }
 
-@media (min-width: 1300px) {
-	h1 {
-		font-size: 40px; /* Font size for lg and xl screens */
+@media (min-width: 900px) {
+	.moto{
+		font-size: 50px;
 	}
 	.homepage1 {
 		padding-top: 100px;
-	}
-	.moto {
-		
-		font-size: 50px;
 	}
 }

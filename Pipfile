@@ -12,6 +12,7 @@ django-cors-headers = "*"
 djangorestframework-simplejwt = "*"
 django-chapa = "*"
 django-sslserver = "*"
+phonenumberslite = "*"
 
 [dev-packages]
 

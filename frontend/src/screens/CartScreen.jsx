@@ -20,7 +20,7 @@ function CartScreen() {
 	const location = useLocation();
 	const { id } = useParams();
 	const qty = location.search ? Number(location.search.split("=")[1]) : 1;
-	console.log("qty:", qty);
+	
 	const dispatch = useDispatch();
 
 	const cart = useSelector((state) => state.cart);
@@ -40,6 +40,7 @@ function CartScreen() {
 	const checkoutHandler = () => {
 		navigate("/login?redirect=shipping");
 	};
+	
 
 	return (
 		<Container>

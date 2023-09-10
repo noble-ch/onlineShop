@@ -34,11 +34,13 @@ function HomeScreen() {
 			<Parallax strength={-300} bgImage={Woman}>
 				<Container>
 					<Container>
-						<Container className="mt-xl-5 " fluid={true}>
+						<Container className="mt-xl-5 " fluid='true'>
 							<Col sm lg xs md xl>
 								<Row>
 									<Col className="mt-xl-3 mt-md-3 " sm lg xs md xl>
-										<h1 className="text-dark">Buy Any Thing From Any Where</h1>
+										<h1 className="text-dark moto">
+											Buy Any Thing From Any Where
+										</h1>
 										<div style={{ height: "6px" }}></div>
 										<Row>
 											<Col
@@ -180,7 +182,7 @@ function HomeScreen() {
 							))}
 						</Row>
 						<div className=" d-flex justify-content-center ">
-							<Button 
+							<Button
 								variant="light"
 								className="rounded-4 d-block w-75 "
 								onClick={handleClick}>
