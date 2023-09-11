@@ -40,7 +40,7 @@ const Page = ({ offset, gradient, onClick }) => (
 									fontSize: 120,
 									borderRadius: "50%"
 								}}
-								className="fas fa-arrow-down bg-gradient px-3  "></i>
+								className="fas fa-arrow-right pink px-3 opacity-50  "></i>
 						</div>
 					</Col>
 				</Container>
@@ -67,7 +67,7 @@ const Page = ({ offset, gradient, onClick }) => (
 									fontSize: 120,
 									borderRadius: "50%"
 								}}
-								className="fas fa-arrow-down bg-gradient px-3  "></i>
+								className="fas fa-arrow-right pink px-3 opacity-50  "></i>
 						</div>
 					</Col>
 				</Container>
@@ -94,7 +94,7 @@ const Page = ({ offset, gradient, onClick }) => (
 									fontSize: 120,
 									borderRadius: "50%"
 								}}
-								className="fas fa-arrow-down bg-gradient px-3  "></i>
+								className="fas fa-arrow-left tomato px-3  opacity-50  "></i>
 						</div>
 					</Col>
 				</Container>
@@ -114,7 +114,7 @@ export default function ContactsScreen() {
 
 	return (
 		<div style={{ background: "#dfdfdf" }}>
-			<Parallax className={styles.container} ref={parallax} pages={3} vertical>
+			<Parallax className={styles.container} ref={parallax} pages={3} horizontal>
 				<Page offset={0} gradient="pink" onClick={() => scroll(1)} />
 				<Page offset={1} gradient="teal" onClick={() => scroll(2)} />
 				<Page offset={2} gradient="tomato" onClick={() => scroll(0)} />

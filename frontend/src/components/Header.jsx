@@ -4,16 +4,13 @@ import {
 	Navbar,
 	Nav,
 	Container,
-	Row,
 	NavDropdown,
-	Offcanvas,
-
+	Offcanvas
 } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import SearchBox from "./SearchBox";
 import { logout } from "../actions/userActions";
 import { useNavigate } from "react-router-dom";
-import { addToCart, removeFromCart } from "../actions/cartActions";
 
 function Header() {
 	const navigate = useNavigate();
@@ -46,17 +43,58 @@ function Header() {
 						key={expand}
 						expand={expand}
 						style={{
-							background: "rgba(0, 0, 25, 0)",
-							backdropFilter: "blur(18px)",
+							background: "rgba(0, 0, 25, 0.3)",
+							backdropFilter: "blur(5px)",
 							marginBottom: "10px"
 						}}
 						className=" py-0  ">
-						<Container>
-							<LinkContainer to="/">
-								<Navbar.Brand className="py-3 ">e-shop</Navbar.Brand>
+						<Container >
+							<LinkContainer  to="/">
+								<Navbar.Brand className="py-3  px-0 mx-0" >e-shop</Navbar.Brand>
 							</LinkContainer>
+
+							<LinkContainer to="/">
+								<Nav.Link>
+									<span
+										style={{ fontSize: 16 }}
+										className="fas fa-home d-md-none text-light invert"></span>
+								</Nav.Link>
+							</LinkContainer>
+							<LinkContainer to="/products">
+								<Nav.Link>
+									<img
+										className="d-md-none"
+										src="/Product_Page.png"
+										alt="products"
+										style={{
+											width: "20px",
+											height: "16px",
+											filter: "invert(100%)",
+											marginBottom: "4.5px"
+										}}
+									/>
+								</Nav.Link>
+							</LinkContainer>
+							<LinkContainer to="/contacts">
+								<Nav.Link>
+									<span
+										style={{ fontSize: 16 }}
+										className="fa-solid fa-circle-question d-md-none text-white"></span>
+								</Nav.Link>
+							</LinkContainer>
+							<LinkContainer to="/cart">
+								<Nav.Link className="cart">
+									<span
+										style={{ fontSize: 16 }}
+										className="fas fa-cart-plus text-white d-md-none"></span>
+									<span className=" d-md-none">
+										{cartItems.reduce((acc, item) => acc + item.qty * 1, 0)}
+									</span>
+								</Nav.Link>
+							</LinkContainer>
+
 							<Navbar.Toggle
-								className="rounded-3 py-3  align-self-end   "
+								className="rounded-3 my-3 py-0 mx-0 px-0 align-self-end  "
 								aria-controls={`offcanvasNavbar-expand-${expand}`}
 							/>
 
@@ -64,8 +102,8 @@ function Header() {
 								style={{
 									width: "60%",
 									fontsize: 40,
-									background: "rgba(0, 0, 25, 0.2)",
-									backdropFilter: "blur(6px)",
+									background: "rgba(60, 60, 80, 0.8)",
+									// backdropFilter: "blur(6px)",
 									paddingTop: "4px",
 									paddingLeft: "4px",
 									color: "whiteSmoke",
@@ -76,61 +114,74 @@ function Header() {
 								placement="end">
 								<Offcanvas.Header
 									closeButton
-									className="bg-gradient rounded my-0 py-3">
+									className=" my-0 py-3">
 									menu
 								</Offcanvas.Header>
 
 								<Nav>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<SearchBox />
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<Nav className="ml-auto fs-6 ">
+										<LinkContainer to="/">
+											<Nav.Link className="d-flex justify-content-start ">
+												<span
+													style={{ fontSize: 16 }}
+													className="fas fa-home  "></span>
+												<span>&nbsp;Home</span>
+											</Nav.Link>
+										</LinkContainer>
 										<LinkContainer to="/products">
-											<Nav.Link>
-												<i
-													style={{ fontSize: 11 }}
-													className="fa-solid fa-message-arrow-up-right">
-													products&nbsp;&nbsp;&nbsp;
-												</i>
+											<Nav.Link className="d-flex justify-content-start ">
+												<img
+													src="/Product_Page.png"
+													alt="products"
+													style={{
+														width: "20px",
+														height: "17px",
+														filter: "invert(100%)",
+														marginBottom: "4.5px"
+													}}
+												/>
+												<span>&nbsp;products</span>
 											</Nav.Link>
 										</LinkContainer>
 										<LinkContainer to="/contacts">
-											<Nav.Link>
-												<i
-													style={{ fontSize: 11 }}
-													className="fa-solid fa-message-arrow-up-right">
-													contacts&nbsp;&nbsp;&nbsp;
-												</i>
-											</Nav.Link>
-										</LinkContainer>
-										<LinkContainer to="/about">
-											<Nav.Link>
-												{" "}
-												<i
-													style={{ fontSize: 11 }}
-													className="fa-solid fa-message-arrow-up-right">
-													about&nbsp;&nbsp;
-												</i>
+											<Nav.Link className="d-flex justify-content-start ">
+												<span
+													style={{ fontSize: 16 }}
+													className="fa-solid fa-circle-question  "></span>
+												<span className="  ">
+													{" "}
+													&nbsp;About&nbsp;&nbsp;&nbsp;
+												</span>
 											</Nav.Link>
 										</LinkContainer>
 									</Nav>
 									<Nav className="m-auto px-lg-2 "></Nav>
 									<Nav className="ml-auto fs-6">
 										<LinkContainer to="/cart">
-											<Nav.Link className="cart">
+											<Nav.Link className="cart ">
 												<span
-													style={{ fontSize: 11 }}
-													className="fas fa-shopping-cart"></span>
-												<span>{cartItems.reduce((acc, item) => acc + item.qty * 1, 0)}</span>
+													style={{ fontSize: 16 }}
+													className="fas fa-cart-plus  "></span>
+														
+												<span className=" ">
+													{cartItems.reduce(
+														(acc, item) => acc + item.qty * 1,
+														0
+													)}
+												</span>
+												<span>&nbsp;Cart</span>
+											
 											</Nav.Link>
 										</LinkContainer>
 										{userInfo ? (
 											<NavDropdown
 												title={
-													<i
-														style={{ fontSize: 11 }}
-														className="fa-solid fa-message-arrow-up-right">
+													<span style={{ fontSize: 12 }} className="">
 														{userInfo.name}
-													</i>
+													</span>
 												}
 												id="username">
 												<LinkContainer to="/profile">
@@ -143,8 +194,11 @@ function Header() {
 											</NavDropdown>
 										) : (
 											<LinkContainer to="/login">
-												<Nav.Link>
-													<i className="fas fa-user">login</i>
+												<Nav.Link className="d-flex justify-content-start ">
+													<span
+														style={{ fontSize: 15 }}
+														className="fas fa-user"></span>
+													<span>&nbsp;&nbsp;login</span>
 												</Nav.Link>
 											</LinkContainer>
 										)}
@@ -152,11 +206,9 @@ function Header() {
 										{userInfo && userInfo.isAdmin && (
 											<NavDropdown
 												title={
-													<i
-														style={{ fontSize: 11 }}
-														className="fa-solid fa-message-arrow-up-right">
+													<span style={{ fontSize: 11 }} className="">
 														Admin
-													</i>
+													</span>
 												}
 												id="adminmenue">
 												<LinkContainer to="/admin/userlist">

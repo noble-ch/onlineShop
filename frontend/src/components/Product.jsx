@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import { Card ,Row, Col } from "react-bootstrap";
+import { Card, Row, Col } from "react-bootstrap";
 import Rating from "./Rating";
 import { Link } from "react-router-dom";
 import { addToCart } from "../actions/cartActions";
@@ -49,11 +49,14 @@ function Product({ product }) {
 						<button
 							hidden={product.countInStock == 0}
 							onClick={addToCartHandler}
-							className=" text-black  fas fa-plus rounded-circle  bg-transparent  "
-						/>
+							className=" rounded-2 border-0 tomato text-black  ">
+							{" "}
+							<span>addToCart&nbsp;</span>
+							<i className="fas fa-tag"></i>
+						</button>
 					</Col>
 				</Row>
-			</Card.Body> 
+			</Card.Body>
 		</div>
 	);
 }

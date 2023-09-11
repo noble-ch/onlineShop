@@ -92,3 +92,16 @@ p {
 	background: linear-gradient(to right, deeppink 0%, coral 100%);
 	border-radius: 0.9rem;
 }
+.tomato {
+	background: linear-gradient(to right, rgb(226, 161, 40) 0%, rgb(252, 193, 0) 100%);
+}
+
+.active:focus{
+	filter: invert(100%);
+	
+	
+}
+
+.foci:focus{
+border: none;
+}

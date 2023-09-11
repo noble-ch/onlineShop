@@ -115,7 +115,7 @@ function CartScreen() {
 						<ListGroup.Item>
 							<Button
 								type="button"
-								className="btn-block"
+								className="btn-block  rounded-2 "
 								disabled={cartItems.length === 0}
 								onClick={checkoutHandler}>
 								Proceed To Checkout

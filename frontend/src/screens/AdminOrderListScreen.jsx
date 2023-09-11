@@ -50,6 +50,7 @@ function OrderListScreen() {
                                     <th>Total</th>
                                     <th>PAID</th>
                                     <th>DELIVERED</th>
+                                    <th>RECIEVED</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -75,6 +76,13 @@ function OrderListScreen() {
                                                 <i className='fas fa-check' style={{ color: 'red' }}></i>
                                             )}
                                         </td>
+                                        <td>{order.isRecieved ? (
+                                            order.recievedAt.substring(0, 10)
+                                        ) : (
+                                                <i className='fas fa-check' style={{ color: 'red' }}></i>
+                                            )}
+                                        </td>
+                                        
 
                                         <td>
                                             <LinkContainer to={`/order/${order._id}`}>

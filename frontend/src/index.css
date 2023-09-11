@@ -79,14 +79,14 @@ main {
 	border-left: none;
 	height: 2rem;
 	width: 3.5rem;
-	border-radius: 0% 2rem 2rem 0%;
+	/* border-radius: 0% 2rem 2rem 0%; */
 	padding: 4px;
 	background: linear-gradient(
 		to left,
 		rgba(39, 39, 175, 0.24),
 		rgba(245, 245, 245, 0)
 	);
-	/* background: transparent; */
+	background: transparent;
 	box-shadow: none;
 	color: #ffffff;
 }
@@ -101,6 +101,9 @@ main {
 		rgba(255, 255, 255, 0)
 	);
 }
+#search-field::placeholder{
+	color:white;
+}
 #search-field {
 	color: #ceceda;
 
@@ -110,7 +113,7 @@ main {
 	border-top: none;
 	border-left: none;
 	height: 2rem;
-	border-radius: 2rem 0 0 2rem;
+	/* border-radius: 2rem 0 0 2rem; */
 	transition-duration: 1s;
 }
 
@@ -200,6 +203,6 @@ main {
 	position: absolute;
 	margin-top: -8px;
 
-
-
 }
+
+
