@@ -45,7 +45,7 @@ function PaymentScreen() {
 							<img
 								src="/chapaLogo.png"
 								alt="chapa"
-								className="ml-2 bg-gradient rounded"
+								className="ml-2 bg-white rounded"
 								style={{ width: "100px", height: "30px" }}
 							/>
 				
@@ -53,7 +53,7 @@ function PaymentScreen() {
 					</Col>
 				</Form.Group>
 
-				<Button type="submit" variant="primary" className="rounded-3">
+				<Button type="submit" variant="primary" className="rounded-3 px-2 py-1 tomato text-black">
 					Continue
 				</Button>
 			</Form>

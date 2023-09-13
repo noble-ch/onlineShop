@@ -37,10 +37,10 @@ const Page = ({ offset, gradient, onClick }) => (
 						<div className="d-flex  justify-content-center  ">
 							<i
 								style={{
-									fontSize: 120,
+									fontSize: 80,
 									borderRadius: "50%"
 								}}
-								className="fas fa-arrow-right pink px-3 opacity-50  "></i>
+								className="fas fa-arrow-right pink px-2  "></i>
 						</div>
 					</Col>
 				</Container>
@@ -64,10 +64,10 @@ const Page = ({ offset, gradient, onClick }) => (
 						<div className="d-flex  justify-content-center  ">
 							<i
 								style={{
-									fontSize: 120,
+									fontSize: 80,
 									borderRadius: "50%"
 								}}
-								className="fas fa-arrow-right pink px-3 opacity-50  "></i>
+								className="fas fa-arrow-right pink px-2 "></i>
 						</div>
 					</Col>
 				</Container>
@@ -91,10 +91,10 @@ const Page = ({ offset, gradient, onClick }) => (
 						<div className="d-flex  justify-content-center  ">
 							<i
 								style={{
-									fontSize: 120,
+									fontSize: 80,
 									borderRadius: "50%"
 								}}
-								className="fas fa-arrow-left tomato px-3  opacity-50  "></i>
+								className="fas fa-arrow-left tomato px-2 "></i>
 						</div>
 					</Col>
 				</Container>

@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 
 function Product({ product }) {
 	const dispatch = useDispatch();
-	const [qty, setQty] = useState(1);
+	const [qty, setQty] = useState(0);
 	const addToCartHandler = () => {
 		if (qty < product.countInStock) {
 			const newQty = qty + 1;
@@ -28,7 +28,7 @@ function Product({ product }) {
 			<Card.Body className="  d-flex flex-column align-items-center justify-content-center  ">
 				<Link id="product_name" to={`/product/${product._id}`}>
 					<Card.Title as="div" style={{ color: "black", marginTop: "6px" }}>
-						<strong className="text-light">{product.name}</strong>
+						<strong className="text-black">{product.name}</strong>
 					</Card.Title>
 				</Link>
 
@@ -42,7 +42,8 @@ function Product({ product }) {
 					</div>
 				</Card.Text>
 				<Card.Text className="text-black" as="h5" style={{ color: "black" }}>
-					${product.price}
+					{product.price}
+					<span className="text-capitalize ">Birr</span>
 				</Card.Text>
 				<Row>
 					<Col className="p-0">
@@ -51,8 +52,7 @@ function Product({ product }) {
 							onClick={addToCartHandler}
 							className=" rounded-2 border-0 tomato text-black  ">
 							{" "}
-							<span>addToCart&nbsp;</span>
-							<i className="fas fa-tag"></i>
+							<span className="fas fa-cart-plus">&nbsp;</span>
 						</button>
 					</Col>
 				</Row>

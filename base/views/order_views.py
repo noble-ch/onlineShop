@@ -1,12 +1,8 @@
-import requests
 import json
 import http.client
-from django.shortcuts import redirect, render
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
-from django.http import HttpResponseRedirect
 from rest_framework.response import Response
-from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from base.models import Product, Order, OrderItem, ShippingAddress
 from base.serializers import OrderSerializer
@@ -121,8 +117,8 @@ def initialize_payment(request, pk):
                 "email": user.email,
                 "first_name": user.first_name,
                 "phone_number": "0912345678",
-                "tx_ref": str(order._id),  # Make sure it's a string
-                "callback_url": f"https://9c0d-196-188-174-104.ngrok-free.app/api/orders/{pk}/pay",
+                "tx_ref": str(order._id), 
+                "callback_url": f"https://8879-196-188-174-33.ngrok-free.app/api/orders/{pk}/pay",
                 "return_url": f"http://192.168.43.51:5175/order/{pk}/",
             }
             payload = json.dumps(payment_data)

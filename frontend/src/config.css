@@ -93,15 +93,25 @@ p {
 	border-radius: 0.9rem;
 }
 .tomato {
-	background: linear-gradient(to right, rgb(226, 161, 40) 0%, rgb(252, 193, 0) 100%);
+	background: linear-gradient(
+		to right,
+		rgb(226, 161, 40) 0%,
+		rgb(252, 193, 0) 100%
+	);
 }
 
-.active:focus{
-	filter: invert(100%);
-	
-	
+.bread {
+	background: #f7f1ea;
 }
 
-.foci:focus{
-border: none;
+.milky {
+	background: #ffcb74;
 }
+
+.active:focus {
+	/* filter: invert(100%); */
+	background: #2f2f2f;
+	color: whitesmoke !important;
+	border-radius: 1rem;
+}
+

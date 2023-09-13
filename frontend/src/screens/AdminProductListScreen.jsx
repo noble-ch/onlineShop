@@ -53,6 +53,7 @@ function ProductListScreen() {
 		} else {
 			dispatch(listProducts(keyword));
 		}
+
 	}, [
 		dispatch,
 		navigate,
@@ -71,6 +72,7 @@ function ProductListScreen() {
 
 	const createProductHandler = () => {
 		dispatch(createProduct());
+		
 	};
 
 	return (

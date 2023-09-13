@@ -19,6 +19,7 @@ import AdminProductListScreen from "./screens/AdminProductListScreen";
 import AdminProductEditScreen from "./screens/AdminProductEditScreen";
 import AdminOrderListScreen from "./screens/AdminOrderListScreen";
 import AboutScreen from "./screens/AboutScreen";
+import CategoryScreen from './screens/CategoryScreen';
 
 function App() {
 	return (
@@ -29,6 +30,7 @@ function App() {
 				<Container fluid className="p-0">
 					<Routes>
 						<Route path="/" element={<HomeScreen />} />
+						<Route path="/categories/:categoryName" element={<CategoryScreen />} />
 						<Route path="/contacts" element={<AboutScreen />} />
 						<Route path="/products" element={<ProductScreen />} />
 						<Route path="/login" element={<LoginScreen />} />

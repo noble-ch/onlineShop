@@ -1,6 +1,4 @@
 import { Container, Row, Col } from "react-bootstrap";
-import GoogleTranslateComponent from "../components/GoogleTranslateComponent";
-
 function Footer() {
 	return (
 		<footer style={{ background: "#20232f"}}>
@@ -35,7 +33,6 @@ function Footer() {
 					<Col className="text-center py-2">
 						2023 all Right Reserved Term of use OTICSHOP &copy;
 					</Col>
-					<GoogleTranslateComponent />
 				</Row>
 			</Container>
 			<Container fluid className="d-flex justify-content-end ">
