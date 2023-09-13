@@ -64,7 +64,7 @@ function Rating({ value, text, color }) {
         </span>
       </div>
       <div
-        className=" text-light rounded  rating text-center "
+        className=" text-black rounded  rating text-center "
         id="review_text">
         {text && text}
       </div>

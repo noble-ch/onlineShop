@@ -21,6 +21,13 @@ function Product({ product }) {
 		<div
 			id="card"
 			className="my-3 p-3 rounded d-flex flex-column align-items-center  justify-content-center bg-gradient border   ">
+			{product.countInStock > 0 ? (
+				<Card.Text className="text-success fs-6">
+					In Stock <span className="fas fa-checked"></span>
+				</Card.Text>
+			) : (
+				<Card.Text className="text-danger fs-6">Out of Stock</Card.Text>
+			)}
 			<Link to={`/product/${product._id}`}>
 				<Card.Img src={product.image} />
 			</Link>

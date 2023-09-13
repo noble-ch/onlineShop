@@ -1,11 +1,13 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Row, Col, Image, Container } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
+import Product from "../components/Product";
+
 import { listProducts } from "../actions/productActions";
 import { listUsers } from "../actions/userActions";
-import { useLocation, Link, useParams } from "react-router-dom";
+import { useLocation,  useParams } from "react-router-dom";
 
 function CategoryScreen() {
 	const { categoryName } = useParams();
@@ -22,7 +24,6 @@ function CategoryScreen() {
 
 	return (
 		<div>
-			{" "}
 			{loading ? (
 				<Loader />
 			) : error ? (
@@ -31,31 +32,26 @@ function CategoryScreen() {
 				<Container className="  rounded-4 pb-xl-5 ">
 					<Container className="laptops">
 						<Row className="  py-4">
-							{products
-								.filter((product) => product.category === categoryName) // Filter products by category
-								.slice(0, 4)
-								.map((product) => (
-									<Col
-										id="card"
-										className=" borders  px-4 "
-										key={product._id}
-										lg
-										md
-										sm
-										xs>
-										<Link id="product_name" to={`/product/${product._id}`}>
-											<Image
-												className="my-3 rounded-3 "
-												src={product.image}
-												alt={product.name}
-												fluid
-											/>
-											<p style={{ color: "whitesmoke" }}>{product.name}</p>
-											<p className="text-black-50 ">{product.price} (Birr)</p>
-										</Link>
-									</Col>
-								))}
+                        {loading ? (
+							<Loader />
+						) : error ? (
+							<Message variant="danger">{error}</Message>
+						) : (
+							<div>
+								<Row>
+									{products
+										.filter((product) => product.category === categoryName)
+										.map((product) => (
+											<Col key={product._id} xs sm md  lg xl>
+												<Product product={product} />
+											</Col>
+										))}
+								</Row>
+								<div className=" d-flex justify-content-center "></div>
+							</div>
+						)}
 						</Row>
+					
 					</Container>
 				</Container>
 			)}

@@ -233,50 +233,82 @@ function Header() {
 						</Container>
 					</Navbar>
 				))}
-				<Navbar
-					className="text-center py-0 text-black d-flex justify-content-center  "
-					style={{ marginTop: "3.8rem" }}>
-					<Nav fluid className="d- justify-content-around w-100 ">
-						<Nav.Link className="text-capitalize " onClick={getCategory}>
+
+				<Navbar 
+				variant="light"
+					className="text-center py-0 text-black d-flex justify-content-center bg "
+					style={{
+						marginTop: "3.8rem",
+						maxWidth: "100vw",
+						overflowX: "auto",
+						whiteSpace: "nowrap"
+					}}>
+					<Nav className="justify-content-between  w-100  text-dark ">
+						<Nav.Link id="categories"
+							
+							className="text-capitalize "
+							onClick={getCategory}>
 							<span>Laptops</span>
 						</Nav.Link>
-
-						<Nav.Link className="text-capitalize " onClick={getCategory}>
+						<Nav.Link id="categories"
+							className="text-capitalize  categories "
+							onClick={getCategory}>
+							<span>Desktops</span>
+						</Nav.Link>
+						<Nav.Link id="categories"
+							className="text-capitalize  categories"
+							onClick={getCategory}>
 							<span>Phones</span>
 						</Nav.Link>
-
-						<Nav.Link className="text-capitalize " onClick={getCategory}>
-							<span>watchs</span>
-						</Nav.Link>
-
-						<Nav.Link className="text-capitalize " onClick={getCategory}>
+						<Nav.Link id="categories"
+							className="text-capitalize  categories"
+							onClick={getCategory}>
 							<span>Tvs</span>
 						</Nav.Link>
+						<Nav.Link id="categories"
+							className="text-capitalize  categories "
+							onClick={getCategory}>
+							<span>watches</span>
+						</Nav.Link>
 
-						<Nav.Link className="text-capitalize " onClick={getCategory}>
+						<Nav.Link id="categories"
+							className="text-capitalize  categories"
+							onClick={getCategory}>
 							<span>Furnitures</span>
 						</Nav.Link>
 
-						<Nav.Link className="text-capitalize " onClick={getCategory}>
+						<Nav.Link id="categories"
+							className="text-capitalize  categories"
+							onClick={getCategory}>
 							<span>Gamming</span>
 						</Nav.Link>
 
-						<Nav.Link className="text-capitalize " onClick={getCategory}>
+						<Nav.Link id="categories"
+							className="text-capitalize  categories"
+							onClick={getCategory}>
 							<span>sports</span>
 						</Nav.Link>
 
-						<Nav.Link className="text-capitalize " onClick={getCategory}>
+						<Nav.Link id="categories"
+							className="text-capitalize  categories"
+							onClick={getCategory}>
 							<span>Cameras</span>
 						</Nav.Link>
 
-						<Nav.Link className="text-capitalize " onClick={getCategory}>
+						<Nav.Link id="categories"
+							className="text-capitalize  categories"
+							onClick={getCategory}>
 							<span>music</span>
 						</Nav.Link>
 
-						<Nav.Link className="text-capitalize " onClick={getCategory}>
+						<Nav.Link id="categories"
+							className="text-capitalize  categories"
+							onClick={getCategory}>
 							<span>Pc Parts</span>
 						</Nav.Link>
-						<Nav.Link className="text-capitalize " onClick={getCategory}>
+						<Nav.Link id="categories"
+							className="text-capitalize  categories"
+							onClick={getCategory}>
 							<span>Gadgets</span>
 						</Nav.Link>
 					</Nav>

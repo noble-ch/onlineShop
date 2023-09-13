@@ -108,10 +108,4 @@ p {
 	background: #ffcb74;
 }
 
-.active:focus {
-	/* filter: invert(100%); */
-	background: #2f2f2f;
-	color: whitesmoke !important;
-	border-radius: 1rem;
-}
 

@@ -35,7 +35,7 @@ function HomeScreen() {
 
 	return (
 		<div>
-			<div className="home-back"> </div>
+			{/* <div className="home-back"> </div> */}
 			{/* <Parallax strength={-300} bgImage={Woman}> */}
 			<Container>
 				<Container>
@@ -96,9 +96,9 @@ function HomeScreen() {
 					<Container className="laptops">
 						<Row className="  py-4">
 							<Col lg={3} md={12} sm={12} xs={12}>
-								<h3 className="text-dark ">Latest Laptops</h3>
+								<h3 className="text-dark ">Latest Apple</h3>
 								<p className="text-dark">
-									Elevate your Shopping Experience: Unveiling Best Laptops with
+									Elevate your Shopping Experience: Unveiling the Best Apple Products with
 									Ease.
 								</p>
 								<Button
@@ -110,8 +110,7 @@ function HomeScreen() {
 								</Button>
 							</Col>
 
-							{products
-								.filter((product) => product.category === "Gamming") // Filter products by category
+							{products.filter((product) => product.brand === "Apple")
 								.slice(0, 4)
 								.map((product) => (
 									<Col
@@ -129,7 +128,7 @@ function HomeScreen() {
 												alt={product.name}
 												fluid
 											/>
-											<p style={{ color: "whitesmoke" }}>{product.name}</p>
+											<p className="text-black">{product.name}</p>
 											<p className="text-black-50 ">{product.price} (Birr)</p>
 										</Link>
 									</Col>
