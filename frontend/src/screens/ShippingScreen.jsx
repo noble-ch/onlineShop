@@ -32,9 +32,9 @@ function ShippingScreen() {
 			<h1>Shipping</h1>
 			<Form onSubmit={submitHandler}>
 				<Form.Group controlId="address">
-					<Form.Label>Address</Form.Label>
+					<Form.Label className="text-black">Address</Form.Label>
 					<Form.Control
-						required
+						required className="bg-transparent  border-bottom px-0 py-1 mx-0 "
 						type="text"
 						placeholder="Enter address"
 						value={address ? address : ""}
@@ -42,8 +42,8 @@ function ShippingScreen() {
 				</Form.Group>
 
 				<Form.Group controlId="city">
-					<Form.Label>City</Form.Label>
-					<Form.Control
+					<Form.Label className="text-black">City</Form.Label>
+					<Form.Control className="bg-transparent  border-bottom px-0 py-1 mx-0 "
 						required
 						type="text"
 						placeholder="Enter city"
@@ -52,8 +52,8 @@ function ShippingScreen() {
 				</Form.Group>
 
 				<Form.Group controlId="postalCode">
-					<Form.Label>Postal Code</Form.Label>
-					<Form.Control
+					<Form.Label className="text-black">Postal Code</Form.Label>
+					<Form.Control className="bg-transparent  border-bottom px-0 py-1 mx-0 "
 						required
 						type="text"
 						placeholder="Enter postal code"
@@ -62,8 +62,8 @@ function ShippingScreen() {
 				</Form.Group>
 
 				<Form.Group controlId="country">
-					<Form.Label>Country</Form.Label>
-					<Form.Control
+					<Form.Label className="text-black">Country</Form.Label>
+					<Form.Control className="bg-transparent  border-bottom px-0 py-1 mx-0 "
 						required
 						type="text"
 						placeholder="Enter country"
@@ -71,7 +71,7 @@ function ShippingScreen() {
 						onChange={(e) => setCountry(e.target.value)}></Form.Control>
 				</Form.Group>
 
-				<Button type="submit" variant="primary">
+				<Button type="submit" variant="primary" className="py-1 px-1 my-2 rounded tomato text-black">
 					Continue
 				</Button>
 			</Form>

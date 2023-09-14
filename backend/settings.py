@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-ry68yleu70v1f47(zyb&p$9%ap#tva7halmg_ftx+0w!%)6plv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.43.51','127.0.0.1','localhost']
 
 
 # Application definition
@@ -41,7 +41,11 @@ INSTALLED_APPS = [
     'base.apps.BaseConfig',
     'rest_framework',
     'corsheaders',
+    'sslserver',
+
 ]
+
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -171,9 +175,16 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_ROOT = BASE_DIR / 'frontend/public/images'
-CORS_ALLOW_ALL_ORIGINS = True
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# settings.py
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SSL_KEY_FILE = BASE_DIR / 'frontend/private.key'
+SSL_CERTIFICATE_FILE = BASE_DIR / 'frontend/certificate.crt'
+CORS_ORIGIN_ALLOW_ALL = True
+SECRET_HASH = 'akdfnakjd7yafkjncfkjaf00acf2909cadkfdkjfcak'

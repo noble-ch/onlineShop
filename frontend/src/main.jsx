@@ -6,6 +6,8 @@ import "./index.css";
 import "./media.css";
 import "./config.css";
 import "./bootstrap.min.css";
+import "./styles.module.css";
+
 import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

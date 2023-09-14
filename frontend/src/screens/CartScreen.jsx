@@ -20,7 +20,7 @@ function CartScreen() {
 	const location = useLocation();
 	const { id } = useParams();
 	const qty = location.search ? Number(location.search.split("=")[1]) : 1;
-	console.log("qty:", qty);
+	
 	const dispatch = useDispatch();
 
 	const cart = useSelector((state) => state.cart);
@@ -40,6 +40,7 @@ function CartScreen() {
 	const checkoutHandler = () => {
 		navigate("/login?redirect=shipping");
 	};
+	
 
 	return (
 		<Container>
@@ -114,7 +115,7 @@ function CartScreen() {
 						<ListGroup.Item>
 							<Button
 								type="button"
-								className="btn-block"
+								className="btn-block  rounded-2  tomato text-black t"
 								disabled={cartItems.length === 0}
 								onClick={checkoutHandler}>
 								Proceed To Checkout

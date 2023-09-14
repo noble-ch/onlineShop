@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useEffect } from "react";
 import {
 	Button,
 	Row,
@@ -14,20 +14,20 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 import {
 	getOrderDetails,
-	payOrder,
-	deliverOrder
+	deliverOrder,
+	recieveOrder,
+	orderInitializePayment
 } from "../actions/orderActions";
 import {
 	ORDER_PAY_RESET,
-	ORDER_DELIVER_RESET
+	ORDER_DELIVER_RESET,
+	ORDER_RECIEVE_RESET
 } from "../constants/orderConstants";
 
 function OrderScreen() {
 	const { id: orderId } = useParams();
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-
-	const [sdkReady, setSdkReady] = useState(false);
 
 	const orderDetails = useSelector((state) => state.orderDetails);
 	const { order, error, loading } = orderDetails;
@@ -38,6 +38,9 @@ function OrderScreen() {
 	const orderDeliver = useSelector((state) => state.orderDeliver);
 	const { loading: loadingDeliver, success: successDeliver } = orderDeliver;
 
+	const orderRecieve = useSelector((state) => state.orderRecieve);
+	const { loading: loadingRecieve, success: successRecieve } = orderRecieve;
+
 	const userLogin = useSelector((state) => state.userLogin);
 	const { userInfo } = userLogin;
 
@@ -45,18 +48,7 @@ function OrderScreen() {
 		order.itemsPrice = order.orderItems
 			.reduce((acc, item) => acc + item.price * item.qty, 0)
 			.toFixed(2);
-		console.log("amount", order.itemsPrice);
-		console.log("first_name", userInfo.name);
-		console.log("email", userInfo.email);
-		console.log("tex_ref", orderId);
 	}
-
-	const addPaymentScript = () => {
-		script.onload = () => {
-			setSdkReady(true);
-		};
-		document.body.appendChild(script);
-	};
 
 	useEffect(() => {
 		if (!userInfo) {
@@ -67,36 +59,42 @@ function OrderScreen() {
 			!order ||
 			successPay ||
 			order._id !== Number(orderId) ||
-			successDeliver
+			successDeliver ||
+			successRecieve
 		) {
 			dispatch({ type: ORDER_PAY_RESET });
 			dispatch({ type: ORDER_DELIVER_RESET });
+			dispatch({ type: ORDER_RECIEVE_RESET });
 
 			dispatch(getOrderDetails(orderId));
-		} else if (!order.isPaid) {
-			if (!window) {
-				addPaymentScript();
-			} else {
-				setSdkReady(true);
-			}
 		}
-	}, [dispatch, order, orderId, successPay, successDeliver]);
+	}, [
+		dispatch,
+		order,
+		orderId,
+		successPay,
+		successDeliver,
+		userInfo,
+		navigate,
+		successRecieve
+	]);
 
-	const successPaymentHandler = (paymentResult) => {
-		dispatch(payOrder(orderId, paymentResult));
+	const sendOrder = () => {
+		dispatch(orderInitializePayment(order));
 	};
-
 	const deliverHandler = () => {
 		dispatch(deliverOrder(order));
 	};
-
+	const recieveHandler = () => {
+		dispatch(recieveOrder(order));
+	};
 	return loading ? (
 		<Loader />
 	) : error ? (
 		<Message variant="danger">{error}</Message>
 	) : (
 		<Container>
-			<h1>Order: {order.Id}</h1>
+			<h1>Order: {orderId}</h1>
 			<Row>
 				<Col md={8}>
 					<ListGroup variant="flush">
@@ -116,14 +114,26 @@ function OrderScreen() {
 								{order.shippingAddress.postalCode},{"  "}
 								{order.shippingAddress.country}
 							</p>
-
-							{order.isDelivered ? (
-								<Message variant="success">
-									Delivered on {order.deliveredAt}
-								</Message>
-							) : (
-								<Message variant="warning">Not Delivered</Message>
-							)}
+							<Row>
+								<Col>
+									{order.isDelivered ? (
+										<Message variant="success">
+											Shipped on {order.deliveredAt}
+										</Message>
+									) : (
+										<Message variant="warning">Not Delivered</Message>
+									)}
+								</Col>
+								<Col>
+									{order.isRecieved ? (
+										<Message variant="success">
+											Recieved on {order.recievedAt}
+										</Message>
+									) : (
+										<Message variant="warning">Not Recieved</Message>
+									)}
+								</Col>
+							</Row>
 						</ListGroup.Item>
 
 						<ListGroup.Item>
@@ -148,7 +158,7 @@ function OrderScreen() {
 									{order.orderItems.map((item, index) => (
 										<ListGroup.Item key={index}>
 											<Row>
-												<Col md={1}>
+												<Col md={1} sm={2} xs={2}>
 													<Image
 														src={item.image}
 														alt={item.name}
@@ -215,17 +225,12 @@ function OrderScreen() {
 								<ListGroup.Item>
 									{loadingPay && <Loader />}
 
-									{!sdkReady ? (
-										<Loader />
-									) : (
-										<Button
-											variant="primary"
-											className="rounded-4"
-											// amount={order.totalPrice}
-											onSuccess={successPaymentHandler}>
-											Pay now
-										</Button>
-									)}
+									<Button
+										variant="primary"
+										className="rounded-4"
+										onClick={sendOrder}>
+										Pay now
+									</Button>
 								</ListGroup.Item>
 							)}
 						</ListGroup>
@@ -239,7 +244,21 @@ function OrderScreen() {
 										type="button"
 										className="btn btn-block"
 										onClick={deliverHandler}>
-										Mark As Delivered
+										Mark as Delivered
+									</Button>
+								</ListGroup.Item>
+							)}
+						{loadingRecieve && <Loader />}
+						{userInfo && <userInfo className="isStaff"></userInfo> &&
+							order.isPaid &&
+							order.isDelivered &&
+							!order.isRecieved && (
+								<ListGroup.Item>
+									<Button
+										type="button"
+										className="btn btn-block"
+										onClick={recieveHandler}>
+										Mark as Recieved
 									</Button>
 								</ListGroup.Item>
 							)}

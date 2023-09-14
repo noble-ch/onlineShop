@@ -1,0 +1,58 @@
+.container > div > div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	
+}
+
+ .text {
+	pointer-events: none;
+	justify-content: start !important;
+	font-family: "Kanit", sans-serif;
+	line-height: 0px;
+	text-transform: uppercase;
+} 
+
+
+.slopeBegin {
+	background-color: #20232f;
+	clip-path: polygon(20% 0, 70% 0, 50% 100%, 0% 100%);
+}
+
+.slopeEnd {
+	clip-path: polygon(70% 0, 100% 0, 80% 100%, 50% 100%);
+}
+
+.slopeBegin,
+.slopeEnd {
+	position: absolute;
+	width: 170%;
+	height: 100%;
+	cursor: pointer;
+}
+
+.pink {
+	background: linear-gradient(to right, rgba(128, 60, 255, 0.74) 0%, rgb(87, 60, 51) 100%);
+}
+
+.teal {
+	background: linear-gradient(to right, rgba(205, 90, 90, 0.788) 0%, rgb(50, 71, 78) 100%);
+}
+
+.tomato {
+	background: linear-gradient(to right, rgba(114, 48, 38, 0.76) 0%, rgba(138, 118, 7, 0.74) 100%);
+}
+
+.container {
+	overflow-x: auto; /* Enable horizontal scrolling */
+}
+
+.container::-webkit-scrollbar {
+	display: none;
+}
+
+
+
+.container::-webkit-scrollbar-thumb {
+	background-color: transparent; /* Color of the scrollbar thumb */
+}

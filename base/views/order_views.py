@@ -1,14 +1,15 @@
-from django.shortcuts import render
-
+import json
+import http.client
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
-
+from django.http import JsonResponse
 from base.models import Product, Order, OrderItem, ShippingAddress
-from base.serializers import ProductSerializer, OrderSerializer
+from base.serializers import OrderSerializer
 
 from rest_framework import status
 from datetime import datetime
+import os
 
 
 @api_view(['POST'])
@@ -100,16 +101,93 @@ def getOrderById(request, pk):
         return Response({'detail': 'Order does not exist'}, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['PUT'])
+@api_view(['POST', 'GET'])
 @permission_classes([IsAuthenticated])
+def initialize_payment(request, pk):
+    user = request.user
+
+    try:
+        CHAPA_API_KEY = os.environ.get('CHAPA_API_KEY')
+        order = Order.objects.get(_id=pk)
+        if user.is_staff or order.user == user:
+            chapa_api_url = "api.chapa.co"
+            payment_data = {
+                "amount": str(order.totalPrice),
+                "currency": "ETB",
+                "email": user.email,
+                "first_name": user.first_name,
+                "phone_number": "0912345678",
+                "tx_ref": str(order._id), 
+                "callback_url": f"https://8879-196-188-174-33.ngrok-free.app/api/orders/{pk}/pay",
+                "return_url": f"http://192.168.43.51:5175/order/{pk}/",
+            }
+            payload = json.dumps(payment_data)
+            print('parsed')
+            headers = {
+                'Authorization': f'Bearer {CHAPA_API_KEY}',
+                'Content-Type': 'application/json'
+            }
+            try:
+                conn = http.client.HTTPSConnection(chapa_api_url)
+                conn.request("POST", "/v1/transaction/initialize",
+                             payload, headers)
+                res = conn.getresponse()
+                data = res.read()
+                conn.close()
+
+                response_data = json.loads(data.decode("utf-8"))
+                print('initiated')
+                print(response_data)
+                return JsonResponse(response_data)
+
+            except Exception as e:
+                print('failed to initiate')
+                return JsonResponse({"error": str(e)}, status=500)
+        else:
+            return Response({'detail': 'Not authorized to view this order'},
+                            status=status.HTTP_400_BAD_REQUEST)
+    except:
+        return Response({'detail': 'Order does not exist'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET', 'PUT'])
 def updateOrderToPaid(request, pk):
-    order = Order.objects.get(_id=pk)
 
-    order.isPaid = True
-    order.paidAt = datetime.now()
-    order.save()
+    try:
+        order = Order.objects.get(_id=pk)
+        CHAPA_API_KEY = os.environ.get('CHAPA_API_KEY')
+        chapa_api_url = "api.chapa.co"
+        headers = {
+            'Authorization': f'Bearer {CHAPA_API_KEY}',
+        }
 
-    return Response('Order was paid')
+        # Verify the transaction
+        conn = http.client.HTTPSConnection(chapa_api_url)
+        conn.request("GET", f"/v1/transaction/verify/{pk}", headers=headers)
+        res = conn.getresponse()
+        data = res.read()
+        conn.close()
+
+        # Process the response from Chapa API
+        response_data = json.loads(data.decode("utf-8"))
+        amount = str(response_data.get('data', {}).get('amount', 0))
+        price = str(order.totalPrice)
+
+        if 'success' in response_data.get('status', ''):
+            if amount == price:
+                order.isPaid = True
+                order.paidAt = datetime.now()
+                order.save()
+                return Response({'message': 'Order was paid and verified'})
+            else:
+                return Response({'message': 'Order was paid, but verification amount does not match'})
+        else:
+            return Response({'message': 'Order was paid, but verification failed'})
+
+    except Order.DoesNotExist:
+        return Response({'error': 'Order not found'}, status=404)
+    except Exception as e:
+        return Response({'error': str(e)}, status=500)
 
 
 @api_view(['PUT'])
@@ -122,3 +200,15 @@ def updateOrderToDelivered(request, pk):
     order.save()
 
     return Response('Order was delivered')
+
+
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def updateOrderToRecieved(request, pk):
+    order = Order.objects.get(_id=pk)
+
+    order.isRecieved = True
+    order.recievedAt = datetime.now()
+    order.save()
+
+    return Response('Order was Recieved')

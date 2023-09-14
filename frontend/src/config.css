@@ -13,6 +13,10 @@
 	color: whitesmoke;
 }
 
+body::-webkit-scrollbar {
+	display: none;
+}
+
 /***************text font styles and size *******************/
 
 h1 {
@@ -39,7 +43,7 @@ p {
 	font-size: 16px;
 }
 
-/***************hides google translate top bar *******************/
+/*************** google translate *******************/
 
 .google-translate {
 	position: relative;
@@ -53,3 +57,55 @@ p {
 #goog-gt-tt {
 	display: none !important;
 }
+
+.goog-te-gadget-simple {
+	background-color: transparent !important;
+	border: none !important;
+	color: lightslategray !important;
+	border-radius: 0.2rem;
+	height: 1.4rem;
+	margin-top: 5px;
+	display: flex;
+	align-self: end;
+	font-size: 2pt;
+	cursor: pointer;
+}
+.VIpgJd-ZVi9od-xl07Ob-lTBxed {
+	text-decoration: none;
+	color: #dadada !important;
+	white-space: nowrap;
+	margin-left: 4px;
+	margin-right: 4px;
+}
+
+.goog-te-gadget-icon {
+	border-radius: 2rem;
+	margin-left: 2px;
+	margin-right: 2px;
+	width: 19px;
+	height: 19px;
+	border: none;
+	vertical-align: middle;
+}
+
+.pink {
+	background: linear-gradient(to right, deeppink 0%, coral 100%);
+	border-radius: 0.9rem;
+}
+.tomato {
+	background: linear-gradient(
+		to right,
+		rgb(226, 161, 40) 0%,
+		rgb(252, 193, 0) 100%
+	);
+}
+
+.bread {
+	background: #f7f1ea;
+}
+
+.milky {
+	background: #ffcb74;
+}
+
+

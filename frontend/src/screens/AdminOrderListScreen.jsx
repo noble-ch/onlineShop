@@ -1,6 +1,6 @@
 import  {  useEffect } from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
-import { Table, Button } from 'react-bootstrap'
+import { Table, Button, Container } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
@@ -32,6 +32,9 @@ function OrderListScreen() {
 
     return (
         <div>
+            <Container >
+              
+            
             <h1>Orders</h1>
             {loading
                 ? (<Loader />)
@@ -47,6 +50,7 @@ function OrderListScreen() {
                                     <th>Total</th>
                                     <th>PAID</th>
                                     <th>DELIVERED</th>
+                                    <th>RECIEVED</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -72,6 +76,13 @@ function OrderListScreen() {
                                                 <i className='fas fa-check' style={{ color: 'red' }}></i>
                                             )}
                                         </td>
+                                        <td>{order.isRecieved ? (
+                                            order.recievedAt.substring(0, 10)
+                                        ) : (
+                                                <i className='fas fa-check' style={{ color: 'red' }}></i>
+                                            )}
+                                        </td>
+                                        
 
                                         <td>
                                             <LinkContainer to={`/order/${order._id}`}>
@@ -87,6 +98,7 @@ function OrderListScreen() {
                             </tbody>
                         </Table>
                     )}
+                    </Container>
         </div>
     )
 }

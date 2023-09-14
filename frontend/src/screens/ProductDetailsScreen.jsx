@@ -54,6 +54,7 @@ function ProductScreen() {
 
   const addToCartHandler = () => {
     navigate(`/cart/${id}?qty=${qty}`);
+    console.log(product.category)
   };
 
   const submitHandler = (e) => {
@@ -78,12 +79,12 @@ function ProductScreen() {
           <Message variant="danger">{error}</Message>
         ) : (
           <>
-            <Row className="border rounded p-2">
+            <Row className="border rounded p-2   ">
               <Col md={5} lg={5} sm={12} xs={12} xl={4}>
                 <Image  src={product.image} alt={product.name} fluid />
               </Col>
 
-              <Col md={7} lg={7} sm xs xl={8} className="border rounded ">
+              <Col md={7} lg={7} sm xs xl={8} className="border rounded  ">
                 <ListGroup variant="flush">
                   <ListGroup.Item style={{ background: "none" }}>
                     <h3>{product.name}</h3>
@@ -130,11 +131,11 @@ function ProductScreen() {
                     </ListGroup.Item>
 
                     {product.countInStock > 0 && (
-                      <ListGroup.Item >
+                      <ListGroup.Item  className="rounded-3 border-0" >
                         <Row>
-                          <Col className="my-2">Quantity</Col>
-                          <Col xs="auto" className="my-0">
-                            <Form.Control
+                          <Col className="my-0 ">Quantity</Col>
+                          <Col xs="auto" className="my-0 ">
+                            <Form className="rounded-2 pink text-black"
                               as="select"
                               value={qty}
                               onChange={(e) => setQty(e.target.value)}>
@@ -145,7 +146,7 @@ function ProductScreen() {
                                   </option>
                                 )
                               )}
-                            </Form.Control>
+                            </Form>
                           </Col>
                         </Row>
                       </ListGroup.Item>
@@ -154,20 +155,22 @@ function ProductScreen() {
                     <ListGroup.Item className="px-0" style={{ background: "none" }}>
                       <Button
                         onClick={addToCartHandler}
-                        className="btn-block rounded"
+                        className="btn-block rounded tomato text-black py-1 px-2"
                         disabled={product.countInStock == 0}
                         type="button">
-                        Add to Cart <i className="fas fa-Cart"></i>
+                        Add to  <i className="fas fa-cart-plus text-black"></i>
                       </Button>
                     </ListGroup.Item>
                   </ListGroup>
                 </div>
               </Col>
+
               {/*product review section  */}
+
               <Col md={7} lg={12} sm={12} xs={12} xl={12}>
                 <h4>Reviews</h4>
                 {product.reviews.length === 0 && (
-                  <Message variant="info">No Reviews</Message>
+                  <Message variant="info">No Reviews Yet</Message>
                 )}
 
                 <ListGroup variant="flush">
