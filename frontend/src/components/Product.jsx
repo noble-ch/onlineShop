@@ -18,29 +18,31 @@ function Product({ product }) {
 	};
 
 	return (
-		<div
-			id="card"
-			className="my-3 p-3 rounded d-flex flex-column align-items-center  justify-content-center bg-gradient border   ">
+		<div id="card" className="my-3 p-3 rounded d-flex flex-wrap  justify-content-between  bg-gradient  ">
 			{product.countInStock > 0 ? (
-				<Card.Text className="text-success fs-6">
-					In Stock <span className="fas fa-checked"></span>
+				<Card.Text className="text-success fs-6 m-0">
+					In Stock{" "}
+					<span className="fas fa-check text-white bg-success rounded-circle"></span>
 				</Card.Text>
 			) : (
-				<Card.Text className="text-danger fs-6">Out of Stock</Card.Text>
+				<Card.Text className="text-danger fs-6" m-0>
+					Out of Stock{" "}
+					<span className="fas fa-circle-xmark   "></span>
+				</Card.Text>
 			)}
-			<Link to={`/product/${product._id}`}>
-				<Card.Img src={product.image} />
+			<Link className=" ps-1 pe-3" to={`/product/${product._id}`}>
+				<Card.Img  style={{ maxWidth: '200px', maxHeight: '200px' }} src={product.image} />
 			</Link>
 
-			<Card.Body className="  d-flex flex-column align-items-center justify-content-center  ">
-				<Link id="product_name" to={`/product/${product._id}`}>
-					<Card.Title as="div" style={{ color: "black", marginTop: "6px" }}>
-						<strong className="text-black">{product.name}</strong>
+			<Card.Body className="  ">
+				<Link className="text-decoration-none " to={`/product/${product._id}`}>
+					<Card.Title as="div">
+						<strong className="text-black fs-6">{product.name}</strong>
 					</Card.Title>
 				</Link>
 
-				<Card.Text as="div" style={{ color: "darkGray" }}>
-					<div className="my-1">
+				<Card.Text as="div">
+					<div className="my-1 fs-6 ">
 						<Rating
 							value={product.rating}
 							text={`${product.numReviews} reviews`}
@@ -48,17 +50,19 @@ function Product({ product }) {
 						/>
 					</div>
 				</Card.Text>
-				<Card.Text className="text-black" as="h5" style={{ color: "black" }}>
-					{product.price}
-					<span className="text-capitalize ">Birr</span>
-				</Card.Text>
+
 				<Row>
-					<Col className="p-0">
+					<Col>
+						<Card.Text className="text-black fw-bold  mb-0" as="p">
+							{product.price}
+							<span className="text-capitalize ">Birr</span>
+						</Card.Text>
+					</Col>
+					<Col className="p-0  justify-content-end d-flex ">
 						<button
 							hidden={product.countInStock == 0}
 							onClick={addToCartHandler}
-							className=" rounded-2 border-0 tomato text-black  ">
-							{" "}
+							className=" rounded-2 border-0 tomato text-black mx-2">
 							<span className="fas fa-cart-plus">&nbsp;</span>
 						</button>
 					</Col>

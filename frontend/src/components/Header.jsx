@@ -1,11 +1,15 @@
 /* eslint-disable no-unused-vars */
 import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
 import {
 	Navbar,
 	Nav,
 	Container,
 	NavDropdown,
-	Offcanvas
+	Offcanvas,
+	Carousel,
+	Row,
+	Col
 } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import SearchBox from "./SearchBox";
@@ -35,11 +39,63 @@ function Header() {
 
 	return (
 		<header
-			style={{
-				fontFamily: "rocko",
-				// background: "#3f3f798f",
-				height: "3.8rem"
-			}}>
+			style={
+				{
+					// fontFamily: "rocko",
+					// background: "#3f3f798f",
+					// height: "3.8rem"
+				}
+			}>
+			<Navbar
+				fixed="top"
+				style={{ height: "2rem" }}
+				className="bg-black w-100 py-2 text-capitalize d-flex flex-wrap   ">
+				<Container className="d-flex  ">
+					<Carousel
+						prevIcon
+						nextIcon
+						indicators={false}
+						interval={2000}
+						pause="hover"
+						className="py-0 my-0 ">
+						<Carousel.Item key="banner1">
+							<p className="text-white fs-6 ">
+								Visit our showroom in adama address 00
+							</p>
+						</Carousel.Item>{" "}
+						<Carousel.Item key="banner2">
+							<p className="text-white fs-6">
+								Oromia technology and incubation center
+							</p>
+						</Carousel.Item>
+						<Carousel.Item key="banner3">
+							<a href="/" className="text-white text-center fs-6 ">
+								Contact Us
+							</a>
+						</Carousel.Item>
+						<Carousel.Item key="banner4">
+							<p className="text-capitalize fs-6">
+								call Us: +2519-123-456-78 &nbsp;&nbsp;
+							</p>
+						</Carousel.Item>
+						<Carousel.Item key="banner5">
+							<span className="fa-brands fa-instagram fs-4">
+								{" "}
+								&nbsp;&nbsp;&nbsp;
+							</span>
+							<span className="fa-brands fa-facebook fs-4">
+								&nbsp;&nbsp;&nbsp;
+							</span>
+							<span className="fa-brands fa-telegram fs-4">
+								&nbsp;&nbsp;&nbsp;
+							</span>
+							<span className="fa-brands fa-youtube fs-4">
+								&nbsp;&nbsp;&nbsp;
+							</span>
+						</Carousel.Item>
+					</Carousel>
+				</Container>
+			</Navbar>
 			<Container className=" p-0  ">
 				{["md"].map((expand) => (
 					<Navbar
@@ -51,16 +107,14 @@ function Header() {
 						style={{
 							// background: "rgba(0, 0, 0, 1)",
 							backdropFilter: "blur(5px)",
-							marginBottom: "10px"
+							marginTop: "2rem",
+							height: "4rem"
 						}}
-						className=" py-0 bg-white ">
+						className=" bg-white  p-0  shadow bg-body-secondary  ">
 						<Container>
 							<LinkContainer to="/">
-								<Navbar.Brand className="py-3  px-0 mx-0">
-									OticShop
-								</Navbar.Brand>
+								<Navbar.Brand className="px-0 mx-0">OticShop</Navbar.Brand>
 							</LinkContainer>
-
 							<LinkContainer to="/">
 								<Nav.Link>
 									<span
@@ -105,7 +159,6 @@ function Header() {
 								className="rounded-3 my-3 py-0 mx-0 px-0 align-self-end  "
 								aria-controls={`offcanvasNavbar-expand-${expand}`}
 							/>
-
 							<Navbar.Offcanvas
 								className="tomato  "
 								style={{
@@ -234,80 +287,90 @@ function Header() {
 					</Navbar>
 				))}
 
-				<Navbar 
-				variant="light"
-					className="text-center py-0 text-black d-flex justify-content-center bg "
+				<Navbar
+					className="text-center   text-black d-flex justify-content-center bg   "
 					style={{
-						marginTop: "3.8rem",
+						marginTop: "5rem",
 						maxWidth: "100vw",
 						overflowX: "auto",
 						whiteSpace: "nowrap"
 					}}>
-					<Nav className="justify-content-between  w-100  text-dark ">
-						<Nav.Link id="categories"
-							
-							className="text-capitalize "
+					<Nav className="justify-content-between  w-100  text-black ">
+						<Nav.Link
+							id="categories"
+							className="text-capitalize text-black "
 							onClick={getCategory}>
 							<span>Laptops</span>
 						</Nav.Link>
-						<Nav.Link id="categories"
-							className="text-capitalize  categories "
+						<Nav.Link
+							id="categories"
+							className="text-capitalize  categories text-black "
 							onClick={getCategory}>
 							<span>Desktops</span>
 						</Nav.Link>
-						<Nav.Link id="categories"
-							className="text-capitalize  categories"
+						<Nav.Link
+							id="categories"
+							className="text-capitalize text-black categories"
 							onClick={getCategory}>
 							<span>Phones</span>
 						</Nav.Link>
-						<Nav.Link id="categories"
-							className="text-capitalize  categories"
+						<Nav.Link
+							id="categories"
+							className="text-capitalize text-black categories"
 							onClick={getCategory}>
 							<span>Tvs</span>
 						</Nav.Link>
-						<Nav.Link id="categories"
-							className="text-capitalize  categories "
+						<Nav.Link
+							id="categories"
+							className="text-capitalize text-black categories "
 							onClick={getCategory}>
 							<span>watches</span>
 						</Nav.Link>
 
-						<Nav.Link id="categories"
-							className="text-capitalize  categories"
+						<Nav.Link
+							id="categories"
+							className="text-capitalize text-black categories"
 							onClick={getCategory}>
 							<span>Furnitures</span>
 						</Nav.Link>
 
-						<Nav.Link id="categories"
-							className="text-capitalize  categories"
+						<Nav.Link
+							id="categories"
+							className="text-capitalize text-black  categories"
 							onClick={getCategory}>
 							<span>Gamming</span>
 						</Nav.Link>
 
-						<Nav.Link id="categories"
-							className="text-capitalize  categories"
+						<Nav.Link
+							id="categories"
+							className="text-capitalize text-black categories"
 							onClick={getCategory}>
 							<span>sports</span>
 						</Nav.Link>
 
-						<Nav.Link id="categories"
-							className="text-capitalize  categories"
+						<Nav.Link
+							id="categories"
+							className="text-capitalize text-black categories"
 							onClick={getCategory}>
 							<span>Cameras</span>
 						</Nav.Link>
 
-						<Nav.Link id="categories"
-							className="text-capitalize  categories"
+						<Nav.Link
+							id="categories"
+							className="text-capitalize text-black categories"
 							onClick={getCategory}>
 							<span>music</span>
 						</Nav.Link>
 
-						<Nav.Link id="categories"
-							className="text-capitalize  categories"
+						<Nav.Link
+							id="categories"
+							className="text-capitalize text-black categories"
 							onClick={getCategory}>
 							<span>Pc Parts</span>
 						</Nav.Link>
-						<Nav.Link id="categories"
-							className="text-capitalize  categories"
+						<Nav.Link
+							id="categories"
+							className="text-capitalize text-black  categories"
 							onClick={getCategory}>
 							<span>Gadgets</span>
 						</Nav.Link>

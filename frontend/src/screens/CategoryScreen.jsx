@@ -29,8 +29,8 @@ function CategoryScreen() {
 			) : error ? (
 				<Message variant="danger">{error}</Message>
 			) : (
-				<Container className="  rounded-4 pb-xl-5 ">
-					<Container className="laptops">
+				<Container className="  rounded-4 ">
+					<Container >
 						<Row className="  py-4">
                         {loading ? (
 							<Loader />
@@ -47,7 +47,7 @@ function CategoryScreen() {
 											</Col>
 										))}
 								</Row>
-								<div className=" d-flex justify-content-center "></div>
+								
 							</div>
 						)}
 						</Row>

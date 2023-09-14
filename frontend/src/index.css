@@ -25,7 +25,7 @@ body {
 }
 
 main {
-	font-family: "Franklin Gothic Medium", "Arial Narrow", Arial;
+	font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	position: relative;
 	min-height: 80vh;
 	margin: 0 auto;
@@ -33,7 +33,7 @@ main {
 	/* background: linear-gradient(#3f3f798f, #2b11473a, #14364696); */
 	/* background:#f7f1ea; */
 	/* background: #e7e7e7; */
-	/* background: linear-gradient(#b9b9b9,rgba(0, 0, 0, 0)); */
+	/* background: linear-gradient(#f1f1f1,rgba(0, 0, 0, 0)); */
 }
 
 #products-icon {
@@ -108,7 +108,7 @@ main {
 	color: #ffffff;
 	color: black;
 }
-#search-button:hover {
+/* #search-button:hover {
 	border-bottom: 2px solid#3c1b68;
 	border-right: none;
 	border-top: none;
@@ -118,7 +118,7 @@ main {
 		rgb(19, 34, 116),
 		rgba(255, 255, 255, 0)
 	);
-}
+} */
 #search-field::placeholder {
 	color: black;
 }
@@ -166,11 +166,7 @@ main {
 #card:hover {
 	transform: scale(1.05);
 }
-#product_name {
-	text-decoration: none;
-	font-weight: bolder;
-	text-align: center;
-}
+
 .circle {
 	margin: 10px;
 	width: 4rem;
@@ -217,10 +213,11 @@ main {
 }
 
 #categories:focus {
-	background: #b0b7cf;
+	background: #cdd0db;
 	border-radius: 1rem;
 }
 #categories {
-	background: #e9eaee;
+	background: #f1f2f7;
 	border-radius: 1rem;
+	padding: 2px 10px;
 }

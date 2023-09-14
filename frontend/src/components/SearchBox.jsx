@@ -4,10 +4,14 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 function SearchBox() {
   const [keyword, setKeyword] = useState("");
+  const [isSearchVisible, setSearchVisible] = useState(false);
 
   let navigate = useNavigate();
   const location = useLocation();
 
+  const toggleSearch = () => {
+    setSearchVisible(!isSearchVisible);
+  };
   const submitHandler = (e) => {
     e.preventDefault();
     if (keyword) {
@@ -29,7 +33,7 @@ function SearchBox() {
         style={{ fontSize: "14px" }} 
       />
 
-      <Button id="search-button" type="submit">
+      <Button onClick={toggleSearch}id="search-button" type="submit">
         <i className="fas fa-search"></i>
       </Button>
     </Form>

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, Image, Container, Button } from "react-bootstrap";
 import Product from "../components/Product";
 import AboutUs from "../components/AboutUs";
+import Banner from "../components/Banner";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import ProductCarousel from "../components/ProductCarousel";
@@ -12,6 +13,7 @@ import { listUsers } from "../actions/userActions";
 
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import SearchBox from "../components/SearchBox";
+
 import { Parallax } from "react-parallax";
 import Woman from "../components/woman.jpg";
 import Woman2 from "../components/woman2.jpg";
@@ -35,8 +37,7 @@ function HomeScreen() {
 
 	return (
 		<div>
-			{/* <div className="home-back"> </div> */}
-			{/* <Parallax strength={-300} bgImage={Woman}> */}
+		
 			<Container>
 				<Container>
 					<Container className="mt-xl-5 " fluid="true">
@@ -69,22 +70,24 @@ function HomeScreen() {
 											sm={2}
 											xs={3}
 											lg={2}
-											className="ps-4 d-none d-sm-block ">
+											className="ps-4  d-none d-sm-block ">
 											<h2 className="text-black">10 +</h2>
 											<h5 className="text-black">Costumers</h5>
 										</Col>
 									</Row>
-
-									<SearchBox />
+									<Col className="mt-sm-0  mt-xl-3 ">	<SearchBox /></Col>
+								
 								</Col>
-								<Col xs={12} sm={12} lg={6} md={6}>
+								<Col  xs={12} sm={12} lg={6} md={6}>
 									{<ProductCarousel />}
+									<h1 className="text-center  fs-4">top Rated</h1>
 								</Col>
 							</Row>
 						</Col>
 					</Container>
 				</Container>
-				<div style={{ height: "3.5rem" }}></div> {/*separater */}
+				<Banner />
+				<div style={{ height: "3.5rem" }}></div>
 			</Container>
 
 			{loading ? (
@@ -92,14 +95,14 @@ function HomeScreen() {
 			) : error ? (
 				<Message variant="danger">{error}</Message>
 			) : (
-				<Container className="    rounded-4 pb-xl-5 ">
-					<Container className="laptops">
-						<Row className="  py-4">
+				<Container className="   rounded-4 pb-xl-5 ">
+					<Container>
+						<Row className=" py-4">
 							<Col lg={3} md={12} sm={12} xs={12}>
-								<h3 className="text-dark ">Latest Apple</h3>
+								<h3 className="text-dark ">Latest Samsungs`</h3>
 								<p className="text-dark">
-									Elevate your Shopping Experience: Unveiling the Best Apple Products with
-									Ease.
+									Elevate your Shopping Experience: Unveiling the Best Samsung
+									Products with Ease.
 								</p>
 								<Button
 									variant="primary"
@@ -110,26 +113,31 @@ function HomeScreen() {
 								</Button>
 							</Col>
 
-							{products.filter((product) => product.brand === "Apple")
+							{products
+								.filter((product) => product.brand === "Samsung")
 								.slice(0, 4)
 								.map((product) => (
 									<Col
 										id="card"
-										className="  px-4 "
+										className="px-0  "
 										key={product._id}
 										lg
 										md
 										sm
 										xs>
-										<Link id="product_name" to={`/product/${product._id}`}>
+										<Link
+											className="text-decoration-none "
+											to={`/product/${product._id}`}>
 											<Image
-												className="my-3 rounded-3 "
+												className="my-0 py-0"
 												src={product.image}
 												alt={product.name}
 												fluid
 											/>
-											<p className="text-black">{product.name}</p>
-											<p className="text-black-50 ">{product.price} (Birr)</p>
+											<p className="text-black fs-6 fw-bold  m-0 ">
+												{product.name}
+											</p>
+											<p className="text-black fs-6">{product.price} (Birr)</p>
 										</Link>
 									</Col>
 								))}
@@ -137,43 +145,103 @@ function HomeScreen() {
 					</Container>
 				</Container>
 			)}
-			{/* </Parallax> */}
-			{/* <Parallax strength={400} blur={{ min: -5, max: 15 }} bgImage={Woman2}> */}
-			<div
-				style={{ background: "#111111" }}
-				className="hello "
-				// style={{
-				// 	background: "rgba(32, 35, 47, 0.3)",
-				// 	backdropFilter: "blur(10px)"
-				// }}
-			>
-				<div style={{ height: "3.5rem" }}></div> {/*separater */}
-				<AboutUs />
-			</div>
-			{/* </Parallax> */}
-			{/*separater */}
-			{/* <Container fluid className="clasic"></Container> */}
+
 			<div style={{ height: "3rem" }}></div>
-			<Container>
-				{/* <Container>
-					<img
-						src="/Ellipse 7.svg"
-						alt="arrow"
-						className="ml-2   "
-						style={{ position: "absolute", zIndex: "-1" }}
-					/>
-					<img
-						src="/Ellipse 7.svg"
-						alt="arrow"
-						className="ml-2  arrows    "
-						style={{ position: "absolute", zIndex: "-1" }}
-					/>
-				</Container> */}
-				<div
-					className="text-center  "
-					// style={{ color: "white", zIndex: "2", position: "relative" }}
-				>
-					<h3 className="text-dark">Featured Products</h3>
+			{loading ? (
+				<Loader />
+			) : error ? (
+				<Message variant="danger">{error}</Message>
+			) : (
+				<Container className=" rounded-4 pb-xl-5 ">
+					<Container>
+						<Row className=" py-4">
+							<Col lg={3} md={12} sm={12} xs={12}>
+								<div
+									className="ml-2 mt-3"
+									style={{
+										backgroundImage: `url('./Banners/msiBanner.jpg')`,
+										backgroundSize: "cover",
+										backgroundRepeat: "no-repeat",
+										backgroundPosition: "center",
+
+										padding: "40px",
+
+										color: "white"
+									}}>
+									<div style={{ height: "2rem" }}></div>
+									<h3 className="text-white">MSI Laptops</h3>
+									<Link
+										t
+										variant="light"
+										className="rounded-4 my-1 text-white"
+										onClick={handleClick}>
+										Find more <i className="px-1 fas fa-arrow-right"></i>
+									</Link>
+									<div style={{ height: "6rem" }}></div>
+								</div>
+							</Col>
+
+							{products
+								.filter((product) => product.brand === "Msi")
+								.map((product) => (
+									<Col key={product._id} xs sm md lg xl>
+										<Product product={product} />
+									</Col>
+								))}
+						</Row>
+					</Container>
+				</Container>
+			)}
+			
+			<div style={{ height: "3rem" }}></div>
+			{loading ? (
+				<Loader />
+			) : error ? (
+				<Message variant="danger">{error}</Message>
+			) : (
+				<Container className="   rounded-4 pb-xl-5 ">
+					<Container>
+						<Row className=" py-4">
+							<Col lg={3} md={12} sm={12} xs={12}>
+								<div
+									className="ml-2 mt-3"
+									style={{
+										backgroundImage: `url('./Banners/msidesktop.jpg')`,
+										backgroundSize: "cover",
+										backgroundRepeat: "no-repeat",
+										backgroundPosition: "center",
+
+										padding: "40px",
+
+										color: "white"
+									}}>
+									<div style={{ height: "2rem" }}></div>
+									<h3 className="text-white">MSI Desktops</h3>
+									<Link
+										t
+										variant="light"
+										className="rounded-4 my-1 text-white"
+										onClick={handleClick}>
+										Find more <i className="px-1 fas fa-arrow-right"></i>
+									</Link>
+									<div style={{ height: "6rem" }}></div>
+								</div>
+							</Col>
+
+							{products
+								.filter((product) => product.brand === "MsiDesktop")
+								.map((product) => (
+									<Col key={product._id} xs sm md lg xl>
+										<Product product={product} />
+									</Col>
+								))}
+						</Row>
+					</Container>
+				</Container>
+			)}
+			<Container className="shadow mt-2 py-3 bg-body-tertiary ">
+				<div className="text-center  ">
+					<h3 className="text-dark">Latest Products</h3>
 					<p className="text-dark">Find what you are looking for</p>
 				</div>
 				<div style={{ height: "3rem" }}></div>
@@ -192,7 +260,7 @@ function HomeScreen() {
 						</Row>
 						<div className=" d-flex justify-content-center ">
 							<Button
-								variant="light"
+								variant="dark"
 								className="rounded-4 d-block w-75 "
 								onClick={handleClick}>
 								More products
@@ -202,7 +270,11 @@ function HomeScreen() {
 					</div>
 				)}
 			</Container>
-			<div style={{ height: "5rem" }}></div>
+			<div className="bg-black">
+				<div style={{ height: "3.5rem" }}></div> {/*separater */}
+				<AboutUs />
+			</div>
+			{/* <div style={{ height: "5rem" }}></div> */}
 		</div>
 	);
 }

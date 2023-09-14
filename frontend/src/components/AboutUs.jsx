@@ -1,18 +1,7 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { Row, Col } from "react-bootstrap";
-import { listProducts } from "../actions/productActions";
-import { useLocation } from "react-router-dom";
 
 function HomeScreen() {
-	const location = useLocation();
-	const dispatch = useDispatch();
 
-	let keyword = location.search;
-
-	useEffect(() => {
-		dispatch(listProducts(keyword));
-	}, [dispatch, keyword]);
 
 	return (
 		<div>
