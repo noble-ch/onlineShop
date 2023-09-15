@@ -47,3 +47,9 @@
 		padding-top: 100px;
 	}
 }
+
+@media (max-width: 576px) {
+	.horizontal-scroll {
+		flex-wrap: nowrap;
+	}
+}

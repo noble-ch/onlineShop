@@ -13,35 +13,11 @@
 	color: whitesmoke;
 }
 
-body::-webkit-scrollbar {
-	display: none;
-}
+
 
 /***************text font styles and size *******************/
 
-h1 {
-	font-family: "rockobold", "Franklin Gothic Medium", "Arial Narrow", Arial,
-		sans-serif;
-}
 
-h2 {
-	font-family: "rocko", "Franklin Gothic Medium", "Arial Narrow", Arial,
-		sans-serif;
-}
-
-h3 {
-	font-family: "rocko", "Franklin Gothic Medium", "Arial Narrow", Arial,
-		sans-serif;
-}
-h4 {
-	font-family: "rocko", "Franklin Gothic Medium", "Arial Narrow", Arial,
-		sans-serif;
-	font-size: 10px;
-}
-
-p {
-	font-size: 16px;
-}
 
 /*************** google translate *******************/
 
@@ -72,7 +48,7 @@ p {
 }
 .VIpgJd-ZVi9od-xl07Ob-lTBxed {
 	text-decoration: none;
-	color: #dadada !important;
+	color: #000000 !important;
 	white-space: nowrap;
 	margin-left: 4px;
 	margin-right: 4px;
@@ -108,4 +84,26 @@ p {
 	background: #ffcb74;
 }
 
+
+::-webkit-scrollbar {
+	width: 6px; 
+	height: 5px; 
+  }
+  
+  /* Customize the scrollbar track (the background) */
+  ::-webkit-scrollbar-track {
+	background: #f1f1f1; /* Color of the track */
+	border-radius: 4px; /* Rounded corners of the track */
+  }
+  
+  /* Customize the scrollbar thumb (the draggable part) */
+  ::-webkit-scrollbar-thumb {
+	background: #a19e9e; /* Color of the thumb */
+	border-radius: 4px; /* Rounded corners of the thumb */
+  }
+  
+  /* Customize the scrollbar thumb when hovering */
+  ::-webkit-scrollbar-thumb:hover {
+	background: #555; /* Color of the thumb when hovering */
+  }
 

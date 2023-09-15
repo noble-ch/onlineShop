@@ -7,14 +7,14 @@ import {
 	Container,
 	NavDropdown,
 	Offcanvas,
-	Carousel,
-	Row,
-	Col
+	Carousel
 } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import SearchBox from "./SearchBox";
 import { logout } from "../actions/userActions";
 import { useNavigate } from "react-router-dom";
+
+import Categories from "../components/Categories";
 import GoogleTranslateComponent from "../components/GoogleTranslateComponent";
 
 function Header() {
@@ -23,12 +23,6 @@ function Header() {
 	const { userInfo } = userLogin;
 	const cart = useSelector((state) => state.cart);
 	const { cartItems } = cart;
-
-	const getCategory = (event) => {
-		const category = event.target.textContent;
-		navigate(`/categories/${category}`);
-		console.log(category);
-	};
 
 	const dispatch = useDispatch();
 
@@ -110,7 +104,7 @@ function Header() {
 							marginTop: "2rem",
 							height: "4rem"
 						}}
-						className=" bg-white  p-0  shadow bg-body-secondary  ">
+						className=" bg-white  p-0  bg-body-secondary  ">
 						<Container>
 							<LinkContainer to="/">
 								<Navbar.Brand className="px-0 mx-0">OticShop</Navbar.Brand>
@@ -286,96 +280,7 @@ function Header() {
 						</Container>
 					</Navbar>
 				))}
-
-				<Navbar
-					className="text-center   text-black d-flex justify-content-center bg   "
-					style={{
-						marginTop: "5rem",
-						maxWidth: "100vw",
-						overflowX: "auto",
-						whiteSpace: "nowrap"
-					}}>
-					<Nav className="justify-content-between  w-100  text-black ">
-						<Nav.Link
-							id="categories"
-							className="text-capitalize text-black "
-							onClick={getCategory}>
-							<span>Laptops</span>
-						</Nav.Link>
-						<Nav.Link
-							id="categories"
-							className="text-capitalize  categories text-black "
-							onClick={getCategory}>
-							<span>Desktops</span>
-						</Nav.Link>
-						<Nav.Link
-							id="categories"
-							className="text-capitalize text-black categories"
-							onClick={getCategory}>
-							<span>Phones</span>
-						</Nav.Link>
-						<Nav.Link
-							id="categories"
-							className="text-capitalize text-black categories"
-							onClick={getCategory}>
-							<span>Tvs</span>
-						</Nav.Link>
-						<Nav.Link
-							id="categories"
-							className="text-capitalize text-black categories "
-							onClick={getCategory}>
-							<span>watches</span>
-						</Nav.Link>
-
-						<Nav.Link
-							id="categories"
-							className="text-capitalize text-black categories"
-							onClick={getCategory}>
-							<span>Furnitures</span>
-						</Nav.Link>
-
-						<Nav.Link
-							id="categories"
-							className="text-capitalize text-black  categories"
-							onClick={getCategory}>
-							<span>Gamming</span>
-						</Nav.Link>
-
-						<Nav.Link
-							id="categories"
-							className="text-capitalize text-black categories"
-							onClick={getCategory}>
-							<span>sports</span>
-						</Nav.Link>
-
-						<Nav.Link
-							id="categories"
-							className="text-capitalize text-black categories"
-							onClick={getCategory}>
-							<span>Cameras</span>
-						</Nav.Link>
-
-						<Nav.Link
-							id="categories"
-							className="text-capitalize text-black categories"
-							onClick={getCategory}>
-							<span>music</span>
-						</Nav.Link>
-
-						<Nav.Link
-							id="categories"
-							className="text-capitalize text-black categories"
-							onClick={getCategory}>
-							<span>Pc Parts</span>
-						</Nav.Link>
-						<Nav.Link
-							id="categories"
-							className="text-capitalize text-black  categories"
-							onClick={getCategory}>
-							<span>Gadgets</span>
-						</Nav.Link>
-					</Nav>
-				</Navbar>
+				<Categories/>
 			</Container>
 		</header>
 	);

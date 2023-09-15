@@ -2,14 +2,14 @@ import { Carousel, Image } from "react-bootstrap";
 
 function Banner() {
 	return (
-		<div>
-			<Carousel  pause="hover" className="py-0 my-0">
+		<div className="my-2" >
+			<Carousel  fade pause="hover" className="py-0 my-0">
 				<Carousel.Item key="banner2">
 					<Image
 						fluid 
 						src="./Banners/msi.png"
 						alt="Banner 2"
-						className="  h-auto  py-0 my-0 rounded-0"
+						className="  h-auto w-100  py-0 my-0 rounded-0"
 					/>
 				</Carousel.Item>
 				<Carousel.Item key="banner5">
@@ -17,7 +17,7 @@ function Banner() {
 						fluid
 						src="./Banners/iPhone-15-Banner.webp"
 						alt="Banner 5"
-						className=" py-0 my-0  h-auto rounded-0"
+						className=" py-0 my-0 w-100  h-auto rounded-0"
 					/>
 				</Carousel.Item>
 				<Carousel.Item key="banner3">
@@ -25,26 +25,17 @@ function Banner() {
 						fluid
 						src="./Banners/samsung.webp"
 						alt="Banner 3"
-						className=" py-0 my-0  h-auto rounded-0"
+						className=" py-0 my-0 w-100  h-auto rounded-0"
 					/>
 				</Carousel.Item>
-				{/* <Carousel.Item key="banner1">
+				<Carousel.Item key="banner3">
 					<Image
 						fluid
-						src="./Banners/header-bg.jpg"
-						alt="Banner 1"
-						className=" py-0 my-0 rounded-0 "
+						src="./Banners/s23banner.jpg"
+						alt="Banner 3"
+						className=" py-0 my-0 w-100  h-auto rounded-0"
 					/>
 				</Carousel.Item>
-
-				<Carousel.Item key="banner4">
-					<Image 
-						fluid
-						src="./Banners/samsung2.webp"
-						alt="Banner 4"
-						className="py-0 my-0  rounded-0"
-					/>
-				</Carousel.Item> */}
 			</Carousel>
 		</div>
 	);

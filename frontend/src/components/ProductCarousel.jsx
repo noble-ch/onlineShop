@@ -22,7 +22,7 @@ function ProductCarousel() {
 		<Message variant="danger">{error}</Message>
 	) : (
 		<div>
-			<Carousel id="carousel" interval={1500} pause="hover">
+			<Carousel mb-0 id="carousel" interval={1500} pause="hover">
 				{products.map((product) => (
 					<Carousel.Item key={product._id}>
 						<Link to={`/product/${product._id}`}>
@@ -31,7 +31,7 @@ function ProductCarousel() {
 								src={product.image}
 								alt={product.name}
 								fluid
-								style={{ maxWidth: '250px', maxHeight: '220px' }} 
+								style={{ maxWidth: '280px', maxHeight: '240px' }} 
 							/>
 							<Carousel.Caption className="carousel.caption">
 								<h4>

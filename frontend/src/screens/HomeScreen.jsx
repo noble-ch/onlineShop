@@ -7,16 +7,14 @@ import AboutUs from "../components/AboutUs";
 import Banner from "../components/Banner";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
+import Brands from "../components/Brands";
 import ProductCarousel from "../components/ProductCarousel";
+import Advertise1 from "../components/Advertise1";
 import { listProducts } from "../actions/productActions";
 import { listUsers } from "../actions/userActions";
 
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import SearchBox from "../components/SearchBox";
-
-import { Parallax } from "react-parallax";
-import Woman from "../components/woman.jpg";
-import Woman2 from "../components/woman2.jpg";
 
 function HomeScreen() {
 	const location = useLocation();
@@ -37,12 +35,15 @@ function HomeScreen() {
 
 	return (
 		<div>
-		
-			<Container>
+			<Container className="mb-4">
 				<Container>
-					<Container className="mt-xl-5 " fluid="true">
+					<Banner />
+					<Container className="mt-xl-5   " fluid>
 						<Col sm lg xs md xl>
 							<Row>
+								<Col xs={12} sm={12} lg={6} md={6}>
+									{<ProductCarousel />}
+								</Col>
 								<Col className="mt-xl-3 mt-md-3 " sm lg xs md xl>
 									<h1 className="text-dark moto">
 										Buy Any Thing From Any Where
@@ -75,21 +76,80 @@ function HomeScreen() {
 											<h5 className="text-black">Costumers</h5>
 										</Col>
 									</Row>
-									<Col className="mt-sm-0  mt-xl-3 ">	<SearchBox /></Col>
-								
-								</Col>
-								<Col  xs={12} sm={12} lg={6} md={6}>
-									{<ProductCarousel />}
-									<h1 className="text-center  fs-4">top Rated</h1>
+									<Col className="mt-sm-0  mt-xl-3 ">
+										<SearchBox />
+									</Col>
 								</Col>
 							</Row>
 						</Col>
 					</Container>
 				</Container>
-				<Banner />
-				<div style={{ height: "3.5rem" }}></div>
 			</Container>
+			<Brands />
+			<Container fluid className=" mt-2 py-3 bg-body-tertiary  ">
+				<Container>
+					<div className="text-center  ">
+						<h3 className="text-dark">New Products</h3>
+						<p className="text-dark">Find what you are looking for</p>
+					</div>
+					<div style={{ height: "3rem" }}></div>
 
+					{loading ? (
+						<Loader />
+					) : error ? (
+						<Message variant="danger">{error}</Message>
+					) : (
+						<div>
+							<Row>
+								{products.slice(4, 8).map((product) => (
+									<Col key={product._id} xs={6} sm md={6} lg xl>
+										<Product product={product} />
+									</Col>
+								))}
+							</Row>
+							<div className=" d-flex justify-content-center ">
+								<Button
+									variant="dark"
+									className="rounded-4 d-block w-75 "
+									onClick={handleClick}>
+									More products
+									<i className=" px-1 fas fa-arrow-right"></i>
+								</Button>
+							</div>
+						</div>
+					)}
+				</Container>
+			</Container>
+			<Container fluid className="my-4  py-5">
+				<div className="horizontal-scroll text-center ">
+					<div className=" horizontal-scroll">
+						<Col>
+							<img src="./Banners/brand/br1.png" alt="chapa" />{" "}
+						</Col>
+						<Col>
+							<img src="./Banners/brand/br2.png" alt="chapa" />{" "}
+						</Col>
+						<Col>
+							<img src="./Banners/brand/br3.png" alt="chapa" />{" "}
+						</Col>
+						<Col>
+							<img src="./Banners/brand/br4.png" alt="chapa" />{" "}
+						</Col>
+						<Col>
+							<img src="./Banners/brand/br5.png" alt="chapa" />{" "}
+						</Col>
+						<Col>
+							<img src="./Banners/brand/br6.png" alt="chapa" />{" "}
+						</Col>
+						<Col>
+							<img src="./Banners/brand/br7.png" alt="chapa" />{" "}
+						</Col>
+						<Col>
+							<img src="./Banners/brand/br1.png" alt="chapa" />{" "}
+						</Col>
+					</div>
+				</div>
+			</Container>
 			{loading ? (
 				<Loader />
 			) : error ? (
@@ -119,7 +179,7 @@ function HomeScreen() {
 								.map((product) => (
 									<Col
 										id="card"
-										className="px-0  "
+										className="px-3  "
 										key={product._id}
 										lg
 										md
@@ -146,15 +206,14 @@ function HomeScreen() {
 				</Container>
 			)}
 
-			<div style={{ height: "3rem" }}></div>
 			{loading ? (
 				<Loader />
 			) : error ? (
 				<Message variant="danger">{error}</Message>
 			) : (
-				<Container className=" rounded-4 pb-xl-5 ">
+				<Container className="rounded-4 py-0">
 					<Container>
-						<Row className=" py-4">
+						<Row className=" ">
 							<Col lg={3} md={12} sm={12} xs={12}>
 								<div
 									className="ml-2 mt-3"
@@ -163,9 +222,7 @@ function HomeScreen() {
 										backgroundSize: "cover",
 										backgroundRepeat: "no-repeat",
 										backgroundPosition: "center",
-
 										padding: "40px",
-
 										color: "white"
 									}}>
 									<div style={{ height: "2rem" }}></div>
@@ -193,15 +250,14 @@ function HomeScreen() {
 				</Container>
 			)}
 			
-			<div style={{ height: "3rem" }}></div>
 			{loading ? (
 				<Loader />
 			) : error ? (
 				<Message variant="danger">{error}</Message>
 			) : (
-				<Container className="   rounded-4 pb-xl-5 ">
+				<Container>
 					<Container>
-						<Row className=" py-4">
+						<Row>
 							<Col lg={3} md={12} sm={12} xs={12}>
 								<div
 									className="ml-2 mt-3"
@@ -210,9 +266,7 @@ function HomeScreen() {
 										backgroundSize: "cover",
 										backgroundRepeat: "no-repeat",
 										backgroundPosition: "center",
-
 										padding: "40px",
-
 										color: "white"
 									}}>
 									<div style={{ height: "2rem" }}></div>
@@ -239,39 +293,9 @@ function HomeScreen() {
 					</Container>
 				</Container>
 			)}
-			<Container className="shadow mt-2 py-3 bg-body-tertiary ">
-				<div className="text-center  ">
-					<h3 className="text-dark">Latest Products</h3>
-					<p className="text-dark">Find what you are looking for</p>
-				</div>
-				<div style={{ height: "3rem" }}></div>
-				{loading ? (
-					<Loader />
-				) : error ? (
-					<Message variant="danger">{error}</Message>
-				) : (
-					<div>
-						<Row>
-							{products.slice(4, 8).map((product) => (
-								<Col key={product._id} xs={6} sm md={6} lg xl>
-									<Product product={product} />
-								</Col>
-							))}
-						</Row>
-						<div className=" d-flex justify-content-center ">
-							<Button
-								variant="dark"
-								className="rounded-4 d-block w-75 "
-								onClick={handleClick}>
-								More products
-								<i className=" px-1 fas fa-arrow-right"></i>
-							</Button>
-						</div>
-					</div>
-				)}
-			</Container>
-			<div className="bg-black">
-				<div style={{ height: "3.5rem" }}></div> {/*separater */}
+<Advertise1 />
+			<div className="bg-body-secondary ">
+				<div style={{ height: "1rem" }}></div> {/*separater */}
 				<AboutUs />
 			</div>
 			{/* <div style={{ height: "5rem" }}></div> */}
