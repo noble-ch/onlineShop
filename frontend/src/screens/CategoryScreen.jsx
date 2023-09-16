@@ -1,13 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, Container } from "react-bootstrap";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import Product from "../components/Product";
+import PriceFilter from "../components/PriceFilter";
 
 import { listProducts } from "../actions/productActions";
 import { listUsers } from "../actions/userActions";
-import { useLocation,  useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 function CategoryScreen() {
 	const { categoryName } = useParams();
@@ -17,6 +18,14 @@ function CategoryScreen() {
 	const { error, loading, products } = productList;
 	let keyword = location.search;
 
+	const [filteredProducts, setFilteredProducts] = useState(products);
+	const filterProductsByPrice = (min, max) => {
+		const filtered = products.filter(
+			(product) => product.price >= min && product.price <= max
+		);
+		setFilteredProducts(filtered);
+	};
+
 	useEffect(() => {
 		dispatch(listProducts(keyword, categoryName));
 		dispatch(listUsers);
@@ -24,34 +33,33 @@ function CategoryScreen() {
 
 	return (
 		<div>
+			<PriceFilter filterProducts={filterProductsByPrice} />
 			{loading ? (
 				<Loader />
 			) : error ? (
 				<Message variant="danger">{error}</Message>
 			) : (
 				<Container className="  rounded-4 ">
-					<Container >
+					<Container>
 						<Row className="  py-4">
-                        {loading ? (
-							<Loader />
-						) : error ? (
-							<Message variant="danger">{error}</Message>
-						) : (
-							<div>
-								<Row>
-									{products
-										.filter((product) => product.category === categoryName)
-										.map((product) => (
-											<Col key={product._id} xs sm md  lg xl>
-												<Product product={product} />
-											</Col>
-										))}
-								</Row>
-								
-							</div>
-						)}
+							{loading ? (
+								<Loader />
+							) : error ? (
+								<Message variant="danger">{error}</Message>
+							) : (
+								<div>
+									<Row>
+										{filteredProducts
+											.filter((product) => product.category === categoryName)
+											.map((product) => (
+												<Col key={product._id} xs sm md lg xl>
+													<Product product={product} />
+												</Col>
+											))}
+									</Row>
+								</div>
+							)}
 						</Row>
-					
 					</Container>
 				</Container>
 			)}

@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, Image, Container, Button } from "react-bootstrap";
 import Product from "../components/Product";
@@ -15,6 +15,7 @@ import { listUsers } from "../actions/userActions";
 
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import SearchBox from "../components/SearchBox";
+import StoreReview from "../components/StoreReview";
 
 function HomeScreen() {
 	const location = useLocation();
@@ -23,6 +24,7 @@ function HomeScreen() {
 	const { error, loading, products } = productList;
 	const navigate = useNavigate();
 	let keyword = location.search;
+
 	const handleClick = () => {
 		navigate("/products");
 		window.scrollTo(0, 0);
@@ -38,7 +40,8 @@ function HomeScreen() {
 			<Container className="mb-4">
 				<Container>
 					<Banner />
-					<Container className="mt-xl-5   " fluid>
+
+					<Container className="mt-xl-2   " fluid>
 						<Col sm lg xs md xl>
 							<Row>
 								<Col xs={12} sm={12} lg={6} md={6}>
@@ -86,7 +89,7 @@ function HomeScreen() {
 				</Container>
 			</Container>
 			<Brands />
-			<Container fluid className=" mt-2 py-3 bg-body-tertiary  ">
+			<Container fluid className=" mt-2 py-3   " style={{ background: "#F5F7FF" }}>
 				<Container>
 					<div className="text-center  ">
 						<h3 className="text-dark">New Products</h3>
@@ -107,10 +110,10 @@ function HomeScreen() {
 									</Col>
 								))}
 							</Row>
-							<div className=" d-flex justify-content-center ">
+							<div  className=" d-flex  justify-content-center ">
 								<Button
-									variant="dark"
-									className="rounded-4 d-block w-75 "
+									
+									className="rounded-4 my-2 py-1 d-block w-75  text-black bg-transparent border-3 "
 									onClick={handleClick}>
 									More products
 									<i className=" px-1 fas fa-arrow-right"></i>
@@ -157,16 +160,16 @@ function HomeScreen() {
 			) : (
 				<Container className="   rounded-4 pb-xl-5 ">
 					<Container>
-						<Row className=" py-4">
+						<Row className=" py-2">
 							<Col lg={3} md={12} sm={12} xs={12}>
-								<h3 className="text-dark ">Latest Samsungs`</h3>
+								<h3 className="text-dark ">Latest Samsungs</h3>
 								<p className="text-dark">
 									Elevate your Shopping Experience: Unveiling the Best Samsung
 									Products with Ease.
 								</p>
 								<Button
 									variant="primary"
-									className="rounded-4 my-1"
+									className="rounded-4 my-2 py-1 tomato text-black"
 									onClick={handleClick}>
 									Find more
 									<i className=" px-1 fas fa-arrow-right"></i>
@@ -223,9 +226,10 @@ function HomeScreen() {
 										backgroundRepeat: "no-repeat",
 										backgroundPosition: "center",
 										padding: "40px",
-										color: "white"
+										color: "white",
+										height:'100%'
 									}}>
-									<div style={{ height: "2rem" }}></div>
+									
 									<h3 className="text-white">MSI Laptops</h3>
 									<Link
 										t
@@ -234,14 +238,14 @@ function HomeScreen() {
 										onClick={handleClick}>
 										Find more <i className="px-1 fas fa-arrow-right"></i>
 									</Link>
-									<div style={{ height: "6rem" }}></div>
+									
 								</div>
 							</Col>
 
 							{products
 								.filter((product) => product.brand === "Msi")
 								.map((product) => (
-									<Col key={product._id} xs sm md lg xl>
+									<Col className="my-3" key={product._id} xs sm md lg xl>
 										<Product product={product} />
 									</Col>
 								))}
@@ -249,7 +253,9 @@ function HomeScreen() {
 					</Container>
 				</Container>
 			)}
-			
+			<Container fluid className="my-3 p-3 d-flex justify-content-around ">
+				<img src="./Banners/smallmsi.png" alt="chapa" />{" "}
+			</Container>
 			{loading ? (
 				<Loader />
 			) : error ? (
@@ -267,9 +273,10 @@ function HomeScreen() {
 										backgroundRepeat: "no-repeat",
 										backgroundPosition: "center",
 										padding: "40px",
-										color: "white"
+										color: "white",
+										height:'100%'
 									}}>
-									<div style={{ height: "2rem" }}></div>
+									
 									<h3 className="text-white">MSI Desktops</h3>
 									<Link
 										t
@@ -278,14 +285,13 @@ function HomeScreen() {
 										onClick={handleClick}>
 										Find more <i className="px-1 fas fa-arrow-right"></i>
 									</Link>
-									<div style={{ height: "6rem" }}></div>
 								</div>
 							</Col>
 
 							{products
 								.filter((product) => product.brand === "MsiDesktop")
 								.map((product) => (
-									<Col key={product._id} xs sm md lg xl>
+									<Col className="my-3" key={product._id} xs sm md lg xl>
 										<Product product={product} />
 									</Col>
 								))}
@@ -293,9 +299,11 @@ function HomeScreen() {
 					</Container>
 				</Container>
 			)}
-<Advertise1 />
+			<Advertise1 />
+			<StoreReview />
 			<div className="bg-body-secondary ">
 				<div style={{ height: "1rem" }}></div> {/*separater */}
+				
 				<AboutUs />
 			</div>
 			{/* <div style={{ height: "5rem" }}></div> */}

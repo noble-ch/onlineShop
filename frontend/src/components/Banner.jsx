@@ -3,7 +3,7 @@ import { Carousel, Image } from "react-bootstrap";
 function Banner() {
 	return (
 		<div className="my-2" >
-			<Carousel  fade pause="hover" className="py-0 my-0">
+			<Carousel  fade indicators={false} pause="hover" className="py-0 my-0">
 				<Carousel.Item key="banner2">
 					<Image
 						fluid 

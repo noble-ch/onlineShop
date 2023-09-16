@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-ry68yleu70v1f47(zyb&p$9%ap#tva7halmg_ftx+0w!%)6plv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.43.51','127.0.0.1','localhost']
+ALLOWED_HOSTS = ['192.168.43.51', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -128,7 +128,10 @@ DATABASES = {
         'NAME': 'onlineShop',
         'HOST': 'localhost',
         'USER': 'root',
-        'PASSWORD': 'root'
+        'PASSWORD': 'root',
+        'OPTIONS': {
+            'charset': 'utf8mb4',
+        },
     }
 }
 

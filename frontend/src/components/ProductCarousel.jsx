@@ -31,7 +31,7 @@ function ProductCarousel() {
 								src={product.image}
 								alt={product.name}
 								fluid
-								style={{ maxWidth: '280px', maxHeight: '240px' }} 
+								style={{ maxWidth: "280px", maxHeight: "240px" }}
 							/>
 							<Carousel.Caption className="carousel.caption">
 								<h4>

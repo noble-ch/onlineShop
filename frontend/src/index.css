@@ -25,7 +25,7 @@ body {
 }
 
 main {
-	font-family: 'Poppins', sans-serif;
+	font-family: "Poppins", sans-serif;
 	position: relative;
 	min-height: 80vh;
 	margin: 0 auto;
@@ -228,10 +228,14 @@ main {
 }
 
 .horizontal-scroll > .col {
-	flex:  auto;
+	flex: auto;
 	width: 350px;
 	white-space: normal;
 	padding: 0 1rem;
 }
 
+.carousel-text {
+	font-size: 16px;
+	line-height: 1.5; 
+}
 
