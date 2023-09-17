@@ -24,6 +24,7 @@ function Categories() {
 				maxWidth: "100vw",
 				overflowX: "auto",
 				whiteSpace: "nowrap"
+				
 			}}>
 			{loading ? (
 				<Loader />

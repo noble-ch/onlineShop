@@ -89,7 +89,10 @@ function HomeScreen() {
 				</Container>
 			</Container>
 			<Brands />
-			<Container fluid className=" mt-2 py-3   " style={{ background: "#F5F7FF" }}>
+			<Container
+				fluid
+				className=" mt-2 py-3   "
+				style={{ background: "#F5F7FF" }}>
 				<Container>
 					<div className="text-center  ">
 						<h3 className="text-dark">New Products</h3>
@@ -110,9 +113,8 @@ function HomeScreen() {
 									</Col>
 								))}
 							</Row>
-							<div  className=" d-flex  justify-content-center ">
+							<div className=" d-flex  justify-content-center ">
 								<Button
-									
 									className="rounded-4 my-2 py-1 d-block w-75  text-black bg-transparent border-3 "
 									onClick={handleClick}>
 									More products
@@ -227,9 +229,8 @@ function HomeScreen() {
 										backgroundPosition: "center",
 										padding: "40px",
 										color: "white",
-										height:'100%'
+										height: "100%"
 									}}>
-									
 									<h3 className="text-white">MSI Laptops</h3>
 									<Link
 										t
@@ -238,7 +239,6 @@ function HomeScreen() {
 										onClick={handleClick}>
 										Find more <i className="px-1 fas fa-arrow-right"></i>
 									</Link>
-									
 								</div>
 							</Col>
 
@@ -274,9 +274,8 @@ function HomeScreen() {
 										backgroundPosition: "center",
 										padding: "40px",
 										color: "white",
-										height:'100%'
+										height: "100%"
 									}}>
-									
 									<h3 className="text-white">MSI Desktops</h3>
 									<Link
 										t
@@ -299,13 +298,20 @@ function HomeScreen() {
 					</Container>
 				</Container>
 			)}
+
 			<Advertise1 />
-			<StoreReview />
+			<Image fluid src="./Banners/corei7.png" alt="chapa" />
+			<Container fluid style={{ background: "#F5F7FF" }}>
+				<StoreReview />
+			</Container>
+			<Image fluid src="./Banners/customerservice.png" alt="customerservice" />
 			<div className="bg-body-secondary ">
 				<div style={{ height: "1rem" }}></div> {/*separater */}
-				
 				<AboutUs />
 			</div>
+
+			<Image fluid src="./Banners/feature.png" alt="features" />
+
 			{/* <div style={{ height: "5rem" }}></div> */}
 		</div>
 	);

@@ -4,7 +4,7 @@ function Banner() {
 	return (
 		<div className="my-2" >
 			<Carousel  fade indicators={false} pause="hover" className="py-0 my-0">
-				<Carousel.Item key="banner2">
+				<Carousel.Item key="ad1">
 					<Image
 						fluid 
 						src="./Banners/msi.png"
@@ -12,7 +12,7 @@ function Banner() {
 						className="  h-auto w-100  py-0 my-0 rounded-0"
 					/>
 				</Carousel.Item>
-				<Carousel.Item key="banner5">
+				<Carousel.Item key="ad2">
 					<Image
 						fluid
 						src="./Banners/iPhone-15-Banner.webp"
@@ -20,7 +20,7 @@ function Banner() {
 						className=" py-0 my-0 w-100  h-auto rounded-0"
 					/>
 				</Carousel.Item>
-				<Carousel.Item key="banner3">
+				<Carousel.Item key="ad3">
 					<Image
 						fluid
 						src="./Banners/samsung.webp"
@@ -28,7 +28,7 @@ function Banner() {
 						className=" py-0 my-0 w-100  h-auto rounded-0"
 					/>
 				</Carousel.Item>
-				<Carousel.Item key="banner3">
+				<Carousel.Item key="ad9">
 					<Image
 						fluid
 						src="./Banners/s23banner.jpg"

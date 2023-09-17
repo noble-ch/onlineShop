@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 
 import Categories from "../components/Categories";
 import GoogleTranslateComponent from "../components/GoogleTranslateComponent";
+import Brands from "./Brands";
 
 function Header() {
 	const navigate = useNavigate();
@@ -52,40 +53,48 @@ function Header() {
 						interval={2000}
 						pause="hover"
 						className="py-0 my-0 ">
-						<Carousel.Item key="banner1">
+						<Carousel.Item key="visit">
 							<p className="text-white fs-6 ">
 								Visit our showroom in adama address 00
 							</p>
 						</Carousel.Item>{" "}
-						<Carousel.Item key="banner2">
+						<Carousel.Item key="oticname">
 							<p className="text-white fs-6">
 								Oromia technology and incubation center
 							</p>
 						</Carousel.Item>
-						<Carousel.Item key="banner3">
+						<Carousel.Item key="contact">
 							<a href="/" className="text-white text-center fs-6 ">
 								Contact Us
 							</a>
 						</Carousel.Item>
-						<Carousel.Item key="banner4">
+						<Carousel.Item key="phoneNum">
 							<p className="text-capitalize fs-6">
 								call Us: +2519-123-456-78 &nbsp;&nbsp;
 							</p>
 						</Carousel.Item>
-						<Carousel.Item key="banner5">
-							<span className="fa-brands fa-instagram fs-4">
+						<Carousel.Item key="ig">
+							<a href="https://instagram.com">
+								<span className="fa-brands fa-instagram  text-white fs-4">
+									&nbsp;&nbsp;&nbsp;
+								</span>
+							</a>
+							<a href="https://fb.com">
 								{" "}
-								&nbsp;&nbsp;&nbsp;
-							</span>
-							<span className="fa-brands fa-facebook fs-4">
-								&nbsp;&nbsp;&nbsp;
-							</span>
-							<span className="fa-brands fa-telegram fs-4">
-								&nbsp;&nbsp;&nbsp;
-							</span>
-							<span className="fa-brands fa-youtube fs-4">
-								&nbsp;&nbsp;&nbsp;
-							</span>
+								<span className="fa-brands fa-facebook text-white  text-white fs-4">
+									&nbsp;&nbsp;&nbsp;
+								</span>
+							</a>
+							<a href="https://telegram.com">
+								<span className="fa-brands fa-telegram  text-white fs-4">
+									&nbsp;&nbsp;&nbsp;
+								</span>
+							</a>
+							<a href="https://youtube.com">
+								<span className="fa-brands fa-youtube  text-white fs-4">
+									&nbsp;&nbsp;&nbsp;
+								</span>
+							</a>
 						</Carousel.Item>
 					</Carousel>
 				</Container>
@@ -99,12 +108,13 @@ function Header() {
 						key={expand}
 						expand={expand}
 						style={{
+							background: "#F5F7FF",
 							// background: "rgba(0, 0, 0, 1)",
 							backdropFilter: "blur(5px)",
 							marginTop: "2rem",
 							height: "4rem"
 						}}
-						className=" bg-white  p-0  bg-body-secondary  ">
+						className="   p-0  ">
 						<Container>
 							<LinkContainer to="/">
 								<Navbar.Brand className="px-0 mx-0">OticShop</Navbar.Brand>
@@ -158,7 +168,7 @@ function Header() {
 								style={{
 									width: "60%",
 									fontsize: 40,
-									background: "rgba(200, 140, 0, 1 )",
+									background: "#F5F7FF",
 									backdropFilter: "blur(6px)",
 									paddingTop: "4px",
 									paddingLeft: "4px",
@@ -280,7 +290,8 @@ function Header() {
 						</Container>
 					</Navbar>
 				))}
-				<Categories/>
+				<Categories />
+				<Brands/>
 			</Container>
 		</header>
 	);

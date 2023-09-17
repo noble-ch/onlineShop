@@ -239,3 +239,21 @@ main {
 	line-height: 1.5; 
 }
 
+.page-link{
+	color: black !important;
+	background-color: transparent !important; 
+	border: none !important;
+	border-bottom: 2px solid black !important;
+}
+.page-link:active{
+	color: black !important;
+	background-color: #3d495f !important; 
+	border: none !important;
+	border-bottom: 2px solid black !important;
+}
+.page-link:hover{
+	color: black !important;
+	background-color: #668cd1 !important; 
+	border: none !important;
+	border-bottom: 2px solid black !important;
+}

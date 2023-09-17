@@ -50,7 +50,7 @@ function StoreReview() {
 	};
 
 	return (
-		<Container className="py-3" style={{ background: "#F5F7FF" }}>
+		<Container className="py-3" >
 			<Col md lg sm xs xl>
 				<h4>Store Reviews</h4>
 				{loadingStoreReviews ? (

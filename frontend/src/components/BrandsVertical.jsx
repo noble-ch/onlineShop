@@ -18,32 +18,30 @@ function Brands() {
 
 	return (
 		<Container>
-			<Navbar
-				className=" text-black d-flex justify-content-around  p-0"
+			<Container
+				className="text-center text-black d-flex justify-content-center   p-0"
 				style={{
 					overflowX: "auto",
-					whiteSpace: "nowrap",
-					maxWidth: "100vw",
-
+					whiteSpace: "nowrap"
 				}}>
 				{loading ? (
 					<Loader />
 				) : error ? (
 					<Message variant="danger">{error}</Message>
 				) : (
-					<Nav className="  justify-content-between  w-100  text-black">
+					<div className="  w-100  text-black">
 						{getUniqueBrands(products).map((brand) => (
-							<Nav.Link className="text-capitalize text-black " key={brand}>
+							<Nav.Link className="text-capitalize text-black  my-4 " key={brand}>
 								<Link id="categories"
-									className="text-capitalize text-black text-decoration-none  "
+									className="text-capitalize  text-black text-decoration-none  "
 									to={`/brands/${brand}`}>
 									<span className="text-dark fs-5">{brand}</span>
 								</Link>
 							</Nav.Link>
 						))}
-					</Nav>
+					</div>
 				)}
-			</Navbar>
+			</Container>
 		</Container>
 	);
 }

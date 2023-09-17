@@ -1,7 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap";
 function Footer() {
 	return (
-		<footer style={{ background: "#20232f"}}>
+		<footer className="bg-black">
 			<Container>
 				<Row>
 					<Row className="mt-3" sm xs>
