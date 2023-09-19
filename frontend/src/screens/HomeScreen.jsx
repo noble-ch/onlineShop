@@ -16,6 +16,7 @@ import { listUsers } from "../actions/userActions";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import SearchBox from "../components/SearchBox";
 import StoreReview from "../components/StoreReview";
+import Categories from "../components/Categories";
 
 function HomeScreen() {
 	const location = useLocation();
@@ -38,9 +39,11 @@ function HomeScreen() {
 	return (
 		<div>
 			<Container className="mb-4">
-				<Container>
-					<Banner />
+				<Categories />
 
+				<Container>
+					<div style={{ height: "2rem" }}></div> {/*separater */}
+					<Banner />
 					<Container className="mt-xl-2   " fluid>
 						<Col sm lg xs md xl>
 							<Row>
@@ -91,12 +94,13 @@ function HomeScreen() {
 			<Brands />
 			<Container
 				fluid
-				className=" mt-2 py-3   "
-				style={{ background: "#F5F7FF" }}>
+				className=" mt-2 py-3  bg-onador  "
+				// style={{ background: "#F5F7FF" }}
+			>
 				<Container>
 					<div className="text-center  ">
-						<h3 className="text-dark">New Products</h3>
-						<p className="text-dark">Find what you are looking for</p>
+						<h3 className="text-white">New Products</h3>
+						<p className="text-white">Find what you are looking for</p>
 					</div>
 					<div style={{ height: "3rem" }}></div>
 
@@ -115,7 +119,7 @@ function HomeScreen() {
 							</Row>
 							<div className=" d-flex  justify-content-center ">
 								<Button
-									className="rounded-4 my-2 py-1 d-block w-75  text-black bg-transparent border-3 "
+									className="rounded-4 my-2 py-1 d-block w-75 border-white  text-white bg-transparent border-3 "
 									onClick={handleClick}>
 									More products
 									<i className=" px-1 fas fa-arrow-right"></i>
@@ -125,7 +129,7 @@ function HomeScreen() {
 					)}
 				</Container>
 			</Container>
-			<Container fluid className="my-4  py-5">
+			<Container fluid className="bg-ogreen   py-5">
 				<div className="horizontal-scroll text-center ">
 					<div className=" horizontal-scroll">
 						<Col>
@@ -216,9 +220,9 @@ function HomeScreen() {
 			) : error ? (
 				<Message variant="danger">{error}</Message>
 			) : (
-				<Container className="rounded-4 py-0">
+				<Container className="rounded-4 py-0 ">
 					<Container>
-						<Row className=" ">
+						<Row className="bg-ored rounded ">
 							<Col lg={3} md={12} sm={12} xs={12}>
 								<div
 									className="ml-2 mt-3"
@@ -263,7 +267,7 @@ function HomeScreen() {
 			) : (
 				<Container>
 					<Container>
-						<Row>
+						<Row className="bg-ored rounded">
 							<Col lg={3} md={12} sm={12} xs={12}>
 								<div
 									className="ml-2 mt-3"

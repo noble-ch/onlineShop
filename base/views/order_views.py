@@ -117,8 +117,8 @@ def initialize_payment(request, pk):
                 "email": user.email,
                 "first_name": user.first_name,
                 "phone_number": "0912345678",
-                "tx_ref": str(order._id), 
-                "callback_url": f"https://8879-196-188-174-33.ngrok-free.app/api/orders/{pk}/pay",
+                "tx_ref": str(order._id),
+                "callback_url": f"https://41f2-197-156-80-74.ngrok-free.app/api/orders/{pk}/pay",
                 "return_url": f"http://192.168.43.51:5175/order/{pk}/",
             }
             payload = json.dumps(payment_data)

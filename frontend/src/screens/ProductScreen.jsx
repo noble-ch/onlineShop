@@ -8,6 +8,8 @@ import Paginate from "../components/Paginate";
 import PriceFilter from "../components/PriceFilter";
 import { listProducts } from "../actions/productActions";
 import { useLocation } from "react-router-dom";
+import Brands from '../components/Brands';
+
 
 function HomeScreen() {
   const location = useLocation();
@@ -35,6 +37,7 @@ function HomeScreen() {
 
   return (
     <Container >
+      <Brands/>
      
       <PriceFilter filterProducts={filterProductsByPrice} />
       <Row>

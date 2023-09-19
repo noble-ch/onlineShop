@@ -9,6 +9,8 @@ import PriceFilter from "../components/PriceFilter";
 import { listProducts } from "../actions/productActions";
 import { listUsers } from "../actions/userActions";
 import { useLocation, useParams } from "react-router-dom";
+import Brands from '../components/Brands';
+
 
 function CategoryScreen() {
 	const { categoryName } = useParams();
@@ -33,6 +35,7 @@ function CategoryScreen() {
 
 	return (
 		<div>
+			<Brands/>
 			<PriceFilter filterProducts={filterProductsByPrice} />
 			{loading ? (
 				<Loader />

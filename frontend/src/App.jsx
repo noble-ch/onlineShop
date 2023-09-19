@@ -28,14 +28,14 @@ function App() {
 			<Header />
 
 			<main>
-				<Container fluid className="p-0">
+				<Container fluid className=" bg-ogray p-0">
 					<Routes>
 						<Route path="/" element={<HomeScreen />} />
 						<Route
 							path="/categories/:categoryName"
 							element={<CategoryScreen />}
 						/>
-						<Route path="/brands/:brandName" element={<BrandScreen />} />
+						<Route path="/categories/:categoryName/brands/:brandName" element={<BrandScreen />} />
 						<Route path="/contacts" element={<AboutScreen />} />
 						<Route path="/products" element={<ProductScreen />} />
 						<Route path="/login" element={<LoginScreen />} />

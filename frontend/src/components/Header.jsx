@@ -7,7 +7,8 @@ import {
 	Container,
 	NavDropdown,
 	Offcanvas,
-	Carousel
+	Carousel,
+	Image
 } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import SearchBox from "./SearchBox";
@@ -16,7 +17,6 @@ import { useNavigate } from "react-router-dom";
 
 import Categories from "../components/Categories";
 import GoogleTranslateComponent from "../components/GoogleTranslateComponent";
-import Brands from "./Brands";
 
 function Header() {
 	const navigate = useNavigate();
@@ -34,13 +34,11 @@ function Header() {
 
 	return (
 		<header
-			style={
-				{
-					// fontFamily: "rocko",
-					// background: "#3f3f798f",
-					// height: "3.8rem"
-				}
-			}>
+			style={{
+				// fontFamily: "rocko",
+				// background: "red",
+				height: "6rem"
+			}}>
 			<Navbar
 				fixed="top"
 				style={{ height: "2rem" }}
@@ -62,6 +60,9 @@ function Header() {
 							<p className="text-white fs-6">
 								Oromia technology and incubation center
 							</p>
+						</Carousel.Item>
+						<Carousel.Item key="oticname">
+							<p className="text-white fs-6">A secure OnlineShoping Platform</p>
 						</Carousel.Item>
 						<Carousel.Item key="contact">
 							<a href="/" className="text-white text-center fs-6 ">
@@ -99,31 +100,39 @@ function Header() {
 					</Carousel>
 				</Container>
 			</Navbar>
-			<Container className=" p-0  ">
+			<Container className=" p-0   ">
 				{["md"].map((expand) => (
 					<Navbar
 						fixed="top"
-						variant="light"
+						variant="dark"
 						collapseOnSelect
 						key={expand}
 						expand={expand}
 						style={{
-							background: "#F5F7FF",
+							// background: "#F5F7FF",
 							// background: "rgba(0, 0, 0, 1)",
 							backdropFilter: "blur(5px)",
 							marginTop: "2rem",
 							height: "4rem"
 						}}
-						className="   p-0  ">
+						className="   p-0 bg-oblue ">
 						<Container>
-							<LinkContainer to="/">
-								<Navbar.Brand className="px-0 mx-0">OticShop</Navbar.Brand>
+							<LinkContainer
+								className="border  p-1  bg-body-secondary  p-0 rounded-circle"
+								to="/">
+								<Navbar.Brand className="p-0 m-0  ">
+									<Image
+										style={{ height: "40px", width: "40px" }}
+										src="/favicon.png"
+										alt="features"
+									/>
+								</Navbar.Brand>
 							</LinkContainer>
 							<LinkContainer to="/">
 								<Nav.Link>
 									<span
 										style={{ fontSize: 16 }}
-										className="fas fa-home d-md-none text-black "></span>
+										className="fas fa-home d-md-none text-white "></span>
 								</Nav.Link>
 							</LinkContainer>
 							<LinkContainer to="/products">
@@ -135,7 +144,7 @@ function Header() {
 										style={{
 											width: "20px",
 											height: "16px",
-											// filter: "invert(100%)",
+											filter: "invert(100%)",
 											marginBottom: "4.5px"
 										}}
 									/>
@@ -145,14 +154,14 @@ function Header() {
 								<Nav.Link>
 									<span
 										style={{ fontSize: 16 }}
-										className="fa-solid fa-circle-question d-md-none text-black "></span>
+										className="fa-solid fa-circle-question d-md-none text-white "></span>
 								</Nav.Link>
 							</LinkContainer>
 							<LinkContainer to="/cart">
 								<Nav.Link className="cart">
 									<span
 										style={{ fontSize: 16 }}
-										className="fas fa-shopping-cart  d-md-none text-black"></span>
+										className="fas fa-shopping-cart  d-md-none text-white"></span>
 									<span className=" d-md-none">
 										{cartItems.reduce((acc, item) => acc + item.qty * 1, 0)}
 									</span>
@@ -179,7 +188,7 @@ function Header() {
 								aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
 								placement="end">
 								<Offcanvas.Header closeButton className=" my-0 py-3">
-									menu
+									OTICSHOP
 								</Offcanvas.Header>
 
 								<Nav>
@@ -201,11 +210,13 @@ function Header() {
 													id="products-icon"
 													src="/Product_Page.png"
 													alt="products"
+													style={{ filter: "invert(100%)" }}
 												/>
 
 												<span>&nbsp;products</span>
 											</Nav.Link>
 										</LinkContainer>
+										<Categories />
 										<LinkContainer to="/contacts">
 											<Nav.Link className="d-flex justify-content-start ">
 												<span
@@ -290,8 +301,7 @@ function Header() {
 						</Container>
 					</Navbar>
 				))}
-				<Categories />
-				<Brands/>
+				{/* <Categories /> */}
 			</Container>
 		</header>
 	);

@@ -257,3 +257,12 @@ main {
 	border: none !important;
 	border-bottom: 2px solid black !important;
 }
+
+.flag{
+	position: relative;
+	/* position: absolute; */
+	/* transform: rotatez(-45deg); */
+	/* margin-left: -60rem; */
+	/* transform: skewX(40deg); */
+	
+}

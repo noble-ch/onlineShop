@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
 import { useSelector } from "react-redux";
-import { Navbar, Nav } from "react-bootstrap";
+import { NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
@@ -16,37 +15,53 @@ function Categories() {
 		return Array.from(uniqueCategories);
 	};
 
+	// const [selectedCategory, setSelectedCategory] = useState(null);
+
+	const getBrandsForCategory = (category) => {
+		const brandsInCategory = new Set();
+		products.forEach((product) => {
+			if (product.category === category) {
+				brandsInCategory.add(product.brand);
+			}
+		});
+		return Array.from(brandsInCategory);
+	};
+
 	return (
-		<Navbar
-			className="text-center text-black d-flex justify-content-center  pb-2"
-			style={{
-				marginTop: "5rem",
-				maxWidth: "100vw",
-				overflowX: "auto",
-				whiteSpace: "nowrap"
-				
-			}}>
+		<>
+			<img
+				id="products-icon"
+				src="/Product_Page.png"
+				alt="products"
+				style={{ filter: "invert(100%)" }}
+			/>
 			{loading ? (
 				<Loader />
 			) : error ? (
 				<Message variant="danger">{error}</Message>
 			) : (
-				<Nav className="justify-content-between  w-100  text-black">
+				<NavDropdown  className=" text-black" title="Products">
 					{getUniqueCategories(products).map((category) => (
-						<Nav.Link
-							id="categories"
-							className="text-capitalize text-black "
-							key={category}>
-							<Link
-								className="text-capitalize text-black text-decoration-none "
-								to={`/categories/${category}`}>
-								<span>{category}</span>
-							</Link>
-						</Nav.Link>
+						<NavDropdown
+							className="text-black"
+							title={category}
+							key={category}
+							// show={selectedCategory === category} // Remove this line to prevent hover effect
+						>
+							{getBrandsForCategory(category).map((brand) => (
+								<NavDropdown.Item key={brand}>
+									<Link
+										className="text-capitalize text-black text-decoration-none"
+										to={`/categories/${category}/brands/${brand}`}>
+										{brand}
+									</Link>
+								</NavDropdown.Item>
+							))}
+						</NavDropdown>
 					))}
-				</Nav>
+				</NavDropdown>
 			)}
-		</Navbar>
+		</>
 	);
 }
 
