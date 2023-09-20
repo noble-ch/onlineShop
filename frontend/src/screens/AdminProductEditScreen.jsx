@@ -208,7 +208,7 @@ function ProductEditScreen() {
 									<Form.Check
 										type="checkbox"
 										label="Available for Backorder"
-										checked={true}
+										checked={isBackorderAvailable}
 										onChange={(e) => setIsBackorderAvailable(e.target.checked)}
 									/>
 								</Form.Group>
@@ -227,7 +227,7 @@ function ProductEditScreen() {
 								<Form.Check
 									type="checkbox"
 									label="Available for Preorder"
-									checked={true}
+									checked={isPreorderAvailable}
 									onChange={(e) => setIsPreorderAvailable(e.target.checked)}
 								/>
 							</Form.Group>

@@ -63,7 +63,7 @@ function HomeScreen() {
 												color: "#3e3e3e",
 												borderRight: "3px solid black"
 											}}>
-											<h2 className="text-black ">{products.length}&nbsp;+</h2>
+											<h2 className="text-black ">{/*products.length*/}&nbsp;+</h2>
 											<h5 className="text-black">Products</h5>
 										</Col>
 										<Col
