@@ -21,8 +21,11 @@
 	color: black;
 }
 
-.bg-oblue {
+.bg-oblue-gradient {
 	background: linear-gradient(to right, #2e3158 50%, #3f6582);
+}
+.bg-oblue {
+	background:  #2e3158 ;
 }
 
 /***************text font styles and size *******************/

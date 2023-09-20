@@ -34,7 +34,7 @@ function SearchBox() {
 			/>
 
 			<Button onClick={toggleSearch} id="search-button" type="submit">
-				<i className="fas fa-search"></i>
+				<i className="fas text-white fa-search"></i>
 			</Button>
 		</Form>
 	);

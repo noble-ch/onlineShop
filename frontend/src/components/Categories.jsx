@@ -29,29 +29,40 @@ function Categories() {
 
 	return (
 		<>
-			<img
-				id="products-icon"
-				src="/Product_Page.png"
-				alt="products"
-				style={{ filter: "invert(100%)" }}
-			/>
 			{loading ? (
 				<Loader />
 			) : error ? (
 				<Message variant="danger">{error}</Message>
 			) : (
-				<NavDropdown  className=" text-black" title="Products">
+				<NavDropdown
+					menuVariant="dark"
+					className="m-0  d-flex"
+					title={
+						<span>
+							<img
+								src="/Product_Page.png"
+								alt="products"
+								style={{
+									height: "17px",
+									marginTop: "-4px",
+									filter: "invert(100%)"
+								}}
+							/>{" "}
+							<span className="d-none d-lg-inline-block ">Products</span>
+						</span>
+					}>
 					{getUniqueCategories(products).map((category) => (
 						<NavDropdown
-							className="text-black"
+							menuVariant="dark "
+							className="bg-oblue p-0 m-0 "
 							title={category}
 							key={category}
 							// show={selectedCategory === category} // Remove this line to prevent hover effect
 						>
 							{getBrandsForCategory(category).map((brand) => (
-								<NavDropdown.Item key={brand}>
+								<NavDropdown.Item className="bg-oblue" key={brand}>
 									<Link
-										className="text-capitalize text-black text-decoration-none"
+										className="text-capitalize text-white  text-decoration-none"
 										to={`/categories/${category}/brands/${brand}`}>
 										{brand}
 									</Link>

@@ -90,7 +90,7 @@ main {
 }
 
 #search-button {
-	border-bottom: 2px solid#000;
+	border-bottom: 2px solid#ffffff;
 	border-right: none;
 	border-top: none;
 	border-left: none;
@@ -109,18 +109,18 @@ main {
 	color: black;
 }
 #search-button:hover {
-	border-bottom: 2px solid#000000;
+	border-bottom: 2px solid#ffffff;
 	border-right: none;
 	border-top: none;
 	border-left: none;
 }
 #search-field::placeholder {
-	color: black;
+	color: rgb(255, 255, 255);
 }
 #search-field {
-	color: #000;
+	color: #ffffff;
 
-	border-bottom: 2px solid#000;
+	border-bottom: 2px solid#ffffff;
 	background: transparent;
 	border-right: none;
 	border-top: none;

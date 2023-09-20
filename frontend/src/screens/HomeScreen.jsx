@@ -16,7 +16,6 @@ import { listUsers } from "../actions/userActions";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import SearchBox from "../components/SearchBox";
 import StoreReview from "../components/StoreReview";
-import Categories from "../components/Categories";
 
 function HomeScreen() {
 	const location = useLocation();
@@ -39,8 +38,6 @@ function HomeScreen() {
 	return (
 		<div>
 			<Container className="mb-4">
-				<Categories />
-
 				<Container>
 					<div style={{ height: "2rem" }}></div> {/*separater */}
 					<Banner />
@@ -248,8 +245,16 @@ function HomeScreen() {
 
 							{products
 								.filter((product) => product.brand === "Msi")
+								.filter((product) => product.category === "Laptops")
 								.map((product) => (
-									<Col className="my-3" key={product._id} xs sm md lg xl>
+									<Col
+										className="my-3 bg-white mx-3 rounded-3 shadow "
+										key={product._id}
+										xs
+										sm
+										md
+										lg
+										xl>
 										<Product product={product} />
 									</Col>
 								))}
@@ -267,8 +272,8 @@ function HomeScreen() {
 			) : (
 				<Container>
 					<Container>
-						<Row className="bg-ored rounded">
-							<Col lg={3} md={12} sm={12} xs={12}>
+						<Row className="bg-ored  rounded">
+							<Col className="" lg={3} md={12} sm={12} xs={12}>
 								<div
 									className="ml-2 mt-3"
 									style={{
@@ -292,9 +297,17 @@ function HomeScreen() {
 							</Col>
 
 							{products
-								.filter((product) => product.brand === "MsiDesktop")
+								.filter((product) => product.brand === "Msi")
+								.filter((product) => product.category === "Desktops")
 								.map((product) => (
-									<Col className="my-3" key={product._id} xs sm md lg xl>
+									<Col
+										className="my-3 bg-white  mx-3 rounded-3 shadow "
+										key={product._id}
+										xs
+										sm
+										md
+										lg
+										xl>
 										<Product product={product} />
 									</Col>
 								))}

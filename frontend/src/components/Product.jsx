@@ -18,7 +18,7 @@ function Product({ product }) {
   };
 
   return (
-    <div id="card" className="my-2  rounded d-flex flex-wrap   bg-white   border shadow  ">
+    <div id="card" className="my-2  rounded d-flex flex-wrap    ">
       {product.countInStock > 0 ? (
         <Card.Text className="text-success position-absolute  fs-6 m-0">
           In Stock{" "}

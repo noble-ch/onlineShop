@@ -56,12 +56,12 @@ function Header() {
 								Visit our showroom in adama address 00
 							</p>
 						</Carousel.Item>{" "}
-						<Carousel.Item key="oticname">
+						<Carousel.Item key="oticnamefull">
 							<p className="text-white fs-6">
 								Oromia technology and incubation center
 							</p>
 						</Carousel.Item>
-						<Carousel.Item key="oticname">
+						<Carousel.Item key="scurePlatform">
 							<p className="text-white fs-6">A secure OnlineShoping Platform</p>
 						</Carousel.Item>
 						<Carousel.Item key="contact">
@@ -115,7 +115,7 @@ function Header() {
 							marginTop: "2rem",
 							height: "4rem"
 						}}
-						className="   p-0 bg-oblue ">
+						className="   p-0 bg-oblue-gradient ">
 						<Container>
 							<LinkContainer
 								className="border  p-1  bg-body-secondary  p-0 rounded-circle"
@@ -135,21 +135,13 @@ function Header() {
 										className="fas fa-home d-md-none text-white "></span>
 								</Nav.Link>
 							</LinkContainer>
-							<LinkContainer to="/products">
-								<Nav.Link>
-									<img
-										className="d-md-none"
-										src="/Product_Page.png"
-										alt="products"
-										style={{
-											width: "20px",
-											height: "16px",
-											filter: "invert(100%)",
-											marginBottom: "4.5px"
-										}}
-									/>
-								</Nav.Link>
-							</LinkContainer>
+							<div
+								className=" d-md-none text-white d-flex  "
+								style={{ width: "2rem" }}>
+								
+
+								<Categories />
+							</div>
 							<LinkContainer to="/contacts">
 								<Nav.Link>
 									<span
@@ -173,15 +165,15 @@ function Header() {
 								aria-controls={`offcanvasNavbar-expand-${expand}`}
 							/>
 							<Navbar.Offcanvas
-								className="tomato  "
+								className="bg-oblue  "
 								style={{
 									width: "60%",
 									fontsize: 40,
-									background: "#F5F7FF",
+									background: "#2e3158",
 									backdropFilter: "blur(6px)",
 									paddingTop: "4px",
 									paddingLeft: "4px",
-									color: "black",
+									color: "white",
 									fontWeight: 900
 								}}
 								id={`offcanvasNavbar-expand-${expand}`}
@@ -204,19 +196,9 @@ function Header() {
 												<span>&nbsp;Home</span>
 											</Nav.Link>
 										</LinkContainer>
-										<LinkContainer to="/products">
-											<Nav.Link className="d-flex justify-content-start ">
-												<img
-													id="products-icon"
-													src="/Product_Page.png"
-													alt="products"
-													style={{ filter: "invert(100%)" }}
-												/>
-
-												<span>&nbsp;products</span>
-											</Nav.Link>
-										</LinkContainer>
+										<div >
 										<Categories />
+										</div>
 										<LinkContainer to="/contacts">
 											<Nav.Link className="d-flex justify-content-start ">
 												<span
