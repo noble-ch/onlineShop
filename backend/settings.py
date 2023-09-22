@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
-import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -170,16 +169,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/staticfiles/'
-MEDIA_URL = '/media/'
+STATIC_URL = '/static/'
+MEDIA_URL = '/images/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'staticfiles',
+    BASE_DIR / 'static',
 
 ]
 
-MEDIA_ROOT = BASE_DIR / 'staticfiles/images'
-static_ROOT = BASE_DIR / 'staticfiles'
+MEDIA_ROOT = BASE_DIR / 'frontend/public/images'
+
 
 
 # Default primary key field type
@@ -188,6 +187,8 @@ static_ROOT = BASE_DIR / 'staticfiles'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # settings.py
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SSL_KEY_FILE = BASE_DIR / 'frontend/private.key'
 SSL_CERTIFICATE_FILE = BASE_DIR / 'frontend/certificate.crt'
 CORS_ORIGIN_ALLOW_ALL = True
 SECRET_HASH = 'akdfnakjd7yafkjncfkjaf00acf2909cadkfdkjfcak'
