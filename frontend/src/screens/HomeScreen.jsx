@@ -63,7 +63,9 @@ function HomeScreen() {
 												color: "#3e3e3e",
 												borderRight: "3px solid black"
 											}}>
-											<h2 className="text-black ">{/*products.length*/}&nbsp;+</h2>
+											<h2 className="text-black ">
+												{/*products.length*/}&nbsp;+
+											</h2>
 											<h5 className="text-black">Products</h5>
 										</Col>
 										<Col
@@ -88,16 +90,15 @@ function HomeScreen() {
 					</Container>
 				</Container>
 			</Container>
-			<Brands />
 			<Container
 				fluid
-				className=" mt-2 py-3  bg-onador  "
+				className=" mt-2 py-3    "
 				// style={{ background: "#F5F7FF" }}
 			>
 				<Container>
 					<div className="text-center  ">
-						<h3 className="text-white">New Products</h3>
-						<p className="text-white">Find what you are looking for</p>
+						<h3 className="text-black">New Products</h3>
+						<p className="text-black">Find what you are looking for</p>
 					</div>
 					<div style={{ height: "3rem" }}></div>
 
@@ -109,14 +110,14 @@ function HomeScreen() {
 						<div>
 							<Row>
 								{products.slice(4, 8).map((product) => (
-									<Col key={product._id} xs={6} sm md={6} lg xl>
+									<Col className="" key={product._id} xs={6} sm md={6} lg xl>
 										<Product product={product} />
 									</Col>
 								))}
 							</Row>
 							<div className=" d-flex  justify-content-center ">
 								<Button
-									className="rounded-4 my-2 py-1 d-block w-75 border-white  text-white bg-transparent border-3 "
+									className="rounded-4 my-2 py-1 d-block w-75 border-black  text-black bg-transparent border-3 "
 									onClick={handleClick}>
 									More products
 									<i className=" px-1 fas fa-arrow-right"></i>
@@ -126,7 +127,7 @@ function HomeScreen() {
 					)}
 				</Container>
 			</Container>
-			<Container fluid className="bg-ogreen   py-5">
+			<Container fluid className="  py-5">
 				<div className="horizontal-scroll text-center ">
 					<div className=" horizontal-scroll">
 						<Col>
@@ -161,12 +162,12 @@ function HomeScreen() {
 			) : error ? (
 				<Message variant="danger">{error}</Message>
 			) : (
-				<Container className="   rounded-4 pb-xl-5 ">
+				<Container fluid className="  bg-onador  pt-4 mb-4 pb-xl-5 ">
 					<Container>
-						<Row className=" py-2">
+						<Row className=" py-2 ">
 							<Col lg={3} md={12} sm={12} xs={12}>
-								<h3 className="text-dark ">Latest Samsungs</h3>
-								<p className="text-dark">
+								<h3 className="text-light ">Latest Samsungs</h3>
+								<p className="text-light">
 									Elevate your Shopping Experience: Unveiling the Best Samsung
 									Products with Ease.
 								</p>
@@ -200,10 +201,10 @@ function HomeScreen() {
 												alt={product.name}
 												fluid
 											/>
-											<p className="text-black fs-6 fw-bold  m-0 ">
+											<p className="text-light fs-6 fw-bold  m-0 ">
 												{product.name}
 											</p>
-											<p className="text-black fs-6">{product.price} (Birr)</p>
+											<p className="text-light fs-6">{product.price} (Birr)</p>
 										</Link>
 									</Col>
 								))}

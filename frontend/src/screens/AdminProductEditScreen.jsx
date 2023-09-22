@@ -24,8 +24,6 @@ function ProductEditScreen() {
 	const [isBackorderAvailable, setIsBackorderAvailable] = useState(false);
 	const [backorderAvailabilityDate, setBackorderAvailabilityDate] =
 		useState("");
-	const [isPreorderAvailable, setIsPreorderAvailable] = useState(false);
-	const [preorderAvailabilityDate, setPreorderAvailabilityDate] = useState("");
 
 	const dispatch = useDispatch();
 
@@ -56,8 +54,6 @@ function ProductEditScreen() {
 				setDescription(product.description);
 				setIsBackorderAvailable(product.isBackorderAvailable);
 				setBackorderAvailabilityDate(product.backorderAvailabilityDate || "");
-				setIsPreorderAvailable(product.isPreorderAvailable);
-				setPreorderAvailabilityDate(product.preorderAvailabilityDate || "");
 			}
 		}
 	}, [dispatch, product, productId, navigate, successUpdate]);
@@ -75,9 +71,7 @@ function ProductEditScreen() {
 				countInStock,
 				description,
 				isBackorderAvailable,
-				backorderAvailabilityDate,
-				isPreorderAvailable,
-				preorderAvailabilityDate
+				backorderAvailabilityDate
 			})
 		);
 	};
@@ -219,26 +213,6 @@ function ProductEditScreen() {
 									type="date"
 									value={backorderAvailabilityDate}
 									onChange={(e) => setBackorderAvailabilityDate(e.target.value)}
-								/>
-							</Form.Group>
-
-							{/* Preorder */}
-							<Form.Group controlId="isPreorderAvailable">
-								<Form.Check
-									type="checkbox"
-									label="Available for Preorder"
-									checked={isPreorderAvailable}
-									onChange={(e) => setIsPreorderAvailable(e.target.checked)}
-								/>
-							</Form.Group>
-
-							{/* Preorder Availability Date */}
-							<Form.Group controlId="preorderAvailabilityDate">
-								<Form.Label>Preorder Availability Date</Form.Label>
-								<Form.Control
-									type="date"
-									value={preorderAvailabilityDate}
-									onChange={(e) => setPreorderAvailabilityDate(e.target.value)}
 								/>
 							</Form.Group>
 

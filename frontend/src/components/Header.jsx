@@ -11,7 +11,7 @@ import {
 	Image
 } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import SearchBox from "./SearchBox";
+import SearchBoxHeader from "./SearchBoxHeader";
 import { logout } from "../actions/userActions";
 import { useNavigate } from "react-router-dom";
 
@@ -138,8 +138,6 @@ function Header() {
 							<div
 								className=" d-md-none text-white d-flex  "
 								style={{ width: "2rem" }}>
-								
-
 								<Categories />
 							</div>
 							<LinkContainer to="/contacts">
@@ -185,9 +183,9 @@ function Header() {
 
 								<Nav>
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<SearchBox />
+									<SearchBoxHeader />
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<Nav className="ml-auto fs-6 ">
+									<Nav className="ml-auto fs-6 text-capitalize  ">
 										<LinkContainer to="/">
 											<Nav.Link className="d-flex justify-content-start ">
 												<span
@@ -196,8 +194,8 @@ function Header() {
 												<span>&nbsp;Home</span>
 											</Nav.Link>
 										</LinkContainer>
-										<div >
-										<Categories />
+										<div>
+											<Categories />
 										</div>
 										<LinkContainer to="/contacts">
 											<Nav.Link className="d-flex justify-content-start ">

@@ -59,8 +59,7 @@ def getProduct(request, pk):
     data = serializer.data
     data['isBackorderAvailable'] = product.isBackorderAvailable
     data['backorderAvailabilityDate'] = product.backorderAvailabilityDate
-    data['isPreorderAvailable'] = product.isPreorderAvailable
-    data['preorderAvailabilityDate'] = product.preorderAvailabilityDate
+
     return Response(serializer.data)
 
 
@@ -77,10 +76,9 @@ def createProduct(request):
         countInStock=0,
         category='Sample Category',
         description='',
-        isBackorderAvailable= False,
-        backorderAvailabilityDate=date.today(), 
-        isPreorderAvailable= False,
-        preorderAvailabilityDate=date.today(),
+        isBackorderAvailable=False,
+        backorderAvailabilityDate=date.today(),
+
     )
 
     serializer = ProductSerializer(product, many=False)
@@ -102,9 +100,6 @@ def updateProduct(request, pk):
     product.isBackorderAvailable = data.get('isBackorderAvailable', False)
     product.backorderAvailabilityDate = data.get(
         'backorderAvailabilityDate', None)
-    product.isPreorderAvailable = data.get('isPreorderAvailable', False)
-    product.preorderAvailabilityDate = data.get(
-        'preorderAvailabilityDate', None)
 
     product.save()
 

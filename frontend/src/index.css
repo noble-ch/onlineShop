@@ -30,6 +30,7 @@ main {
 	min-height: 80vh;
 	margin: 0 auto;
 	overflow: hidden;
+	background: #f3f3f3;
 	/* background: linear-gradient(#3f3f798f, #2b11473a, #14364696); */
 	/* background:#f7f1ea; */
 	/* background: #e7e7e7; */
@@ -85,9 +86,6 @@ main {
 
 /* ---------------------header-------------- */
 
-.brand {
-	font-weight: bolder;
-}
 
 #search-button {
 	border-bottom: 2px solid#ffffff;

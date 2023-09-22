@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import { Card, Row, Col } from "react-bootstrap";
+import { Card, Row, Col, Image } from "react-bootstrap";
 import Rating from "./Rating";
 import { Link } from "react-router-dom";
 import { addToCart } from "../actions/cartActions";
@@ -70,30 +70,30 @@ function Product({ product }) {
 							<span className="fas fa-cart-plus">&nbsp;</span>
 						</button>
 						<button
-							hidden={product.countInStock > 0 && product.backorder === true} // Show only when out of stock
+							hidden={product.countInStock > 0} // Show only when out of stock
 							onClick={() => setBackorderQty(backorderQty + 1)}
-							className="rounded-2 border-0 tomato text-black">
-							<span className="fas fa-cart-plus">&nbsp;</span>
-							Backorder
+							className=" p-0  m-1 rounded-2 border-0 tomato text-black ">
+							<Image
+								style={{ width: "30px", height: "25px" }}
+								src="/backordercart.png"></Image>
 						</button>
 						<input
+							id="search-button"
+							className=" py-0  m-0 border-bottom border-black"
 							hidden={product.countInStock > 0} // Show only when out of stock
 							type="number"
 							min="0"
 							value={preorderQty}
 							onChange={(e) => setPreorderQty(e.target.value)}
 						/>
-						<button
-							hidden={product.countInStock > 0} // Show only when out of stock
+						{/* <button
+							hidden={product.countInStock > 0} 
 							onClick={() => {
-								// Add logic to dispatch a preorder action
-								// Example: dispatch(placePreorder(product._id, preorderQty));
-								setPreorderQty(0); // Reset preorder quantity
+								setPreorderQty(0); 
 							}}
-							className="rounded-2 border-0 tomato text-black">
-							<span className="fas fa-cart-plus">&nbsp;</span>
-							Preorder
-						</button>
+							className="rounded-2 border-0 tomato py-0 text-black">
+							<span className="fs-6 p-0">Preorder</span>
+						</button> */}
 					</Col>
 				</Row>
 			</Card.Body>

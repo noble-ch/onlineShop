@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, Container } from "react-bootstrap";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import Product from "../components/Product";
-import PriceFilter from "../components/PriceFilter";
-import Brands from "../components/Brands";
 
 import { listProducts } from "../actions/productActions";
 import { useLocation, useParams } from "react-router-dom";
@@ -18,22 +16,14 @@ function CategoryScreen() {
 	const { error, loading, products } = productList;
 	let keyword = location.search;
 
-	const [filteredProducts, setFilteredProducts] = useState(products);
-	const filterProductsByPrice = (min, max) => {
-		const filtered = products.filter(
-			(product) => product.price >= min && product.price <= max
-		);
-		setFilteredProducts(filtered);
-	};
 
 	useEffect(() => {
-		dispatch(listProducts(keyword, brandName)); // You can pass brandName to the listProducts action here if needed
+		dispatch(listProducts(keyword, brandName)); 
 	}, [dispatch, keyword, brandName]);
 
 	return (
 		<div>
-			<Brands />
-			<PriceFilter filterProducts={filterProductsByPrice} />
+		
 			{loading ? (
 				<Loader />
 			) : error ? (
@@ -49,9 +39,9 @@ function CategoryScreen() {
 							) : (
 								<div>
 									<Row>
-										{filteredProducts
-											.filter((product) => product.brand === brandName) // Filter by brand
-											.filter((product) => product.category === categoryName) // Filter by category
+										{products
+											.filter((product) => product.brand === brandName) 
+											.filter((product) => product.category === categoryName) 
 											.map((product) => (
 												<Col key={product._id} xs sm md lg xl>
 													<Product product={product} />
