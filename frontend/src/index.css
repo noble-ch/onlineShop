@@ -30,7 +30,7 @@ main {
 	min-height: 80vh;
 	margin: 0 auto;
 	overflow: hidden;
-	background: #f3f3f3;
+	/* background: #f3f3f3; */
 	/* background: linear-gradient(#3f3f798f, #2b11473a, #14364696); */
 	/* background:#f7f1ea; */
 	/* background: #e7e7e7; */
@@ -93,7 +93,7 @@ main {
 	border-top: none;
 	border-left: none;
 	height: 2rem;
-	width: 3.5rem;
+	width: 2.8rem;
 	/* border-radius: 0% 2rem 2rem 0%; */
 	padding: 4px;
 	background: linear-gradient(
@@ -111,6 +111,8 @@ main {
 	border-right: none;
 	border-top: none;
 	border-left: none;
+	border-radius: 0% 2rem 2rem 0%;
+
 }
 #search-field::placeholder {
 	color: rgb(255, 255, 255);
@@ -154,7 +156,7 @@ main {
 	transition: transform 0.3s ease;
 }
 #card:hover {
-	transform: scale(1.05);
+	transform: scale(1.02);
 }
 
 .circle {

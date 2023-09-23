@@ -28,7 +28,7 @@ function App() {
 			<Header />
 
 			<main>
-				<Container fluid className=" bg-ogray p-0">
+				<Container fluid className=" p-0">
 					<Routes>
 						<Route path="/" element={<HomeScreen />} />
 						<Route

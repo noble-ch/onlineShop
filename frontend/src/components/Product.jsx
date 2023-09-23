@@ -57,7 +57,7 @@ function Product({ product }) {
 
 				<Row>
 					<Col>
-						<Card.Text className="text-black fw-bold  mb-0" as="p">
+						<Card.Text className="text-black fw-bold fs-6 mb-0" as="p">
 							{product.price}
 							<span className="text-capitalize ">Birr</span>
 						</Card.Text>
@@ -70,30 +70,23 @@ function Product({ product }) {
 							<span className="fas fa-cart-plus">&nbsp;</span>
 						</button>
 						<button
-							hidden={product.countInStock > 0} // Show only when out of stock
+							hidden={product.countInStock > 0} 
 							onClick={() => setBackorderQty(backorderQty + 1)}
-							className=" p-0  m-1 rounded-2 border-0 tomato text-black ">
+							className=" p-0  m-2 rounded-2 border-0 tomato text-black ">
 							<Image
 								style={{ width: "30px", height: "25px" }}
 								src="/backordercart.png"></Image>
 						</button>
 						<input
 							id="search-button"
-							className=" py-0  m-0 border-bottom border-black"
-							hidden={product.countInStock > 0} // Show only when out of stock
+							className=" py-0    m-0 border-bottom border-black"
+							hidden={product.countInStock > 0}
 							type="number"
 							min="0"
 							value={preorderQty}
 							onChange={(e) => setPreorderQty(e.target.value)}
 						/>
-						{/* <button
-							hidden={product.countInStock > 0} 
-							onClick={() => {
-								setPreorderQty(0); 
-							}}
-							className="rounded-2 border-0 tomato py-0 text-black">
-							<span className="fs-6 p-0">Preorder</span>
-						</button> */}
+					
 					</Col>
 				</Row>
 			</Card.Body>
