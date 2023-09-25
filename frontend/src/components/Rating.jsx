@@ -62,7 +62,7 @@ function Rating({ value, text, color }) {
 								: "far fa-star"
 						}></i>
 				</span>
-				<span className=" text-black-50 rounded ">({text && text})</span>
+				<span className=" text-black-50 rounded ">{text && text}</span>
 			</div>
 		</div>
 	);

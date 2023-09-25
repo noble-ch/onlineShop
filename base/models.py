@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+import os
+from django.db.models.signals import pre_delete
+from django.dispatch import receiver
 
 
 # Create your models here.
@@ -21,6 +24,9 @@ class Product(models.Model):
     countInStock = models.IntegerField(null=True, blank=True, default=0)
     createdAt = models.DateTimeField(auto_now_add=True)
     _id = models.AutoField(primary_key=True, editable=False)
+
+    isBackorderAvailable = models.BooleanField(default=False)
+    backorderAvailabilityDate = models.DateField(null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -83,6 +89,8 @@ class OrderItem(models.Model):
     price = models.DecimalField(
         max_digits=7, decimal_places=2, null=True, blank=True)
     image = models.CharField(max_length=200, null=True, blank=True)
+    is_backorder = models.BooleanField(default=False)
+    is_preorder = models.BooleanField(default=False)
     _id = models.AutoField(primary_key=True, editable=False)
 
     def __str__(self):
@@ -102,3 +110,14 @@ class ShippingAddress(models.Model):
 
     def __str__(self):
         return str(self.address)
+
+
+@receiver(pre_delete, sender=Product)
+def delete_product_image(sender, instance, **kwargs):
+    image_path = os.path.join(
+        instance.image.field.storage.location, instance.image.name)
+
+    if os.path.isfile(image_path):
+        os.remove(image_path)
+
+pre_delete.connect(delete_product_image, sender=Product)

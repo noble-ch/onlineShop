@@ -7,7 +7,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from base.models import Product, Review
 from base.serializers import ProductSerializer
-
+from datetime import date
 from rest_framework import status
 
 
@@ -22,6 +22,12 @@ def getProducts(request):
 
     page = request.query_params.get('page')
     paginator = Paginator(products, 100)
+
+    if 'backorder' in request.query_params:
+        products = products.filter(isBackorderAvailable=True)
+    if 'preorder' in request.query_params:
+
+        products = products.filter(isPreorderAvailable=True)
 
     try:
         products = paginator.page(page)
@@ -50,6 +56,10 @@ def getTopProducts(request):
 def getProduct(request, pk):
     product = Product.objects.get(_id=pk)
     serializer = ProductSerializer(product, many=False)
+    data = serializer.data
+    data['isBackorderAvailable'] = product.isBackorderAvailable
+    data['backorderAvailabilityDate'] = product.backorderAvailabilityDate
+
     return Response(serializer.data)
 
 
@@ -57,7 +67,7 @@ def getProduct(request, pk):
 @permission_classes([IsAdminUser])
 def createProduct(request):
     user = request.user
-
+    # data = request.data
     product = Product.objects.create(
         user=user,
         name='Sample Name',
@@ -65,7 +75,10 @@ def createProduct(request):
         brand='Sample Brand',
         countInStock=0,
         category='Sample Category',
-        description=''
+        description='',
+        isBackorderAvailable=False,
+        backorderAvailabilityDate=date.today(),
+
     )
 
     serializer = ProductSerializer(product, many=False)
@@ -84,6 +97,9 @@ def updateProduct(request, pk):
     product.countInStock = data['countInStock']
     product.category = data['category']
     product.description = data['description']
+    product.isBackorderAvailable = data.get('isBackorderAvailable', False)
+    product.backorderAvailabilityDate = data.get(
+        'backorderAvailabilityDate', None)
 
     product.save()
 

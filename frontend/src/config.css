@@ -1,47 +1,34 @@
 /***************default color *******************/
 
-.bg-black {
-	background-color: #181818;
+.bg-onador {
+	background-color: #2f3b39;
 	color: whitesmoke;
 }
-.bg-white {
-	background-color: whitesmoke;
+.bg-ogray {
+	background-color: #f3f3f3;
 	color: #181818;
 }
 
-.txt-white {
-	color: whitesmoke;
+.bg-ogreen {
+	background: linear-gradient(#2f3b39, #94ad8000);
+	/* background:#678650 ; */
+	color: black;
 }
 
-body::-webkit-scrollbar {
-	display: none;
+.bg-ored {
+	background: linear-gradient(#ffffff00, black, #b40808);
+	/* background: #b6180d; */
+	color: black;
+}
+
+.bg-oblue-gradient {
+	background: linear-gradient(to right, #2e3158 50%, #3f6582);
+}
+.bg-oblue {
+	background:  #2e3158 ;
 }
 
 /***************text font styles and size *******************/
-
-h1 {
-	font-family: "rockobold", "Franklin Gothic Medium", "Arial Narrow", Arial,
-		sans-serif;
-}
-
-h2 {
-	font-family: "rocko", "Franklin Gothic Medium", "Arial Narrow", Arial,
-		sans-serif;
-}
-
-h3 {
-	font-family: "rocko", "Franklin Gothic Medium", "Arial Narrow", Arial,
-		sans-serif;
-}
-h4 {
-	font-family: "rocko", "Franklin Gothic Medium", "Arial Narrow", Arial,
-		sans-serif;
-	font-size: 10px;
-}
-
-p {
-	font-size: 16px;
-}
 
 /*************** google translate *******************/
 
@@ -72,7 +59,7 @@ p {
 }
 .VIpgJd-ZVi9od-xl07Ob-lTBxed {
 	text-decoration: none;
-	color: #dadada !important;
+	color: #9a9dcc !important;
 	white-space: nowrap;
 	margin-left: 4px;
 	margin-right: 4px;
@@ -108,4 +95,24 @@ p {
 	background: #ffcb74;
 }
 
+::-webkit-scrollbar {
+	width: 6px;
+	height: 5px;
+}
 
+/* Customize the scrollbar track (the background) */
+::-webkit-scrollbar-track {
+	background: #f1f1f1; /* Color of the track */
+	border-radius: 4px; /* Rounded corners of the track */
+}
+
+/* Customize the scrollbar thumb (the draggable part) */
+::-webkit-scrollbar-thumb {
+	background: #a19e9e; /* Color of the thumb */
+	border-radius: 4px; /* Rounded corners of the thumb */
+}
+
+/* Customize the scrollbar thumb when hovering */
+::-webkit-scrollbar-thumb:hover {
+	background: #555; /* Color of the thumb when hovering */
+}

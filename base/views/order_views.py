@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 from django.http import JsonResponse
 from base.models import Product, Order, OrderItem, ShippingAddress
-from base.serializers import OrderSerializer
+from base.serializers import OrderSerializer, OrderItemSerializer
 
 from rest_framework import status
 from datetime import datetime
@@ -47,6 +47,8 @@ def addOrderItems(request):
         # (3) Create order items adn set order to orderItem relationship
         for i in orderItems:
             product = Product.objects.get(_id=i['product'])
+            is_backorder = i.get('is_backorder', False)
+            is_preorder = i.get('is_preorder', False)
 
             item = OrderItem.objects.create(
                 product=product,
@@ -55,15 +57,24 @@ def addOrderItems(request):
                 qty=i['qty'],
                 price=i['price'],
                 image=product.image.url,
+                is_backorder=is_backorder,
+                is_preorder=is_preorder,
             )
 
-            # (4) Update stock
-
-            product.countInStock -= item.qty
-            product.save()
+            if not is_backorder and not is_preorder:
+                product.countInStock -= item.qty
+                product.save()
 
         serializer = OrderSerializer(order, many=False)
         return Response(serializer.data)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def listBackorders(request):
+    backorders = OrderItem.objects.filter(is_backorder=True)
+    serializer = OrderItemSerializer(backorders, many=True)
+    return Response(serializer.data)
 
 
 @api_view(['GET'])
@@ -80,6 +91,29 @@ def getMyOrders(request):
 def getOrders(request):
     orders = Order.objects.all()
     serializer = OrderSerializer(orders, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def listPreorders(request):
+    preorders = OrderItem.objects.filter(is_preorder=True)
+    serializer = OrderItemSerializer(preorders, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def fulfillBackorder(request, pk):
+    preorders = OrderItem.objects.filter(is_preorder=True)
+    serializer = OrderItemSerializer(preorders, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def getBackorderById(request, pk):
+    preorders = OrderItem.objects.filter(is_preorder=True)
+    serializer = OrderItemSerializer(preorders, many=True)
     return Response(serializer.data)
 
 
@@ -117,8 +151,8 @@ def initialize_payment(request, pk):
                 "email": user.email,
                 "first_name": user.first_name,
                 "phone_number": "0912345678",
-                "tx_ref": str(order._id), 
-                "callback_url": f"https://8879-196-188-174-33.ngrok-free.app/api/orders/{pk}/pay",
+                "tx_ref": str(order._id),
+                "callback_url": f"https://41f2-197-156-80-74.ngrok-free.app/api/orders/{pk}/pay",
                 "return_url": f"http://192.168.43.51:5175/order/{pk}/",
             }
             payload = json.dumps(payment_data)
