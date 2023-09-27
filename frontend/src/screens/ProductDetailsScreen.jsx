@@ -52,8 +52,19 @@ function ProductScreen() {
 		dispatch(listProductDetails(id));
 	}, [dispatch, id, successProductReview]);
 
+	const [customQty, setCustomQty] = useState(0);
+
 	const addToCartHandler = () => {
-		navigate(`/cart/${id}?qty=${qty}`);
+		// Use custom quantity if it's greater than countInStock, otherwise use regular quantity
+		const quantityToAdd = customQty > product.countInStock ? customQty : qty;
+
+		if (customQty > product.countInStock) {
+			console.log("Adding custom quantity to cart:", customQty);
+		} else {
+			console.log("Adding regular quantity to cart:", qty);
+		}
+
+		navigate(`/cart/${id}?qty=${quantityToAdd}`);
 	};
 
 	const submitHandler = (e) => {
@@ -151,6 +162,14 @@ function ProductScreen() {
 												</Row>
 											</ListGroup.Item>
 										)}
+										<Form.Group controlId="customQty">
+											<Form.Label>Custom Quantity</Form.Label>
+											<Form.Control
+												type="number"
+												value={customQty}
+												onChange={(e) => setCustomQty(e.target.value)}
+											/>
+										</Form.Group>
 
 										<ListGroup.Item
 											className="px-0"
@@ -158,9 +177,10 @@ function ProductScreen() {
 											<Button
 												onClick={addToCartHandler}
 												className="btn-block rounded tomato text-black py-1 px-2"
-												disabled={product.countInStock == 0}
+												disabled={product.countInStock === 0}
 												type="button">
-												Add to <i className="fas fa-cart-plus text-black"></i>
+												Add to Cart{" "}
+												<i className="fas fa-cart-plus text-black"></i>
 											</Button>
 										</ListGroup.Item>
 									</ListGroup>

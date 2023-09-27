@@ -20,7 +20,7 @@ function CartScreen() {
 	const location = useLocation();
 	const { id } = useParams();
 	const qty = location.search ? Number(location.search.split("=")[1]) : 1;
-	
+
 	const dispatch = useDispatch();
 
 	const cart = useSelector((state) => state.cart);
@@ -40,12 +40,10 @@ function CartScreen() {
 	const checkoutHandler = () => {
 		navigate("/login?redirect=shipping");
 	};
-	
 
 	return (
 		<Container>
 			<Row>
-				{" "}
 				<h1>Shopping Cart</h1>
 				<Col md={8}>
 					{cartItems.length === 0 ? (
@@ -66,22 +64,24 @@ function CartScreen() {
 
 										<Col md={2}>${item.price}</Col>
 
-										<Col md={3}>
-											<Form.Control
-												as="select"
-												value={item.qty}
-												onChange={(e) =>
-													dispatch(
-														addToCart(item.product, Number(e.target.value))
-													)
-												}>
-												{[...Array(item.countInStock).keys()].map((x) => (
-													<option key={x + 1} value={x + 1}>
-														{x + 1}
-													</option>
-												))}
-											</Form.Control>
-										</Col>
+										{!item.isCustom ? ( // Check if it's not a custom item
+											<Col md={3}>
+												<Form.Control
+													as="select"
+													value={item.qty}
+													onChange={(e) =>
+														dispatch(
+															addToCart(item.product, Number(e.target.value))
+														)
+													}>
+													{[...Array(item.countInStock).keys()].map((x) => (
+														<option key={x + 1} value={x + 1}>
+															{x + 1}
+														</option>
+													))}
+												</Form.Control>
+											</Col>
+										) : null}
 
 										<Col md={1}>
 											<Button
@@ -92,6 +92,9 @@ function CartScreen() {
 											</Button>
 										</Col>
 									</Row>
+									{item.isCustom ? ( // Display a message for custom items
+										<Message variant="info">Custom Order</Message>
+									) : null}
 								</ListGroup.Item>
 							))}
 						</ListGroup>

@@ -48,6 +48,7 @@ function OrderScreen() {
 		order.itemsPrice = order.orderItems
 			.reduce((acc, item) => acc + item.price * item.qty, 0)
 			.toFixed(2);
+		console.log();
 	}
 
 	useEffect(() => {
@@ -88,6 +89,7 @@ function OrderScreen() {
 	const recieveHandler = () => {
 		dispatch(recieveOrder(order));
 	};
+
 	return loading ? (
 		<Loader />
 	) : error ? (
@@ -98,6 +100,10 @@ function OrderScreen() {
 			<Row>
 				<Col md={8}>
 					<ListGroup variant="flush">
+						<ListGroup.Item>
+							<h1>Items:</h1>
+							<p>{order.isCustom}</p>
+						</ListGroup.Item>
 						<ListGroup.Item>
 							<h2>Shipping</h2>
 							<p>

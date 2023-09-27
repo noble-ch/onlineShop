@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button, Row, Col, ListGroup, Image, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,12 +11,14 @@ import { ORDER_CREATE_RESET } from "../constants/orderConstants";
 function PlaceOrderScreen() {
 	const navigate = useNavigate();
 
+	const cart = useSelector((state) => state.cart);
 	const orderCreate = useSelector((state) => state.orderCreate);
 	const { order, error, success } = orderCreate;
 
-	const dispatch = useDispatch();
+	const hasCustomItems = cart.cartItems.some((item) => item.isCustom);
+	const [orderType] = useState(hasCustomItems ? "Custom" : "Regular");
 
-	const cart = useSelector((state) => state.cart);
+	const dispatch = useDispatch();
 
 	cart.itemsPrice = cart.cartItems
 		.reduce((acc, item) => acc + item.price * item.qty, 0)
@@ -36,8 +38,13 @@ function PlaceOrderScreen() {
 
 	useEffect(() => {
 		if (success) {
-			navigate(`/order/${order._id}`);
-			dispatch({ type: ORDER_CREATE_RESET });
+			if (hasCustomItems) {
+				navigate(`/order/${order._id}`);
+				dispatch({ type: ORDER_CREATE_RESET });
+			} else {
+				navigate(`/order/${order._id}`);
+				dispatch({ type: ORDER_CREATE_RESET });
+			}
 		}
 	}, [success, navigate]);
 
@@ -50,7 +57,8 @@ function PlaceOrderScreen() {
 				itemsPrice: cart.itemsPrice,
 				shippingPrice: cart.shippingPrice,
 				taxPrice: cart.taxPrice,
-				totalPrice: cart.totalPrice
+				totalPrice: cart.totalPrice,
+				orderType: orderType
 			})
 		);
 	};
@@ -61,6 +69,13 @@ function PlaceOrderScreen() {
 			<Row>
 				<Col md={8}>
 					<ListGroup className="border rounded-4" variant="flush">
+						<ListGroup.Item className="border rounded-top-4">
+							<h2>Order Type</h2>
+							<p>
+								<strong>Type: </strong>
+								{orderType}
+							</p>
+						</ListGroup.Item>
 						<ListGroup.Item className="border rounded-top-4">
 							<h2>Shipping</h2>
 

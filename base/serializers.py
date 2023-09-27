@@ -70,6 +70,8 @@ class OrderItemSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+
+
 class OrderSerializer(serializers.ModelSerializer):
     orderItems = serializers.SerializerMethodField(read_only=True)
     shippingAddress = serializers.SerializerMethodField(read_only=True)

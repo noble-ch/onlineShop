@@ -212,7 +212,7 @@ function Header() {
 									<Nav className="m-auto px-lg-2 "></Nav>
 									<Nav className="ml-auto fs-6">
 										<LinkContainer to="/cart">
-											<Nav.Link className="cart ">
+											<Nav.Link className="cart  text-capitalize  ">
 												<span
 													style={{ fontSize: 16 }}
 													className="fas fa-shopping-cart "></span>
@@ -229,7 +229,7 @@ function Header() {
 										{userInfo ? (
 											<NavDropdown
 												title={
-													<span style={{ fontSize: 12 }} className="">
+													<span style={{ fontSize: 12 }} className=" text-capitalize ">
 														{userInfo.name}
 													</span>
 												}
@@ -244,7 +244,7 @@ function Header() {
 											</NavDropdown>
 										) : (
 											<LinkContainer to="/login">
-												<Nav.Link className="d-flex justify-content-start ">
+												<Nav.Link className="d-flex justify-content-start text-capitalize  ">
 													<span
 														style={{ fontSize: 15 }}
 														className="fas fa-user"></span>

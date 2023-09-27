@@ -25,6 +25,9 @@ import BrandScreen from "./screens/BrandScreen";
 function App() {
 	return (
 		<Router>
+			<div className="diagonal-line">
+				<div className="line"></div>
+			</div>
 			<Header />
 
 			<main>
@@ -35,7 +38,10 @@ function App() {
 							path="/categories/:categoryName"
 							element={<CategoryScreen />}
 						/>
-						<Route path="/categories/:categoryName/brands/:brandName" element={<BrandScreen />} />
+						<Route
+							path="/categories/:categoryName/brands/:brandName"
+							element={<BrandScreen />}
+						/>
 						<Route path="/contacts" element={<AboutScreen />} />
 						<Route path="/products" element={<ProductScreen />} />
 						<Route path="/login" element={<LoginScreen />} />

@@ -19,6 +19,12 @@ def addOrderItems(request):
     data = request.data
 
     orderItems = data['orderItems']
+    orderType = data.get('orderType', 'Regular')
+
+    if orderType == 'Custom':
+        orderType = True
+    else:
+        orderType = False
 
     if orderItems and len(orderItems) == 0:
         return Response({'detail': 'No Order Items'}, status=status.HTTP_400_BAD_REQUEST)
@@ -31,7 +37,9 @@ def addOrderItems(request):
             paymentMethod=data['paymentMethod'],
             taxPrice=data['taxPrice'],
             shippingPrice=data['shippingPrice'],
-            totalPrice=data['totalPrice']
+            totalPrice=data['totalPrice'],
+            isCustom=orderType
+
         )
 
         # (2) Create shipping address
@@ -48,7 +56,6 @@ def addOrderItems(request):
         for i in orderItems:
             product = Product.objects.get(_id=i['product'])
             is_backorder = i.get('is_backorder', False)
-            is_preorder = i.get('is_preorder', False)
 
             item = OrderItem.objects.create(
                 product=product,
@@ -58,10 +65,10 @@ def addOrderItems(request):
                 price=i['price'],
                 image=product.image.url,
                 is_backorder=is_backorder,
-                is_preorder=is_preorder,
+
             )
 
-            if not is_backorder and not is_preorder:
+            if orderType == False:
                 product.countInStock -= item.qty
                 product.save()
 
@@ -108,6 +115,7 @@ def fulfillBackorder(request, pk):
     preorders = OrderItem.objects.filter(is_preorder=True)
     serializer = OrderItemSerializer(preorders, many=True)
     return Response(serializer.data)
+
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])

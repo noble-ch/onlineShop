@@ -3,6 +3,9 @@ import {
 	ORDER_CREATE_REQUEST,
 	ORDER_CREATE_SUCCESS,
 	ORDER_CREATE_FAIL,
+	CUSTOM_ORDER_CREATE_REQUEST,
+	CUSTOM_ORDER_CREATE_SUCCESS,
+	CUSTOM_ORDER_CREATE_FAIL,
 	ORDER_DETAILS_REQUEST,
 	ORDER_DETAILS_SUCCESS,
 	ORDER_DETAILS_FAIL,
@@ -18,11 +21,9 @@ import {
 	ORDER_DELIVER_REQUEST,
 	ORDER_DELIVER_SUCCESS,
 	ORDER_DELIVER_FAIL,
-
 	ORDER_RECIEVE_REQUEST,
 	ORDER_RECIEVE_SUCCESS,
 	ORDER_RECIEVE_FAIL,
-
 	ORDER_INITIALIZE_PAYMENT_REQUEST,
 	ORDER_INITIALIZE_PAYMENT_SUCCESS,
 	ORDER_INITIALIZE_PAYMENT_FAIL
@@ -63,6 +64,42 @@ export const createOrder = (order) => async (dispatch, getState) => {
 	} catch (error) {
 		dispatch({
 			type: ORDER_CREATE_FAIL,
+			payload:
+				error.response && error.response.data.detail
+					? error.response.data.detail
+					: error.message
+		});
+	}
+};
+
+export const createCustomOrder = (order) => async (dispatch, getState) => {
+	try {
+		dispatch({
+			type: CUSTOM_ORDER_CREATE_REQUEST
+		});
+
+		const {
+			userLogin: { userInfo }
+		} = getState();
+
+		const config = {
+			headers: {
+				"Content-type": "application/json",
+				Authorization: `Bearer ${userInfo.token}`
+			}
+		};
+
+		const { data } = await axios.post(`/api/orders/add/`, order, config);
+
+		dispatch({
+			type: CUSTOM_ORDER_CREATE_SUCCESS,
+			payload: data
+		});
+
+		//  clearing the cart or updating local storage.
+	} catch (error) {
+		dispatch({
+			type: CUSTOM_ORDER_CREATE_FAIL,
 			payload:
 				error.response && error.response.data.detail
 					? error.response.data.detail
@@ -218,7 +255,6 @@ export const recieveOrder = (order) => async (dispatch, getState) => {
 		});
 	}
 };
-
 
 export const listMyOrders = () => async (dispatch, getState) => {
 	try {

@@ -6,9 +6,10 @@ urlpatterns = [
 
     path('', views.getOrders, name='orders'),
     path('add/', views.addOrderItems, name='orders-add'),
-    # path('api/generate-chapa-payment/',
-    #      views.order_views.generate_chapa_payment, name='generate_chapa_payment'),
+
     path('myorders/', views.getMyOrders, name='myorders'),
+  
+
 
 
     path('<str:pk>/deliver/', views.updateOrderToDelivered, name='order-delivered'),
