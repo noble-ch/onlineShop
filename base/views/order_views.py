@@ -21,11 +21,6 @@ def addOrderItems(request):
     orderItems = data['orderItems']
     orderType = data.get('orderType', 'Regular')
 
-    if orderType == 'Custom':
-        orderType = True
-    else:
-        orderType = False
-
     if orderItems and len(orderItems) == 0:
         return Response({'detail': 'No Order Items'}, status=status.HTTP_400_BAD_REQUEST)
     else:
@@ -38,7 +33,6 @@ def addOrderItems(request):
             taxPrice=data['taxPrice'],
             shippingPrice=data['shippingPrice'],
             totalPrice=data['totalPrice'],
-            isCustom=orderType
 
         )
 
@@ -68,7 +62,7 @@ def addOrderItems(request):
 
             )
 
-            if orderType == False:
+            if orderType == 'regular':
                 product.countInStock -= item.qty
                 product.save()
 
@@ -160,13 +154,13 @@ def initialize_payment(request, pk):
                 "first_name": user.first_name,
                 "phone_number": "0912345678",
                 "tx_ref": str(order._id),
-                "callback_url": f"https://41f2-197-156-80-74.ngrok-free.app/api/orders/{pk}/pay",
-                "return_url": f"http://192.168.43.51:5175/order/{pk}/",
+                "callback_url": f"https://7132-196-188-174-37.ngrok-free.app/api/orders/{pk}/pay",
+                "return_url": f"http://localhost:5175/order/{pk}/",
             }
             payload = json.dumps(payment_data)
             print('parsed')
             headers = {
-                'Authorization': f'Bearer {CHAPA_API_KEY}',
+                'Authorization': f'Bearer CHASECK_TEST-JggM5YwHhuYFkLLh6ga4tGHwzzOvfuT3',
                 'Content-Type': 'application/json'
             }
             try:
@@ -236,7 +230,6 @@ def updateOrderToPaid(request, pk):
 @permission_classes([IsAdminUser])
 def updateOrderToDelivered(request, pk):
     order = Order.objects.get(_id=pk)
-
     order.isDelivered = True
     order.deliveredAt = datetime.now()
     order.save()

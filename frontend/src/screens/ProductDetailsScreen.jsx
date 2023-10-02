@@ -52,7 +52,7 @@ function ProductScreen() {
 		dispatch(listProductDetails(id));
 	}, [dispatch, id, successProductReview]);
 
-	const [customQty, setCustomQty] = useState(0);
+	const [customQty, setCustomQty] = useState(1);
 
 	const addToCartHandler = () => {
 		// Use custom quantity if it's greater than countInStock, otherwise use regular quantity
