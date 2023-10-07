@@ -53,11 +53,16 @@ pipenv install
 ```
 pipenv shell
 ```
-8. collect static
+8. makeingmigration to database
 ```
-python manage.py collectstatic   
+python manage.py makemigration
 ```
-9. Start the Server
+
+9. migrate to database
+```
+python manage.py migrate
+```
+10. Start the Server
 ```
 python manage.py runserver  //change debug to true in settings.py if it doesn't open the homepage
 ```
