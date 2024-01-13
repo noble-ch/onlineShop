@@ -1,3 +1,4 @@
+![NobaShop Preview](Screenshot_from_2024-01-13_19-27-47-removebg-preview.png)
 
 # NobaShop - Fully Integrated Ecommerce Website
 
