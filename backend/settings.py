@@ -127,8 +127,8 @@ DATABASES = {
 #         'ENGINE': 'django.db.backends.mysql',
 #         'NAME': 'onlineShop',
 #         'HOST': 'localhost',
-#         'USER': 'root',
-#         'PASSWORD': 'root',
+#         'USER': ' ',
+#         'PASSWORD': ' ',
 #         'OPTIONS': {
 #             'charset': 'utf8mb4',
 #         },
