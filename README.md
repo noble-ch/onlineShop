@@ -1,6 +1,10 @@
-Explore the live demo of NobaShop: [NobaShop Live Demo](https://nobashop.vercel.app)# NobaShop - Fully Integrated Ecommerce Website
+
+# NobaShop - Fully Integrated Ecommerce Website
 
 Welcome to NobaShop, your one-stop destination for a seamless online shopping experience! NobaShop is a fully integrated ecommerce website that incorporates all the standard functionalities of a modern ecommerce platform, along with a secure payment system using Chapa.
+
+### Explore the live demo of NobaShop: [NobaShop Live Demo](https://nobashop.vercel.app)
+
 
 ## Project Overview
 
