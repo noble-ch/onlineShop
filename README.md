@@ -59,7 +59,7 @@ The platform is built using the following technologies:
 - Redux
 - Django
 - MySQL
-- Create React App
+- Vite project
 
 ## Benefits
 
@@ -75,12 +75,12 @@ To get started with the Faayaa Ecommerce Platform, you can follow these steps:
 1. Clone the GitHub repository:
 
 ```
-git clone https://github.com/Noble-ch/eCommerce.preview
+git clone https://github.com/Noble-ch/onlineShop
 
 ```
 2. Change directory to the respository
 ```
-cd eCommerce.preview
+cd onlineShop
 ```
 3. Install backend dependencies(you can skip step 4 , 5 ,6 , 7) if you use this step
 ```
